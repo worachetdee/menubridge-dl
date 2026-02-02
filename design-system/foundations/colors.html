@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Colors - MenuBridge Design System</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Foundations</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Color Palette</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        Our colors are drawn from organic ingredients—slate, fresh herbs, cream, and fired clay—to evoke
+                        trust and appetite.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- Swatch 1 -->
+                    <div class="group flex flex-col gap-3">
+                        <div
+                            class="aspect-[4/3] w-full rounded-xl bg-primary shadow-sm group-hover:shadow-md transition-all">
+                        </div>
+                        <div>
+                            <p class="text-[#101818] font-semibold">Deep Slate</p>
+                            <p class="text-[#5c8a8a] text-xs font-mono mb-1">var(--primary)</p>
+                            <p class="text-[#5c8a8a] text-sm">#267373</p>
+                            <p class="text-[#101818]/60 text-xs mt-2">Primary actions, Brand headings</p>
+                        </div>
+                    </div>
+                    <!-- Swatch 2 -->
+                    <div class="group flex flex-col gap-3">
+                        <div
+                            class="aspect-[4/3] w-full rounded-xl bg-secondary shadow-sm group-hover:shadow-md transition-all">
+                        </div>
+                        <div>
+                            <p class="text-[#101818] font-semibold">Vibrant Emerald</p>
+                            <p class="text-[#5c8a8a] text-xs font-mono mb-1">var(--secondary)</p>
+                            <p class="text-[#5c8a8a] text-sm">#86B386</p>
+                            <p class="text-[#101818]/60 text-xs mt-2">Success, Health indicators</p>
+                        </div>
+                    </div>
+                    <!-- Swatch 3 -->
+                    <div class="group flex flex-col gap-3">
+                        <div
+                            class="aspect-[4/3] w-full rounded-xl bg-background-light border border-gray-200 shadow-sm group-hover:shadow-md transition-all relative">
+                            <div
+                                class="absolute inset-0 flex items-center justify-center text-[#101818]/20 font-display text-4xl font-bold">
+                                Aa</div>
+                        </div>
+                        <div>
+                            <p class="text-[#101818] font-semibold">Soft Cream</p>
+                            <p class="text-[#5c8a8a] text-xs font-mono mb-1">var(--bg-light)</p>
+                            <p class="text-[#5c8a8a] text-sm">#F8F8F7</p>
+                            <p class="text-[#101818]/60 text-xs mt-2">App Background, Cards</p>
+                        </div>
+                    </div>
+                    <!-- Swatch 4 -->
+                    <div class="group flex flex-col gap-3">
+                        <div
+                            class="aspect-[4/3] w-full rounded-xl bg-tertiary shadow-sm group-hover:shadow-md transition-all">
+                        </div>
+                        <div>
+                            <p class="text-[#101818] font-semibold">Terracotta</p>
+                            <p class="text-[#5c8a8a] text-xs font-mono mb-1">var(--accent)</p>
+                            <p class="text-[#5c8a8a] text-sm">#CC5C2E</p>
+                            <p class="text-[#101818]/60 text-xs mt-2">Alerts, Badges, Highlights</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+
+    </div>
+</body>
+
+</html>

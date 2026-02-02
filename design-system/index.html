@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MenuBridge Design System</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="./config.js"></script>
+    <script src="./layout.js"></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20">
+            <!-- Hero -->
+            <section class="w-full max-w-[1200px] px-6 py-16 lg:px-40 lg:py-24">
+                <div class="max-w-3xl">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-4">Design System v1.0</p>
+                    <h1
+                        class="font-display text-5xl md:text-6xl font-black leading-[1.1] tracking-tight text-[#101818] mb-6">
+                        The art of <br /> culinary translation.
+                    </h1>
+                    <p class="text-[#5c8a8a] text-xl leading-relaxed max-w-xl mb-8">
+                        A centralized design language for MenuBridge. Start exploring the foundations or jump straight
+                        into
+                        the component building blocks.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="./foundations/colors.html"
+                            class="rounded-lg bg-primary px-6 py-3 text-white font-bold shadow-sm hover:bg-primary/90 transition-all flex items-center gap-2">
+                            Explore Foundations <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                        </a>
+                        <a href="./components/index.html"
+                            class="rounded-lg border-2 border-primary/20 text-primary px-6 py-3 font-bold hover:bg-primary/5 transition-all">
+                            View Components
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Links -->
+            <section class="w-full max-w-[1200px] px-6 lg:px-40 py-12 border-t border-[#eaf1f1]">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <a href="./foundations/colors.html"
+                        class="group p-6 bg-white rounded-xl border border-[#eaf1f1] hover:border-primary/40 hover:shadow-soft transition-all cursor-pointer block no-underline">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-secondary/20 text-secondary flex items-center justify-center mb-4 group-hover:bg-secondary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">palette</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                            Colors</h3>
+                        <p class="text-sm text-[#5c8a8a]">Our organic palette drawn from nature.</p>
+                    </a>
+
+                    <a href="./foundations/typography.html"
+                        class="group p-6 bg-white rounded-xl border border-[#eaf1f1] hover:border-primary/40 hover:shadow-soft transition-all cursor-pointer block no-underline">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-tertiary/20 text-tertiary flex items-center justify-center mb-4 group-hover:bg-tertiary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">text_fields</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                            Typography</h3>
+                        <p class="text-sm text-[#5c8a8a]">Expressive headings and legible body text.</p>
+                    </a>
+
+                    <a href="./components/index.html"
+                        class="group p-6 bg-white rounded-xl border border-[#eaf1f1] hover:border-primary/40 hover:shadow-soft transition-all cursor-pointer block no-underline">
+                        <div
+                            class="w-12 h-12 rounded-lg bg-primary/20 text-primary flex items-center justify-center mb-4 group-hover:bg-primary group-hover:text-white transition-colors">
+                            <span class="material-symbols-outlined">widgets</span>
+                        </div>
+                        <h3 class="font-display text-xl font-bold mb-2 group-hover:text-primary transition-colors">
+                            Components</h3>
+                        <p class="text-sm text-[#5c8a8a]">Reusable interface elements.</p>
+                    </a>
+                </div>
+            </section>
+        </main>
+
+
+    </div>
+</body>
+
+</html>

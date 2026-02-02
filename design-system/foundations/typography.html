@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Typography - MenuBridge Design System</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Foundations</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Typography</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        We pair the expressive <span class="font-display font-bold">Epilogue</span> for storytelling
+                        with the highly legible <span class="font-body font-medium">Inter</span> for UI density.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+                    <!-- Epilogue Column -->
+                    <div class="lg:col-span-7 flex flex-col gap-8">
+                        <div class="border-b border-gray-100 pb-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-[#5c8a8a]">Display •
+                                Epilogue</span>
+                        </div>
+                        <div>
+                            <span class="text-[#5c8a8a] text-xs mb-1 block">Display 2XL</span>
+                            <h1 class="font-display text-5xl font-black text-[#101818] leading-tight">Authentic Taste
+                            </h1>
+                        </div>
+                        <div>
+                            <span class="text-[#5c8a8a] text-xs mb-1 block">Heading XL</span>
+                            <h2 class="font-display text-4xl font-bold text-[#101818] leading-tight">Menu Translation
+                            </h2>
+                        </div>
+                        <div>
+                            <span class="text-[#5c8a8a] text-xs mb-1 block">Heading L</span>
+                            <h3 class="font-display text-2xl font-bold text-[#101818] leading-tight">Dietary Preferences
+                            </h3>
+                        </div>
+                    </div>
+                    <!-- Inter Column -->
+                    <div class="lg:col-span-5 flex flex-col gap-8">
+                        <div class="border-b border-gray-100 pb-2 mb-2">
+                            <span class="text-xs font-bold uppercase tracking-wider text-[#5c8a8a]">Body • Inter</span>
+                        </div>
+                        <div>
+                            <span class="text-[#5c8a8a] text-xs mb-1 block">Body Large</span>
+                            <p class="font-body text-lg text-[#101818] leading-relaxed">
+                                Our AI analyzes menu items to provide accurate descriptions, ingredient lists, and
+                                allergen warnings in real-time.
+                            </p>
+                        </div>
+                        <div>
+                            <span class="text-[#5c8a8a] text-xs mb-1 block">Body Default</span>
+                            <p class="font-body text-base text-[#101818] leading-relaxed">
+                                Experience local cuisine without the language barrier. Simply point your camera and let
+                                our culinary engine reveal the story behind every dish.
+                            </p>
+                        </div>
+                        <div>
+                            <span class="text-[#5c8a8a] text-xs mb-1 block">Caption / Label</span>
+                            <div class="flex gap-3">
+                                <span
+                                    class="text-xs font-semibold text-[#5c8a8a] uppercase tracking-wide">Ingredients</span>
+                                <span
+                                    class="text-xs font-medium text-primary bg-primary/10 px-2 py-0.5 rounded">Bestseller</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Type Scale Table -->
+                <div class="mt-24">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">
+                        Type Scale</h2>
+                    <div class="overflow-hidden rounded-xl border border-[#eaf1f1] bg-white">
+                        <table class="min-w-full divide-y divide-[#eaf1f1]">
+                            <thead class="bg-[#f9fbfb]">
+                                <tr>
+                                    <th scope="col"
+                                        class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">
+                                        Role</th>
+                                    <th scope="col"
+                                        class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">
+                                        Font</th>
+                                    <th scope="col"
+                                        class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">
+                                        Weight</th>
+                                    <th scope="col"
+                                        class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">
+                                        Size / Line Height</th>
+                                    <th scope="col"
+                                        class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider hidden md:table-cell">
+                                        Example</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#eaf1f1] bg-white">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#101818]">Display
+                                        2XL</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-display">Epilogue
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Black (900)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-mono">48px / 1.1
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-[#101818] font-display font-black text-4xl hidden md:table-cell">
+                                        Authentic</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#101818]">Heading
+                                        XL</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-display">Epilogue
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bold (700)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-mono">36px / 1.25
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-[#101818] font-display font-bold text-3xl hidden md:table-cell">
+                                        Menu Translation</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#101818]">Heading L
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-display">Epilogue
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bold (700)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-mono">24px / 1.3
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-sm text-[#101818] font-display font-bold text-2xl hidden md:table-cell">
+                                        Dietary Prefs</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#101818]">Body
+                                        Large</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-body">Inter</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Regular (400)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-mono">18px / 1.6
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-lg text-[#101818] font-body hidden md:table-cell">
+                                        Analyze menu items...</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#101818]">Body
+                                        Default</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-body">Inter</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Regular (400)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-mono">16px / 1.5
+                                    </td>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-base text-[#101818] font-body hidden md:table-cell">
+                                        Experience local cuisine...</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#101818]">Caption
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-body">Inter</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Semibold (600)</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-primary font-mono">12px / 1</td>
+                                    <td
+                                        class="px-6 py-4 whitespace-nowrap text-xs text-[#101818] font-body font-semibold uppercase hidden md:table-cell">
+                                        Ingredients</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Usage Guidelines -->
+                <div class="mt-16 grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <div>
+                        <h3 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">auto_stories</span>
+                            When to use Epilogue
+                        </h3>
+                        <ul
+                            class="space-y-3 text-sm text-[#5c8a8a] list-disc list-inside bg-white p-6 rounded-xl border border-[#eaf1f1]">
+                            <li>Marketing headers and feature titles</li>
+                            <li>Storytelling elements (hero sections, quotes)</li>
+                            <li>High-impact numbers or data points</li>
+                            <li><strong>Do not</strong> use for long-form paragraphs or UI labels</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">wysiwyg</span>
+                            When to use Inter
+                        </h3>
+                        <ul
+                            class="space-y-3 text-sm text-[#5c8a8a] list-disc list-inside bg-white p-6 rounded-xl border border-[#eaf1f1]">
+                            <li>Standard paragraph text (descriptions, articles)</li>
+                            <li>User Interface elements (buttons, inputs, tooltips)</li>
+                            <li>Dense information displays (tables, lists)</li>
+                            <li><strong>Do not</strong> use for primary brand headings</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+
+    </div>
+</body>
+
+</html>

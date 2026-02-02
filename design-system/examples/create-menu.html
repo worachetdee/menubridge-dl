@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Create Menu Example - MenuBridge</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <!-- Web Components -->
+    <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-alert.js" defer></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Examples</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Create Menu</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        A multipart form layout utilizing cards for grouping information.
+                    </p>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">visibility</span>
+                        Preview
+                    </h2>
+
+                    <!-- Preview Frame -->
+                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-[#F9FAFB] shadow-sm">
+                        <!-- Browser Header Simulation -->
+                        <div class="bg-gray-50 border-b border-[#eaf1f1] px-4 py-2 flex items-center gap-2">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="flex-1 text-center">
+                                <span class="text-xs text-gray-400 font-mono">create-menu.html</span>
+                            </div>
+                        </div>
+
+                        <!-- Actual Content Preview -->
+                        <div class="px-8 py-10 min-h-[800px] relative bg-white lg:bg-[#F9FAFB]">
+
+                            <!-- Header Area inside Preview -->
+                            <div
+                                class="bg-white border-b border-[#eaf1f1] absolute top-0 left-0 w-full px-8 py-4 flex items-center justify-between z-10">
+                                <div class="text-lg font-bold font-display text-[#101818]">MenuBridge</div>
+                                <div class="flex items-center gap-4">
+                                    <div class="flex rounded bg-[#F3F4F6] p-1">
+                                        <button
+                                            class="px-3 py-1 text-xs font-bold bg-[#101818] text-white rounded shadow-sm">EN</button>
+                                        <button
+                                            class="px-3 py-1 text-xs font-bold text-gray-500 hover:text-black">JP</button>
+                                    </div>
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
+                                        <span class="material-symbols-outlined text-sm">person</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Main Form Area -->
+                            <div class="max-w-3xl mx-auto pt-20 pb-20">
+
+                                <div class="mb-6">
+                                    <a href="#"
+                                        class="text-xs font-medium text-gray-500 hover:text-[#101818] flex items-center gap-1 mb-4">
+                                        <span class="material-symbols-outlined text-sm">arrow_back</span>
+                                        Back to Menu Home
+                                    </a>
+                                    <h1 class="text-3xl font-bold font-display text-[#101818] mb-2">Create Menu</h1>
+                                    <p class="text-[#5c8a8a] text-sm">Upload or enter your Japanese menu to begin
+                                        building a translated version.</p>
+                                </div>
+
+                                <!-- Info Alert -->
+                                <div
+                                    class="bg-blue-50 border border-blue-100 rounded-lg p-4 mb-8 text-sm text-blue-800">
+                                    Required fields: Menu Name and either an uploaded file or menu text.<br>
+                                    Fields marked with * are required.
+                                </div>
+
+                                <form class="space-y-6">
+
+                                    <!-- Card 1: Menu Information -->
+                                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-8 shadow-sm">
+                                        <h2 class="text-lg font-bold font-display text-[#101818] mb-6">Menu Information
+                                        </h2>
+
+                                        <div class="space-y-6">
+                                            <div>
+                                                <label class="block text-sm font-bold text-[#101818] mb-2">
+                                                    Menu Name <span class="text-red-500">*</span>
+                                                </label>
+                                                <input type="text" placeholder="Enter menu name"
+                                                    class="w-full rounded-lg border-blue-500 ring-1 ring-blue-500 bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm" />
+                                            </div>
+
+                                            <div>
+                                                <label class="block text-sm font-bold text-[#101818] mb-2">
+                                                    Staff Notes <span
+                                                        class="text-gray-400 font-normal">(optional)</span>
+                                                </label>
+                                                <p class="text-xs text-[#5c8a8a] mb-2">Notes for staff reference, not
+                                                    shown to guests.</p>
+                                                <textarea placeholder="Add context for translators or staff" rows="3"
+                                                    class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm resize-none"></textarea>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card 2: Upload File -->
+                                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-8 shadow-sm">
+                                        <h2 class="text-lg font-bold font-display text-[#101818] mb-2">Upload File <span
+                                                class="text-gray-400 font-body font-normal text-sm ml-1">(or enter text
+                                                below)</span></h2>
+                                        <p class="text-[#5c8a8a] text-sm mb-6">You can upload a file, enter text
+                                            manually, or do both.</p>
+
+                                        <div
+                                            class="border-2 border-dashed border-[#eaf1f1] rounded-xl p-10 flex flex-col items-center justify-center text-center hover:bg-gray-50 transition-colors cursor-pointer group">
+                                            <span
+                                                class="material-symbols-outlined text-4xl text-[#5c8a8a] mb-4 group-hover:text-primary transition-colors">upload_file</span>
+                                            <p class="text-[#101818] font-medium text-sm mb-4">Drag and drop your menu
+                                                files here, or</p>
+                                            <menu-button variant="outline" label="Choose Files"></menu-button>
+                                            <p class="text-xs text-start text-[#5c8a8a] mt-4">Supports: PDF, Keynote,
+                                                and image files</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Card 3: Enter Menu Text -->
+                                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-8 shadow-sm">
+                                        <h2 class="text-lg font-bold font-display text-[#101818] mb-6">Enter Menu Text
+                                            <span class="text-gray-400 font-body font-normal text-sm ml-1">(or upload
+                                                file above)</span>
+                                        </h2>
+
+                                        <div>
+                                            <label class="block text-sm font-bold text-[#101818] mb-2">Menu Text</label>
+                                            <textarea
+                                                placeholder="Enter your Japanese menu items with prices (one per line)"
+                                                rows="6"
+                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm resize-none"></textarea>
+                                        </div>
+                                        <p class="text-xs text-[#5c8a8a] mt-4">Enter your Japanese menu items with
+                                            prices</p>
+                                    </div>
+
+                                </form>
+
+                                <!-- Footer Action -->
+                                <div class="mt-8 flex justify-center">
+                                    <menu-button icon="arrow_forward" label="Process Menu"
+                                        class="w-full sm:w-auto shadow-lg"></menu-button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Implementation Details -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">code</span>
+                            Implementation Notes
+                        </h2>
+                        <ul
+                            class="space-y-4 text-sm text-[#5c8a8a] list-disc list-inside bg-white p-6 rounded-xl border border-[#eaf1f1]">
+                            <li>
+                                <strong class="text-[#101818]">Sections:</strong> The form is broken into logical
+                                sections using <code>bg-white rounded-xl border border-[#eaf1f1]</code> cards to reduce
+                                cognitive load.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Form Grouping:</strong> Labels
+                                (<code>text-sm font-bold</code>) are clearly separated from help text
+                                (<code>text-xs text-[#5c8a8a]</code>).
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Upload State:</strong> The dashed border area uses
+                                standard Tailwind properties <code>border-2 border-dashed</code> and hover states for
+                                interactivity.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Components:</strong> Reuses
+                                <code>&lt;menu-button&gt;</code> for consistent calls to action.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">html</span>
+                            Structure
+                        </h2>
+                        <div
+                            class="bg-gray-900 rounded-xl p-6 overflow-x-auto text-xs font-mono text-gray-300 leading-relaxed shadow-sm">
+                            &lt;form class="space-y-6"&gt;
+                            &lt;!-- Card 1 --&gt;
+                            &lt;div class="bg-white rounded-xl border border-[#eaf1f1] p-8"&gt;
+                            &lt;h2&gt;Menu Information&lt;/h2&gt;
+                            &lt;!-- Inputs --&gt;
+                            &lt;/div&gt;
+
+                            &lt;!-- Card 2 --&gt;
+                            &lt;div class="bg-white rounded-xl border border-[#eaf1f1] p-8"&gt;
+                            &lt;h2&gt;Upload File&lt;/h2&gt;
+                            &lt;div class="border-2 border-dashed..."&gt;
+                            &lt;menu-button variant="outline"&gt;Choose Files&lt;/menu-button&gt;
+                            &lt;/div&gt;
+                            &lt;/div&gt;
+                            &lt;/form&gt;
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

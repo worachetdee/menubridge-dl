@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Login Page Example - MenuBridge</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <!-- web components -->
+    <script src="../components/menu-button.js" defer></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Examples</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Login Page</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        A standard authentication layout using centered card design.
+                    </p>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">visibility</span>
+                        Preview
+                    </h2>
+
+                    <!-- Preview Box / Window Frame -->
+                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-white shadow-sm">
+                        <!-- Browser Header Simulation -->
+                        <div class="bg-gray-50 border-b border-[#eaf1f1] px-4 py-2 flex items-center gap-2">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="flex-1 text-center">
+                                <span class="text-xs text-gray-400 font-mono">login.html</span>
+                            </div>
+                        </div>
+
+                        <!-- Actual Content Preview -->
+                        <div
+                            class="p-8 md:p-16 bg-white flex flex-col items-center justify-center min-h-[600px] relative">
+                            <!-- Header Area inside Preview -->
+                            <div class="absolute top-0 left-0 w-full flex items-center justify-between px-8 py-6">
+                                <div class="text-xl font-bold font-display text-[#101818]">MenuBridge</div>
+                                <div class="flex rounded bg-[#F3F4F6] p-1">
+                                    <button
+                                        class="px-3 py-1 text-xs font-bold bg-[#101818] text-white rounded shadow-sm">EN</button>
+                                    <button
+                                        class="px-3 py-1 text-xs font-bold text-gray-500 hover:text-black">JP</button>
+                                </div>
+                            </div>
+
+                            <!-- Login Card -->
+                            <div class="w-full max-w-[400px] border border-[#eaf1f1] rounded-xl p-8 shadow-sm">
+                                <div class="mb-8">
+                                    <h1 class="text-2xl font-bold font-display text-[#101818] mb-2">Log in to MenuBridge
+                                    </h1>
+                                    <p class="text-[#5c8a8a] text-sm italic">Welcome back.</p>
+                                </div>
+
+                                <form onsubmit="event.preventDefault();" class="space-y-6">
+                                    <!-- Email -->
+                                    <div class="space-y-2">
+                                        <label class="block text-sm font-bold text-[#101818]">Email</label>
+                                        <input type="email" placeholder="your@email.com"
+                                            class="w-full rounded-lg border-[#eaf1f1] bg-[#f9fbfb] px-4 py-3 text-sm focus:border-primary focus:ring-primary shadow-sm placeholder:text-gray-400" />
+                                    </div>
+
+                                    <!-- Password -->
+                                    <div class="space-y-2">
+                                        <label class="block text-sm font-bold text-[#101818]">Password</label>
+                                        <div class="relative">
+                                            <input type="password" value="password123"
+                                                class="w-full rounded-lg border-[#eaf1f1] bg-[#f9fbfb] px-4 py-3 text-sm focus:border-primary focus:ring-primary shadow-sm text-[#101818]" />
+                                            <button type="button"
+                                                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
+                                                <span class="material-symbols-outlined text-lg">visibility</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Forgot Password -->
+                                    <div>
+                                        <a href="#"
+                                            class="text-sm text-[#5c8a8a] hover:text-primary transition-colors">Forgot
+                                            your password?</a>
+                                    </div>
+
+                                    <!-- Submit -->
+                                    <menu-button full-width="true">Log In</menu-button>
+
+                                    <!-- Back to Sign Up -->
+                                    <div class="text-center pt-2">
+                                        <a href="#"
+                                            class="text-sm font-medium text-[#101818] underline underline-offset-4 hover:text-primary transition-colors">Back
+                                            to Sign Up</a>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Implementation Details -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">code</span>
+                            Implementation Notes
+                        </h2>
+                        <ul
+                            class="space-y-4 text-sm text-[#5c8a8a] list-disc list-inside bg-white p-6 rounded-xl border border-[#eaf1f1]">
+                            <li>
+                                <strong class="text-[#101818]">Layout:</strong> Uses a flex container with
+                                <code>items-center justify-center</code> to vertically and horizontally center the login
+                                card.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Typography:</strong> Uses <span
+                                    class="font-display font-bold">Epilogue</span> for the "Log in" header to establish
+                                brand voice, while the form labels and inputs reuse <span class="font-body">Inter</span>
+                                for legibility.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Inputs:</strong> Custom styled inputs with
+                                <code>bg-[#f9fbfb]</code> (off-white) to reduce contrast harshness against the white
+                                card.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Brand Header:</strong> The simple "MenuBridge" text logo
+                                is used instead of a full graphic to keep the loading weight low.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">html</span>
+                            Structure
+                        </h2>
+                        <div
+                            class="bg-gray-900 rounded-xl p-6 overflow-x-auto text-xs font-mono text-gray-300 leading-relaxed shadow-sm">
+                            &lt;main class="flex flex-col items-center justify-center min-h-screen"&gt;
+                            &lt;!-- Card --&gt;
+                            &lt;div class="w-full max-w-[400px] border border-[#eaf1f1] rounded-xl p-8"&gt;
+
+                            &lt;!-- Header --&gt;
+                            &lt;div class="mb-8"&gt;
+                            &lt;h1 class="font-display text-2xl font-bold"&gt;Log in&lt;/h1&gt;
+                            &lt;p class="text-sm italic"&gt;Welcome back.&lt;/p&gt;
+                            &lt;/div&gt;
+
+                            &lt;!-- Form --&gt;
+                            &lt;form&gt;
+                            &lt;!-- Inputs... --&gt;
+                            &lt;menu-button full-width="true"&gt;Log In&lt;/menu-button&gt;
+                            &lt;/form&gt;
+
+                            &lt;/div&gt;
+                            &lt;/main&gt;
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
