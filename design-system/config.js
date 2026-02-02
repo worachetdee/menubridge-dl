@@ -14,6 +14,7 @@ tailwind.config = {
             fontFamily: {
                 "display": ["Epilogue", "serif"],
                 "body": ["Inter", "sans-serif"],
+                "jp": ["Noto Sans JP", "sans-serif"],
             },
             borderRadius: {
                 "DEFAULT": "0.25rem",

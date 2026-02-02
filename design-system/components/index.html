@@ -23,6 +23,7 @@
     <script src="./menu-badge.js" defer></script>
     <script src="./menu-card.js" defer></script>
     <script src="./menu-alert.js" defer></script>
+    <script src="./menu-toggle.js" defer></script>
 
     <style>
         body {
@@ -74,6 +75,22 @@
                             &lt;menu-button&gt;Default Button&lt;/menu-button&gt;<br>
                             &lt;menu-button variant="outline"&gt;Outline Button&lt;/menu-button&gt;<br>
                             &lt;menu-button variant="ghost" icon="share"&gt;Ghost Button&lt;/menu-button&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Toggles -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Toggles</h2>
+                    <div class="space-y-6 bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                        <menu-toggle label="Notifications"></menu-toggle>
+                        <menu-toggle checked label="Auto-translate"></menu-toggle>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-toggle label="Notifications"&gt;&lt;/menu-toggle&gt;<br>
+                            &lt;menu-toggle checked label="Auto-translate"&gt;&lt;/menu-toggle&gt;
                         </code>
                     </div>
                 </div>

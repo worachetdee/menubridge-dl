@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Japanese Guidelines - MenuBridge Design System</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;family=Noto+Sans+JP:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+
+    <!-- Components -->
+    <script src="../components/menu-toggle.js" defer></script>
+
+    <style>
+        /* Base styles */
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        /* Japanese specific overrides for this page demo */
+        .jp-demo h1, .jp-demo h2, .jp-demo h3, .jp-demo p {
+            font-family: "Noto Sans JP", sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Foundations</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Japanese Version</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        Guidelines for the Japanese localization of the application, using Noto Sans JP for optimal readability.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-16">
+                    <!-- Typography -->
+                    <div>
+                        <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                            Typography</h2>
+                        <div class="bg-white p-8 rounded-xl border border-[#eaf1f1] jp-demo space-y-8">
+                            <div>
+                                <span class="text-[#5c8a8a] text-xs mb-1 block">Header (Noto Sans JP Bold)</span>
+                                <h2 class="text-3xl font-bold text-[#101818]">メニューの翻訳</h2>
+                            </div>
+                            <div>
+                                <span class="text-[#5c8a8a] text-xs mb-1 block">Content (Noto Sans JP Regular)</span>
+                                <p class="text-base text-[#101818] leading-relaxed">
+                                    私たちのAIは、メニュー項目を分析し、正確な説明、成分リスト、およびアレルゲン警告をリアルタイムで提供します。
+                                </p>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-sm text-[#5c8a8a]">
+                                Both headers and body content use <strong>Noto Sans JP</strong>. Headers typically use Bold (700) and body uses Regular (400).
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Components -->
+                    <div>
+                        <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                            Components</h2>
+                        <div class="bg-white p-8 rounded-xl border border-[#eaf1f1] space-y-8">
+                            <div>
+                                <span class="text-[#5c8a8a] text-xs mb-3 block">Language Toggle</span>
+                                <div class="flex items-center gap-4">
+                                    <menu-toggle label="日本語" checked></menu-toggle>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <p class="text-sm text-[#5c8a8a]">
+                                Use the toggle component for language switching or specific feature activation within the Japanese interface.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Font Spec -->
+                <div class="mt-8">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Font Specification</h2>
+                    <div class="overflow-hidden rounded-xl border border-[#eaf1f1] bg-white">
+                        <table class="min-w-full divide-y divide-[#eaf1f1]">
+                            <thead class="bg-[#f9fbfb]">
+                                <tr>
+                                    <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Usage</th>
+                                    <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Font Family</th>
+                                    <th scope="col" class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Weights</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#eaf1f1] bg-white">
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#101818]">Headers / Display</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Noto Sans JP</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Bold (700)</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-[#101818]">Body / Content</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Noto Sans JP</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Regular (400)</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+</html>

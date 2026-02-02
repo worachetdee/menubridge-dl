@@ -57,6 +57,10 @@ function injectSidebar() {
                        class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('typography.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Typography
                     </a>
+                    <a href="${isInSubfolder ? '../foundations/japanese.html' : './foundations/japanese.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('japanese.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Japanese Version
+                    </a>
                  </div>
             </div>
 
@@ -110,6 +114,7 @@ function injectSidebar() {
         <nav class="flex lg:hidden gap-4 overflow-x-auto pb-2">
              <a href="${isInSubfolder ? '../foundations/colors.html' : './foundations/colors.html'}" class="text-sm font-medium text-[#101818]">Colors</a>
              <a href="${isInSubfolder ? '../foundations/typography.html' : './foundations/typography.html'}" class="text-sm font-medium text-[#101818]">Typography</a>
+             <a href="${isInSubfolder ? '../foundations/japanese.html' : './foundations/japanese.html'}" class="text-sm font-medium text-[#101818]">Japanese</a>
              <a href="${isInSubfolder ? '../components/index.html' : './components/index.html'}" class="text-sm font-medium text-[#101818]">Components</a>
         </nav>
     `;
