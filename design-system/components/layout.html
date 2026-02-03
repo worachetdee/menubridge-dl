@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Layout - MenuBridge Design System</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Library</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Layout</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        A zero-build utility for injecting shared navigation and managing consistent page structure.
+                    </p>
+                </div>
+
+                <!-- Overview -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Overview</h2>
+                    <div class="bg-white p-8 rounded-xl border border-[#eaf1f1] space-y-4">
+                        <p class="text-sm text-[#5c8a8a] leading-relaxed">
+                            The MenuBridge Design System uses a lightweight, client-side approach to layout management.
+                            Instead of relying on a complex build step or server-side rendering for the shell, we use a
+                            simple JavaScript utility (<code>layout.js</code>) to inject the sidebar and handle active
+                            states.
+                        </p>
+                        <ul class="list-disc list-inside text-sm text-[#5c8a8a] space-y-2">
+                            <li><strong>Zero Dependencies:</strong> No framework required, just vanilla JS.</li>
+                            <li><strong>Automatic Active States:</strong> Detects current URL to highlight the correct
+                                sidebar link.</li>
+                            <li><strong>Path Resolution:</strong> Automatically handles relative paths (<code>./</code>
+                                vs
+                                <code>../</code>) for nested pages.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Usage -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Usage</h2>
+                    <div class="space-y-6">
+                        <div class="bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                            <p class="text-sm font-bold text-[#101818] mb-2">1. Include the Script</p>
+                            <p class="text-sm text-[#5c8a8a] mb-4">Add the script tag to your HTML head. Ensure it runs
+                                after the DOM is ready (handled internally by the script).</p>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code class="text-gray-300 text-sm font-mono">
+                                    &lt;script src="../layout.js"&gt;&lt;/script&gt;
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                            <p class="text-sm font-bold text-[#101818] mb-2">2. Add the Sidebar Container</p>
+                            <p class="text-sm text-[#5c8a8a] mb-4">Place the empty <code>aside</code> element where you
+                                want the sidebar to appear.</p>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code class="text-gray-300 text-sm font-mono">
+                                    &lt;aside id="app-sidebar"&gt;&lt;/aside&gt;
+                                </code>
+                            </div>
+                        </div>
+
+                        <div class="bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                            <p class="text-sm font-bold text-[#101818] mb-2">3. Structure Your Content</p>
+                            <p class="text-sm text-[#5c8a8a] mb-4">Wrap your main content in a <code>main</code> tag.
+                                The layout script will automatically add the necessary left margin on desktop.</p>
+                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                                <code class="text-gray-300 text-sm font-mono">
+                                    &lt;main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0"&gt;<br>
+                                    &nbsp;&nbsp;&lt;!-- Page Content --&gt;<br>
+                                    &lt;/main&gt;
+                                </code>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

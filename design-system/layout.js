@@ -1,36 +1,36 @@
 // MenuBridge Design System - Shared Layout
 document.addEventListener('DOMContentLoaded', () => {
-    injectSidebar();
+   injectSidebar();
 });
 
 function injectSidebar() {
-    // We target a specific sidebar container now, or fallback to inserting if not found (but HTML updates should be done first ideally)
-    // However, to make it robust, we will look for 'header' to REMOVE it if it exists from old pages, 
-    // and look for '#app-sidebar' to inject content.
+   // We target a specific sidebar container now, or fallback to inserting if not found (but HTML updates should be done first ideally)
+   // However, to make it robust, we will look for 'header' to REMOVE it if it exists from old pages, 
+   // and look for '#app-sidebar' to inject content.
 
-    const sidebar = document.getElementById('app-sidebar');
-    if (!sidebar) return;
+   const sidebar = document.getElementById('app-sidebar');
+   if (!sidebar) return;
 
-    // determine current path to set active state and adjust relative links
-    const path = window.location.pathname;
-    const isInSubfolder = path.includes('/foundations/') || path.includes('/components/') || path.includes('/examples/');
-    const prefix = isInSubfolder ? '..' : '.';
+   // determine current path to set active state and adjust relative links
+   const path = window.location.pathname;
+   const isInSubfolder = path.includes('/foundations/') || path.includes('/components/') || path.includes('/examples/');
+   const prefix = isInSubfolder ? '..' : '.';
 
-    // Check active states
-    const isFoundations = path.includes('foundations');
-    const isComponents = path.includes('components');
+   // Check active states
+   const isFoundations = path.includes('foundations');
+   const isComponents = path.includes('components');
 
-    sidebar.className = "w-full lg:w-64 border-b lg:border-b-0 lg:border-r border-[#eaf1f1] bg-[#f9fbfb]/90 backdrop-blur-md lg:backdrop-blur-none lg:bg-[#f9fbfb] lg:fixed lg:inset-y-0 lg:left-0 p-6 flex flex-col gap-8 shrink-0 z-50 overflow-y-auto";
+   sidebar.className = "w-full lg:w-64 border-b lg:border-b-0 lg:border-r border-[#eaf1f1] bg-[#f9fbfb]/90 backdrop-blur-md lg:backdrop-blur-none lg:bg-[#f9fbfb] lg:fixed lg:inset-y-0 lg:left-0 p-6 flex flex-col gap-8 shrink-0 z-50 overflow-y-auto";
 
-    // Add margin to main content to account for fixed sidebar
-    const mainContent = document.querySelector('main');
-    if (mainContent) {
-        mainContent.classList.add('lg:ml-64');
-        mainContent.classList.add('w-full'); // Ensure main takes full width
-        // Remove flex-1 if it conflicts, but usually fine.
-    }
+   // Add margin to main content to account for fixed sidebar
+   const mainContent = document.querySelector('main');
+   if (mainContent) {
+      mainContent.classList.add('lg:ml-64');
+      mainContent.classList.add('w-full'); // Ensure main takes full width
+      // Remove flex-1 if it conflicts, but usually fine.
+   }
 
-    sidebar.innerHTML = `
+   sidebar.innerHTML = `
         <div class="flex items-center justify-between lg:block">
             <a href="${prefix}/index.html" class="flex items-center gap-3 text-primary no-underline hover:opacity-80 transition-opacity mb-0 lg:mb-8">
                 <span class="material-symbols-outlined text-3xl">restaurant_menu</span>
@@ -65,8 +65,12 @@ function injectSidebar() {
                  <h3 class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3 px-2">Library</h3>
                  <div class="flex flex-col space-y-1">
                     <a href="${isInSubfolder ? '../components/index.html' : './components/index.html'}" 
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${isComponents ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${isComponents && !path.includes('layout.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Components
+                    </a>
+                    <a href="${isInSubfolder ? '../components/layout.html' : './components/layout.html'}" 
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('layout.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Layout
                     </a>
                  </div>
             </div>
@@ -82,6 +86,10 @@ function injectSidebar() {
                     <a href="${isInSubfolder ? '../examples/create-menu.html' : './examples/create-menu.html'}" 
                        class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('create-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Create Menu
+                    </a>
+                    <a href="${isInSubfolder ? '../examples/review-menu.html' : './examples/review-menu.html'}" 
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('review-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Review Menu
                     </a>
                  </div>
             </div>
@@ -114,11 +122,11 @@ function injectSidebar() {
         </nav>
     `;
 
-    // Remove old header if exists
-    const oldHeader = document.querySelector('header');
-    if (oldHeader) oldHeader.remove();
+   // Remove old header if exists
+   const oldHeader = document.querySelector('header');
+   if (oldHeader) oldHeader.remove();
 
-    // Remove footer if exists (since we moved copyright to sidebar)
-    const footer = document.querySelector('footer');
-    if (footer) footer.remove();
+   // Remove footer if exists (since we moved copyright to sidebar)
+   const footer = document.querySelector('footer');
+   if (footer) footer.remove();
 }
