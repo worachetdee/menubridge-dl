@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Login Page Example - MenuBridge</title>
+    <title>Login Page - MenuBridge</title>
     <!-- Dependencies -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
@@ -17,8 +17,9 @@
     <!-- Config & Layout -->
     <script src="../config.js"></script>
     <script src="../layout.js"></script>
-    <!-- web components -->
+    <!-- Web Components -->
     <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-toggle.js" defer></script>
 
     <style>
         body {
@@ -60,7 +61,7 @@
                     </h2>
 
                     <!-- Preview Box / Window Frame -->
-                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-white shadow-sm">
+                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-[#F9FAFB] shadow-sm">
                         <!-- Browser Header Simulation -->
                         <div class="bg-gray-50 border-b border-[#eaf1f1] px-4 py-2 flex items-center gap-2">
                             <div class="flex gap-1.5">
@@ -77,13 +78,15 @@
                         <div
                             class="p-8 md:p-16 bg-white flex flex-col items-center justify-center min-h-[600px] relative">
                             <!-- Header Area inside Preview -->
-                            <div class="absolute top-0 left-0 w-full flex items-center justify-between px-8 py-6">
-                                <div class="text-xl font-bold font-display text-[#101818]">MenuBridge</div>
-                                <div class="flex rounded bg-[#F3F4F6] p-1">
-                                    <button
-                                        class="px-3 py-1 text-xs font-bold bg-[#101818] text-white rounded shadow-sm">EN</button>
-                                    <button
-                                        class="px-3 py-1 text-xs font-bold text-gray-500 hover:text-black">JP</button>
+                            <div
+                                class="bg-white border-b border-[#eaf1f1] absolute top-0 left-0 w-full px-8 py-4 flex items-center justify-between z-10">
+                                <div class="text-lg font-bold font-display text-[#101818]">MenuBridge</div>
+                                <div class="flex items-center gap-4">
+                                    <menu-toggle items="EN, JP" selected="EN"></menu-toggle>
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
+                                        <span class="material-symbols-outlined text-sm">person</span>
+                                    </div>
                                 </div>
                             </div>
 
@@ -143,7 +146,7 @@
                     <div>
                         <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
                             <span class="material-symbols-outlined text-primary">code</span>
-                            Implementation Notes
+                            Component Usage
                         </h2>
                         <ul
                             class="space-y-4 text-sm text-[#5c8a8a] list-disc list-inside bg-white p-6 rounded-xl border border-[#eaf1f1]">
