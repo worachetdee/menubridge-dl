@@ -24,6 +24,18 @@
     <script src="./menu-card.js" defer></script>
     <script src="./menu-alert.js" defer></script>
     <script src="./menu-toggle.js" defer></script>
+    <script src="./menu-input.js" defer></script>
+    <script src="./menu-textarea.js" defer></script>
+    <script src="./menu-select.js" defer></script>
+    <script src="./menu-checkbox.js" defer></script>
+    <script src="./menu-radio.js" defer></script>
+    <script src="./menu-tabs.js" defer></script>
+    <script src="./menu-breadcrumb.js" defer></script>
+    <script src="./menu-pagination.js" defer></script>
+    <script src="./menu-modal.js" defer></script>
+    <script src="./menu-toast.js" defer></script>
+    <script src="./menu-switch.js" defer></script>
+    <script src="./menu-avatar.js" defer></script>
 
     <style>
         body {
@@ -175,7 +187,328 @@
                         </code>
                     </div>
                 </div>
-    </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- FORM CONTROLS                          -->
+                <!-- ═══════════════════════════════════════ -->
+
+                <!-- Text Input -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Text Input</h2>
+                    <div class="space-y-6 bg-white p-8 rounded-xl border border-[#eaf1f1] max-w-md">
+                        <menu-input label="Email" placeholder="you@example.com" type="email" icon="mail" helper="We'll never share your email."></menu-input>
+                        <menu-input label="Search" placeholder="Search menus..." icon="search"></menu-input>
+                        <menu-input label="Password" placeholder="Enter password" type="password" icon="lock" required></menu-input>
+                        <menu-input label="Restaurant Name" placeholder="Enter name" error="This field is required" required></menu-input>
+                        <menu-input label="Disabled" placeholder="Cannot edit" disabled></menu-input>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-input label="Email" placeholder="you@example.com" type="email" icon="mail"&gt;&lt;/menu-input&gt;<br>
+                            &lt;menu-input label="Name" error="This field is required" required&gt;&lt;/menu-input&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Textarea -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Textarea</h2>
+                    <div class="space-y-6 bg-white p-8 rounded-xl border border-[#eaf1f1] max-w-md">
+                        <menu-textarea label="Description" placeholder="Describe your dish..." rows="4" maxlength="200" helper="Brief description of the menu item."></menu-textarea>
+                        <menu-textarea label="Notes" placeholder="Add notes..." rows="3" error="Description is too short"></menu-textarea>
+                        <menu-textarea label="Read Only" placeholder="Cannot edit" disabled rows="2"></menu-textarea>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-textarea label="Description" placeholder="Describe..." maxlength="200"&gt;&lt;/menu-textarea&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Select -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Select</h2>
+                    <div class="space-y-6 bg-white p-8 rounded-xl border border-[#eaf1f1] max-w-md">
+                        <menu-select label="Category" placeholder="Choose a category" icon="category"
+                            options='[{"label":"Appetizer","value":"appetizer"},{"label":"Main Course","value":"main"},{"label":"Dessert","value":"dessert"},{"label":"Beverage","value":"beverage"}]'>
+                        </menu-select>
+                        <menu-select label="Cuisine" placeholder="Select cuisine"
+                            options='[{"label":"Thai","value":"thai"},{"label":"French","value":"french"},{"label":"Italian","value":"italian"},{"label":"Japanese","value":"japanese"}]'
+                            error="Please select a cuisine">
+                        </menu-select>
+                        <menu-select label="Disabled" placeholder="Cannot change" disabled
+                            options='[{"label":"Option A","value":"a"}]'>
+                        </menu-select>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-select label="Category" icon="category"<br>
+                            &nbsp;&nbsp;options='[{"label":"Appetizer","value":"appetizer"},...]'&gt;<br>
+                            &lt;/menu-select&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Checkbox -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Checkbox</h2>
+                    <div class="flex flex-col gap-4 bg-white p-8 rounded-xl border border-[#eaf1f1] max-w-md">
+                        <menu-checkbox label="I agree to the terms and conditions" value="terms"></menu-checkbox>
+                        <menu-checkbox label="Mark as featured item" value="featured" checked></menu-checkbox>
+                        <menu-checkbox label="Contains allergens" value="allergens"></menu-checkbox>
+                        <menu-checkbox label="Disabled option" value="disabled" disabled></menu-checkbox>
+                        <div id="demo-checkbox-output" class="text-xs text-primary font-mono mt-2"></div>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-checkbox label="I agree to the terms" value="terms"&gt;&lt;/menu-checkbox&gt;<br>
+                            &lt;menu-checkbox label="Featured" checked&gt;&lt;/menu-checkbox&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Radio -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Radio Group</h2>
+                    <div class="flex flex-wrap gap-12 bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Spice Level</span>
+                            <menu-radio name="spice"
+                                options='[{"label":"Mild","value":"mild"},{"label":"Medium","value":"medium"},{"label":"Hot","value":"hot"}]'
+                                selected="medium">
+                            </menu-radio>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Portion Size</span>
+                            <menu-radio name="portion" options="Small, Regular, Large" selected="Regular"></menu-radio>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Disabled</span>
+                            <menu-radio name="disabled" options="Option A, Option B" selected="Option A" disabled></menu-radio>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-radio name="spice" selected="medium"<br>
+                            &nbsp;&nbsp;options='[{"label":"Mild","value":"mild"},...]'&gt;<br>
+                            &lt;/menu-radio&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- NAVIGATION                             -->
+                <!-- ═══════════════════════════════════════ -->
+
+                <!-- Tabs -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Tabs</h2>
+                    <div class="space-y-8 bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">CSV Items</span>
+                            <menu-tabs items="Overview, Menu Items, Reviews, Settings" selected="Overview"></menu-tabs>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">JSON Items (Interactive)</span>
+                            <div id="demo-tabs-output" class="text-xs text-primary font-mono mb-1">Selected tab: details</div>
+                            <menu-tabs
+                                items='[{"label":"Details","value":"details"},{"label":"Ingredients","value":"ingredients"},{"label":"Nutrition","value":"nutrition"},{"label":"Reviews","value":"reviews"}]'
+                                selected="details"
+                                onchange="document.getElementById('demo-tabs-output').textContent = 'Selected tab: ' + this.getAttribute('selected')">
+                            </menu-tabs>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-tabs items="Overview, Menu Items, Reviews" selected="Overview"&gt;&lt;/menu-tabs&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Breadcrumb -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Breadcrumb</h2>
+                    <div class="space-y-6 bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                        <menu-breadcrumb
+                            items='[{"label":"Home","href":"#"},{"label":"Restaurants","href":"#"},{"label":"Le Petit Bistro","href":"#"},{"label":"Menu"}]'>
+                        </menu-breadcrumb>
+                        <menu-breadcrumb
+                            items='[{"label":"Dashboard","href":"#"},{"label":"Settings"}]'>
+                        </menu-breadcrumb>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-breadcrumb<br>
+                            &nbsp;&nbsp;items='[{"label":"Home","href":"#"},{"label":"Restaurants","href":"#"},{"label":"Menu"}]'&gt;<br>
+                            &lt;/menu-breadcrumb&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Pagination</h2>
+                    <div class="space-y-8 bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Few Pages</span>
+                            <menu-pagination total="5" current="3"></menu-pagination>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Many Pages (Interactive)</span>
+                            <div id="demo-pagination-output" class="text-xs text-primary font-mono mb-1">Page: 1</div>
+                            <menu-pagination total="20" current="1"
+                                onchange="document.getElementById('demo-pagination-output').textContent = 'Page: ' + this.getAttribute('current')">
+                            </menu-pagination>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Middle of Range</span>
+                            <menu-pagination total="50" current="25" max-visible="7"></menu-pagination>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-pagination total="20" current="1"&gt;&lt;/menu-pagination&gt;<br>
+                            &lt;menu-pagination total="50" current="25" max-visible="7"&gt;&lt;/menu-pagination&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════════ -->
+                <!-- FEEDBACK & OVERLAY                     -->
+                <!-- ═══════════════════════════════════════ -->
+
+                <!-- Switch -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Switch</h2>
+                    <div class="flex flex-col gap-5 bg-white p-8 rounded-xl border border-[#eaf1f1] max-w-md">
+                        <menu-switch label="Enable notifications" checked></menu-switch>
+                        <menu-switch label="Dark mode"></menu-switch>
+                        <menu-switch label="Auto-translate menus" checked></menu-switch>
+                        <menu-switch label="Disabled option" disabled></menu-switch>
+                        <menu-switch label="Disabled & checked" disabled checked></menu-switch>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-switch label="Enable notifications" checked&gt;&lt;/menu-switch&gt;<br>
+                            &lt;menu-switch label="Dark mode"&gt;&lt;/menu-switch&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Avatar -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Avatar</h2>
+                    <div class="flex flex-wrap gap-6 items-end bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                        <div class="flex flex-col items-center gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">SM</span>
+                            <menu-avatar name="Alice Chen" size="sm" status="online"></menu-avatar>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">MD</span>
+                            <menu-avatar name="Bob Smith" size="md" status="away"></menu-avatar>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">LG</span>
+                            <menu-avatar name="Clara Díaz" size="lg" status="offline"></menu-avatar>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">XL</span>
+                            <menu-avatar name="Daniel Park" size="xl" status="busy"></menu-avatar>
+                        </div>
+                        <div class="flex flex-col items-center gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">With Image</span>
+                            <menu-avatar src="https://i.pravatar.cc/150?img=32" name="Emma Wilson" size="lg" status="online"></menu-avatar>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-avatar name="Alice Chen" size="md" status="online"&gt;&lt;/menu-avatar&gt;<br>
+                            &lt;menu-avatar src="photo.jpg" name="Emma" size="lg"&gt;&lt;/menu-avatar&gt;
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Modal</h2>
+                    <div class="flex flex-wrap gap-4 bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                        <menu-button onclick="document.getElementById('demo-modal-sm').setAttribute('open','')" icon="open_in_new">Small Modal</menu-button>
+                        <menu-button onclick="document.getElementById('demo-modal-md').setAttribute('open','')" variant="outline" icon="open_in_new">Medium Modal</menu-button>
+                        <menu-button onclick="document.getElementById('demo-modal-lg').setAttribute('open','')" variant="ghost" icon="open_in_new">Large Modal</menu-button>
+                    </div>
+
+                    <menu-modal id="demo-modal-sm" title="Confirm Action" size="sm">
+                        <p class="mb-4">Are you sure you want to delete this menu item? This action cannot be undone.</p>
+                        <div class="flex gap-3 justify-end">
+                            <menu-button variant="ghost" onclick="document.getElementById('demo-modal-sm').close()">Cancel</menu-button>
+                            <menu-button onclick="document.getElementById('demo-modal-sm').close()">Confirm</menu-button>
+                        </div>
+                    </menu-modal>
+
+                    <menu-modal id="demo-modal-md" title="Edit Menu Item" size="md">
+                        <div class="space-y-4">
+                            <menu-input label="Dish Name" placeholder="Enter dish name" icon="restaurant"></menu-input>
+                            <menu-textarea label="Description" placeholder="Describe the dish..." rows="3" maxlength="150"></menu-textarea>
+                            <div class="flex gap-3 justify-end pt-2">
+                                <menu-button variant="ghost" onclick="document.getElementById('demo-modal-md').close()">Cancel</menu-button>
+                                <menu-button onclick="document.getElementById('demo-modal-md').close()">Save Changes</menu-button>
+                            </div>
+                        </div>
+                    </menu-modal>
+
+                    <menu-modal id="demo-modal-lg" title="Restaurant Details" size="lg">
+                        <p class="text-[#5c8a8a] mb-4">Review the full details of this restaurant before publishing to your menu network.</p>
+                        <div class="bg-background-light rounded-lg p-4 border border-[#eaf1f1] mb-4">
+                            <h4 class="font-display font-bold text-[#101818] mb-1">Le Petit Bistro</h4>
+                            <p class="text-sm text-[#5c8a8a]">Traditional French cuisine in the heart of Paris. Known for exceptional steak frites and an extensive wine list.</p>
+                        </div>
+                        <div class="flex gap-3 justify-end">
+                            <menu-button variant="ghost" onclick="document.getElementById('demo-modal-lg').close()">Close</menu-button>
+                            <menu-button onclick="document.getElementById('demo-modal-lg').close()">Publish</menu-button>
+                        </div>
+                    </menu-modal>
+
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-modal id="my-modal" title="Confirm" size="sm"&gt;<br>
+                            &nbsp;&nbsp;&lt;p&gt;Are you sure?&lt;/p&gt;<br>
+                            &lt;/menu-modal&gt;<br><br>
+                            &lt;!-- Open via JS --&gt;<br>
+                            document.getElementById('my-modal').setAttribute('open', '');
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Toast -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Toast</h2>
+                    <div class="flex flex-wrap gap-4 bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                        <menu-button onclick="document.getElementById('demo-toast').show('Menu item saved successfully!','success')" icon="check_circle">Success Toast</menu-button>
+                        <menu-button variant="outline" onclick="document.getElementById('demo-toast').show('Failed to save changes.','error')" icon="error">Error Toast</menu-button>
+                        <menu-button variant="outline" onclick="document.getElementById('demo-toast').show('Your session will expire soon.','warning')" icon="warning">Warning Toast</menu-button>
+                        <menu-button variant="ghost" onclick="document.getElementById('demo-toast').show('New translation available.','info')" icon="info">Info Toast</menu-button>
+                    </div>
+                    <menu-toast id="demo-toast" duration="3000"></menu-toast>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-toast id="my-toast" duration="3000"&gt;&lt;/menu-toast&gt;<br><br>
+                            &lt;!-- Trigger via JS --&gt;<br>
+                            document.getElementById('my-toast').show('Saved!', 'success');
+                        </code>
+                    </div>
+                </div>
 
     </section>
     </main>
