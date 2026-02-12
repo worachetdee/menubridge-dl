@@ -46,72 +46,598 @@
                     <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Library</p>
                     <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Layout</h1>
                     <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
-                        A zero-build utility for injecting shared navigation and managing consistent page structure.
+                        A zero-build utility for injecting shared navigation and managing consistent page structure
+                        across all screen sizes.
                     </p>
                 </div>
 
-                <!-- Overview -->
+                <!-- ═══════════════════════════════════ -->
+                <!-- Overview                            -->
+                <!-- ═══════════════════════════════════ -->
                 <div class="mb-16">
                     <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
                         Overview</h2>
                     <div class="bg-white p-8 rounded-xl border border-[#eaf1f1] space-y-4">
                         <p class="text-sm text-[#5c8a8a] leading-relaxed">
                             The MenuBridge Design System uses a lightweight, client-side approach to layout management.
-                            Instead of relying on a complex build step or server-side rendering for the shell, we use a
-                            simple JavaScript utility (<code>layout.js</code>) to inject the sidebar and handle active
-                            states.
+                            A single JavaScript utility (<code
+                                class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">layout.js</code>) injects the
+                            sidebar navigation and handles active states — no framework or build step required.
                         </p>
                         <ul class="list-disc list-inside text-sm text-[#5c8a8a] space-y-2">
-                            <li><strong>Zero Dependencies:</strong> No framework required, just vanilla JS.</li>
-                            <li><strong>Automatic Active States:</strong> Detects current URL to highlight the correct
-                                sidebar link.</li>
-                            <li><strong>Path Resolution:</strong> Automatically handles relative paths (<code>./</code>
-                                vs
-                                <code>../</code>) for nested pages.
-                            </li>
+                            <li><strong class="text-[#101818]">Zero Dependencies:</strong> Vanilla JS, no framework
+                                required.</li>
+                            <li><strong class="text-[#101818]">Automatic Active States:</strong> Detects current URL
+                                via <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">path.endsWith()</code> to
+                                highlight the correct sidebar link.</li>
+                            <li><strong class="text-[#101818]">Path Resolution:</strong> Automatically handles relative
+                                paths (<code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">./</code> vs <code
+                                    class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">../</code>) based on subfolder
+                                depth.</li>
+                            <li><strong class="text-[#101818]">Responsive:</strong> Fixed sidebar on desktop (lg+),
+                                collapsed horizontal nav on mobile.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Usage -->
+                <!-- ═══════════════════════════════════ -->
+                <!-- Page Structure                      -->
+                <!-- ═══════════════════════════════════ -->
                 <div class="mb-16">
                     <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
-                        Usage</h2>
+                        Page Structure</h2>
+
+                    <p class="text-sm text-[#5c8a8a] mb-6">Every page in the design system follows this consistent
+                        shell structure. The sidebar is injected by <code
+                            class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">layout.js</code> at runtime.</p>
+
+                    <div class="bg-gray-900 rounded-xl p-6 overflow-x-auto text-xs font-mono text-gray-300 leading-relaxed shadow-sm mb-6">
+                        <span class="text-gray-500">&lt;!-- Page Shell --&gt;</span><br>
+                        &lt;<span class="text-blue-400">body</span> class="<span class="text-green-400">bg-background-light text-[#101818] antialiased</span>"&gt;<br>
+                        &nbsp;&nbsp;&lt;<span class="text-blue-400">div</span> class="<span class="text-green-400">relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden</span>"&gt;<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">&lt;!-- Sidebar (injected by layout.js) --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-blue-400">aside</span> id="<span class="text-amber-400">app-sidebar</span>"&gt;&lt;/<span class="text-blue-400">aside</span>&gt;<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">&lt;!-- Main Content (layout.js adds lg:ml-64) --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-blue-400">main</span> class="<span class="text-green-400">flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0</span>"&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-blue-400">section</span> class="<span class="text-green-400">w-full max-w-[1200px] px-6 py-12 lg:px-40</span>"&gt;<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">&lt;!-- Page Header --&gt;</span><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-blue-400">div</span> class="<span class="text-green-400">mb-12</span>"&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-blue-400">p</span> class="<span class="text-green-400">text-primary font-bold uppercase text-xs mb-2</span>"&gt;Category&lt;/<span class="text-blue-400">p</span>&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-blue-400">h1</span> class="<span class="text-green-400">font-display text-4xl md:text-5xl font-black</span>"&gt;Title&lt;/<span class="text-blue-400">h1</span>&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="text-blue-400">p</span> class="<span class="text-green-400">text-[#5c8a8a] text-lg mt-4 max-w-2xl</span>"&gt;Description&lt;/<span class="text-blue-400">p</span>&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="text-blue-400">div</span>&gt;<br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">&lt;!-- Content Sections... --&gt;</span><br><br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="text-blue-400">section</span>&gt;<br>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="text-blue-400">main</span>&gt;<br>
+                        &nbsp;&nbsp;&lt;/<span class="text-blue-400">div</span>&gt;<br>
+                        &lt;/<span class="text-blue-400">body</span>&gt;
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════ -->
+                <!-- Responsive Behavior                 -->
+                <!-- ═══════════════════════════════════ -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Responsive Behavior</h2>
+
+                    <p class="text-sm text-[#5c8a8a] mb-8">The layout adapts across three breakpoints. The sidebar
+                        transforms from a fixed panel on desktop to a compact header on mobile.</p>
+
+                    <!-- Desktop (lg: 1024px+) -->
+                    <div class="mb-8">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary">desktop_windows</span>
+                            <h3 class="text-base font-bold text-[#101818]">Desktop <span
+                                    class="text-xs font-normal text-[#5c8a8a] ml-1">(lg: 1024px+)</span></h3>
+                        </div>
+                        <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-white shadow-sm">
+                            <div class="bg-gray-50 border-b border-[#eaf1f1] px-3 py-1.5 flex items-center gap-1.5">
+                                <div class="flex gap-1">
+                                    <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                                    <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                                    <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                                </div>
+                                <span class="text-[10px] text-gray-400 font-mono mx-auto">1280 x 800</span>
+                            </div>
+                            <div class="flex" style="height: 320px;">
+                                <!-- Sidebar mock -->
+                                <div class="w-48 bg-[#f9fbfb] border-r border-[#eaf1f1] p-4 flex flex-col shrink-0">
+                                    <div class="flex items-center gap-2 mb-6">
+                                        <span
+                                            class="material-symbols-outlined text-primary text-lg">restaurant_menu</span>
+                                        <div>
+                                            <p class="text-xs font-bold text-[#101818] leading-none">MenuBridge</p>
+                                            <p class="text-[8px] text-primary uppercase tracking-wider font-bold opacity-70">Design System</p>
+                                        </div>
+                                    </div>
+                                    <p class="text-[8px] font-bold text-[#5c8a8a] uppercase tracking-wider mb-2 px-1">
+                                        Foundations</p>
+                                    <div class="space-y-0.5 mb-4">
+                                        <div class="px-1.5 py-1 rounded text-[9px] text-[#101818]/70">Colors</div>
+                                        <div class="px-1.5 py-1 rounded text-[9px] text-[#101818]/70">Typography</div>
+                                    </div>
+                                    <p class="text-[8px] font-bold text-[#5c8a8a] uppercase tracking-wider mb-2 px-1">
+                                        Library</p>
+                                    <div class="space-y-0.5 mb-4">
+                                        <div class="px-1.5 py-1 rounded text-[9px] text-[#101818]/70">Components</div>
+                                        <div
+                                            class="px-1.5 py-1 rounded text-[9px] bg-primary/10 text-primary font-medium">
+                                            Layout</div>
+                                    </div>
+                                    <p class="text-[8px] font-bold text-[#5c8a8a] uppercase tracking-wider mb-2 px-1">
+                                        Examples</p>
+                                    <div class="space-y-0.5">
+                                        <div class="px-1.5 py-1 rounded text-[9px] text-[#101818]/70">Login Page</div>
+                                        <div class="px-1.5 py-1 rounded text-[9px] text-[#101818]/70">Create Menu</div>
+                                        <div class="px-1.5 py-1 rounded text-[9px] text-[#101818]/70">Review Menu</div>
+                                    </div>
+                                    <div class="mt-auto pt-3 border-t border-[#eaf1f1]">
+                                        <div
+                                            class="bg-primary rounded px-2 py-1 text-white text-[8px] font-bold text-center">
+                                            Download Assets</div>
+                                        <p class="text-[7px] text-[#5c8a8a] text-center mt-1.5">© 2026 MenuBridge</p>
+                                    </div>
+                                </div>
+                                <!-- Main content mock -->
+                                <div class="flex-1 p-6 overflow-hidden">
+                                    <p class="text-[8px] text-primary font-bold uppercase tracking-wider mb-1">Library
+                                    </p>
+                                    <div class="h-4 w-24 bg-[#101818] rounded mb-2"></div>
+                                    <div class="h-2 w-56 bg-[#5c8a8a]/20 rounded mb-6"></div>
+                                    <div class="h-2 w-full bg-[#eaf1f1] rounded mb-1.5"></div>
+                                    <div class="h-2 w-4/5 bg-[#eaf1f1] rounded mb-1.5"></div>
+                                    <div class="h-2 w-3/5 bg-[#eaf1f1] rounded mb-6"></div>
+                                    <div class="bg-[#f9fbfb] rounded-lg p-3 border border-[#eaf1f1]">
+                                        <div class="h-2 w-full bg-[#eaf1f1] rounded mb-1.5"></div>
+                                        <div class="h-2 w-4/5 bg-[#eaf1f1] rounded mb-1.5"></div>
+                                        <div class="h-2 w-2/3 bg-[#eaf1f1] rounded"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 bg-gray-50 rounded-lg p-3 border border-[#eaf1f1]">
+                            <p class="text-xs text-[#5c8a8a]"><strong class="text-[#101818]">Sidebar:</strong> Fixed
+                                left, <code class="bg-gray-100 px-1 rounded text-[10px]">w-64</code> (256px), full
+                                height. Main content offset via <code
+                                    class="bg-gray-100 px-1 rounded text-[10px]">lg:ml-64</code>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Tablet (md: 768px–1023px) -->
+                    <div class="mb-8">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary">tablet</span>
+                            <h3 class="text-base font-bold text-[#101818]">Tablet <span
+                                    class="text-xs font-normal text-[#5c8a8a] ml-1">(md: 768px–1023px)</span></h3>
+                        </div>
+                        <div class="max-w-md mx-auto">
+                            <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-white shadow-sm">
+                                <div
+                                    class="bg-gray-50 border-b border-[#eaf1f1] px-3 py-1.5 flex items-center gap-1.5">
+                                    <div class="flex gap-1">
+                                        <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                                        <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                                        <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                                    </div>
+                                    <span class="text-[10px] text-gray-400 font-mono mx-auto">768 x 1024</span>
+                                </div>
+                                <div style="height: 320px;">
+                                    <!-- Top bar mock -->
+                                    <div
+                                        class="border-b border-[#eaf1f1] bg-[#f9fbfb] p-3 flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <span
+                                                class="material-symbols-outlined text-primary text-sm">restaurant_menu</span>
+                                            <div>
+                                                <p class="text-[9px] font-bold text-[#101818] leading-none">MenuBridge
+                                                </p>
+                                                <p class="text-[7px] text-primary uppercase tracking-wider font-bold opacity-70">
+                                                    Design System</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-3 overflow-x-auto">
+                                            <span class="text-[9px] font-medium text-[#101818]">Colors</span>
+                                            <span class="text-[9px] font-medium text-[#101818]">Typography</span>
+                                            <span class="text-[9px] font-medium text-[#101818]">Components</span>
+                                        </div>
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="p-6 overflow-hidden">
+                                        <p class="text-[8px] text-primary font-bold uppercase tracking-wider mb-1">
+                                            Library</p>
+                                        <div class="h-4 w-24 bg-[#101818] rounded mb-2"></div>
+                                        <div class="h-2 w-56 bg-[#5c8a8a]/20 rounded mb-6"></div>
+                                        <div class="h-2 w-full bg-[#eaf1f1] rounded mb-1.5"></div>
+                                        <div class="h-2 w-4/5 bg-[#eaf1f1] rounded mb-1.5"></div>
+                                        <div class="h-2 w-3/5 bg-[#eaf1f1] rounded mb-6"></div>
+                                        <div class="bg-[#f9fbfb] rounded-lg p-3 border border-[#eaf1f1]">
+                                            <div class="h-2 w-full bg-[#eaf1f1] rounded mb-1.5"></div>
+                                            <div class="h-2 w-4/5 bg-[#eaf1f1] rounded mb-1.5"></div>
+                                            <div class="h-2 w-2/3 bg-[#eaf1f1] rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 bg-gray-50 rounded-lg p-3 border border-[#eaf1f1] max-w-md mx-auto">
+                            <p class="text-xs text-[#5c8a8a]"><strong class="text-[#101818]">Sidebar:</strong>
+                                Collapses to a horizontal top bar with logo + abbreviated nav links. Full nav is
+                                hidden.</p>
+                        </div>
+                    </div>
+
+                    <!-- Mobile (< 768px) -->
+                    <div class="mb-8">
+                        <div class="flex items-center gap-2 mb-4">
+                            <span class="material-symbols-outlined text-primary">smartphone</span>
+                            <h3 class="text-base font-bold text-[#101818]">Mobile <span
+                                    class="text-xs font-normal text-[#5c8a8a] ml-1">(&lt; 768px)</span></h3>
+                        </div>
+                        <div class="max-w-[220px] mx-auto">
+                            <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-white shadow-sm">
+                                <div
+                                    class="bg-gray-50 border-b border-[#eaf1f1] px-3 py-1.5 flex items-center gap-1.5">
+                                    <div class="flex gap-1">
+                                        <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                                        <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                                        <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                                    </div>
+                                    <span class="text-[10px] text-gray-400 font-mono mx-auto">375 x 812</span>
+                                </div>
+                                <div style="height: 340px;">
+                                    <!-- Top bar mock -->
+                                    <div class="border-b border-[#eaf1f1] bg-[#f9fbfb] p-3">
+                                        <div class="flex items-center gap-2 mb-2">
+                                            <span
+                                                class="material-symbols-outlined text-primary text-sm">restaurant_menu</span>
+                                            <div>
+                                                <p class="text-[9px] font-bold text-[#101818] leading-none">MenuBridge
+                                                </p>
+                                                <p class="text-[7px] text-primary uppercase tracking-wider font-bold opacity-70">
+                                                    Design System</p>
+                                            </div>
+                                        </div>
+                                        <div class="flex gap-3 overflow-x-auto">
+                                            <span class="text-[8px] font-medium text-[#101818] shrink-0">Colors</span>
+                                            <span
+                                                class="text-[8px] font-medium text-[#101818] shrink-0">Typography</span>
+                                            <span
+                                                class="text-[8px] font-medium text-[#101818] shrink-0">Components</span>
+                                        </div>
+                                    </div>
+                                    <!-- Content -->
+                                    <div class="p-4 overflow-hidden">
+                                        <p class="text-[7px] text-primary font-bold uppercase tracking-wider mb-1">
+                                            Library</p>
+                                        <div class="h-3 w-16 bg-[#101818] rounded mb-1.5"></div>
+                                        <div class="h-1.5 w-full bg-[#5c8a8a]/20 rounded mb-4"></div>
+                                        <div class="h-1.5 w-full bg-[#eaf1f1] rounded mb-1"></div>
+                                        <div class="h-1.5 w-4/5 bg-[#eaf1f1] rounded mb-1"></div>
+                                        <div class="h-1.5 w-3/5 bg-[#eaf1f1] rounded mb-4"></div>
+                                        <div class="bg-[#f9fbfb] rounded p-2 border border-[#eaf1f1]">
+                                            <div class="h-1.5 w-full bg-[#eaf1f1] rounded mb-1"></div>
+                                            <div class="h-1.5 w-4/5 bg-[#eaf1f1] rounded mb-1"></div>
+                                            <div class="h-1.5 w-2/3 bg-[#eaf1f1] rounded"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 bg-gray-50 rounded-lg p-3 border border-[#eaf1f1] max-w-[220px] mx-auto">
+                            <p class="text-xs text-[#5c8a8a]"><strong class="text-[#101818]">Sidebar:</strong>
+                                Stacked layout. Logo + horizontal scrollable links. Content uses full width with <code
+                                    class="bg-gray-100 px-1 rounded text-[10px]">px-6</code>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════ -->
+                <!-- Sidebar Anatomy                     -->
+                <!-- ═══════════════════════════════════ -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Sidebar Anatomy</h2>
+
+                    <p class="text-sm text-[#5c8a8a] mb-6">The sidebar is composed of four zones, each injected
+                        dynamically by <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">layout.js</code>.</p>
+
+                    <div class="bg-white p-6 rounded-xl border border-[#eaf1f1] space-y-4">
+                        <!-- Zone diagram -->
+                        <div class="border border-dashed border-[#eaf1f1] rounded-lg p-4 space-y-4">
+                            <!-- Logo -->
+                            <div class="flex items-center gap-3 p-3 rounded-lg bg-primary/5 border border-primary/20">
+                                <span class="material-symbols-outlined text-primary">restaurant_menu</span>
+                                <div>
+                                    <p class="text-sm font-bold text-[#101818]">MenuBridge</p>
+                                    <p class="text-[10px] text-primary uppercase tracking-wider font-bold opacity-70">
+                                        Design System</p>
+                                </div>
+                                <span
+                                    class="ml-auto px-2 py-0.5 bg-primary/10 text-primary text-[10px] font-bold rounded">1.
+                                    Logo</span>
+                            </div>
+
+                            <!-- Nav sections -->
+                            <div class="p-3 rounded-lg bg-blue-50/50 border border-blue-100 space-y-3">
+                                <div class="flex items-center justify-between">
+                                    <p class="text-[10px] font-bold text-[#5c8a8a] uppercase tracking-wider">
+                                        Foundations</p>
+                                    <span
+                                        class="px-2 py-0.5 bg-blue-100 text-blue-600 text-[10px] font-bold rounded">2.
+                                        Nav Sections</span>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Colors</div>
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Typography</div>
+                                </div>
+                                <p class="text-[10px] font-bold text-[#5c8a8a] uppercase tracking-wider mt-2">Library
+                                </p>
+                                <div class="space-y-1">
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Components</div>
+                                    <div
+                                        class="px-2 py-1 rounded text-xs bg-primary/10 text-primary font-medium flex justify-between">
+                                        Layout <span class="text-[10px] opacity-60">active</span>
+                                    </div>
+                                </div>
+                                <p class="text-[10px] font-bold text-[#5c8a8a] uppercase tracking-wider mt-2">Examples
+                                </p>
+                                <div class="space-y-1">
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Login Page</div>
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Create Menu</div>
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Review Menu</div>
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Review Enhanced</div>
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Preview Menu</div>
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Published Menu</div>
+                                </div>
+                                <p class="text-[10px] font-bold text-[#5c8a8a] uppercase tracking-wider mt-2">Resources
+                                </p>
+                                <div class="space-y-1">
+                                    <div class="px-2 py-1 rounded text-xs text-[#101818]/70">Changelog</div>
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div
+                                class="p-3 rounded-lg bg-gray-50 border border-gray-200 flex items-center justify-between">
+                                <div>
+                                    <div
+                                        class="bg-primary rounded px-3 py-1 text-white text-[10px] font-bold inline-block mb-1">
+                                        Download Assets</div>
+                                    <p class="text-[10px] text-[#5c8a8a]">© 2026 MenuBridge</p>
+                                </div>
+                                <span
+                                    class="px-2 py-0.5 bg-gray-200 text-gray-600 text-[10px] font-bold rounded">3.
+                                    Footer</span>
+                            </div>
+
+                            <!-- Mobile nav -->
+                            <div class="p-3 rounded-lg bg-amber-50/50 border border-amber-100">
+                                <div class="flex items-center justify-between mb-2">
+                                    <p class="text-[10px] text-amber-700 font-bold">Mobile only (lg:hidden)</p>
+                                    <span
+                                        class="px-2 py-0.5 bg-amber-100 text-amber-700 text-[10px] font-bold rounded">4.
+                                        Mobile Nav</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <span class="text-[10px] font-medium text-[#101818]">Colors</span>
+                                    <span class="text-[10px] font-medium text-[#101818]">Typography</span>
+                                    <span class="text-[10px] font-medium text-[#101818]">Components</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════ -->
+                <!-- Example Page Pattern                -->
+                <!-- ═══════════════════════════════════ -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Example Page Pattern</h2>
+
+                    <p class="text-sm text-[#5c8a8a] mb-6">All example pages follow a consistent three-part structure:
+                        a page header, a browser-framed preview, and a documentation section.</p>
+
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] overflow-hidden">
+
+                        <!-- Part 1: Page Header -->
+                        <div class="p-6 border-b border-[#eaf1f1]">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span
+                                    class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">1</span>
+                                <h3 class="text-sm font-bold text-[#101818]">Page Header</h3>
+                            </div>
+                            <div class="bg-[#f9fbfb] rounded-lg p-4 border border-[#eaf1f1]">
+                                <p class="text-primary font-bold tracking-wider uppercase text-[10px] mb-1">Examples
+                                </p>
+                                <p class="font-display text-lg font-black text-[#101818]">Page Title</p>
+                                <p class="text-[#5c8a8a] text-xs mt-1">Brief description of the example page.</p>
+                            </div>
+                        </div>
+
+                        <!-- Part 2: Preview Frame -->
+                        <div class="p-6 border-b border-[#eaf1f1]">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span
+                                    class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">2</span>
+                                <h3 class="text-sm font-bold text-[#101818]">Preview Frame</h3>
+                            </div>
+                            <div class="border border-[#eaf1f1] rounded-lg overflow-hidden">
+                                <!-- Browser chrome -->
+                                <div
+                                    class="bg-gray-50 border-b border-[#eaf1f1] px-3 py-1.5 flex items-center gap-1.5">
+                                    <div class="flex gap-1">
+                                        <div class="w-2 h-2 rounded-full bg-red-400"></div>
+                                        <div class="w-2 h-2 rounded-full bg-yellow-400"></div>
+                                        <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                                    </div>
+                                    <span
+                                        class="text-[10px] text-gray-400 font-mono mx-auto">page-name.html</span>
+                                </div>
+                                <!-- App header -->
+                                <div
+                                    class="bg-white border-b border-[#eaf1f1] px-4 py-2 flex items-center justify-between">
+                                    <p class="text-xs font-bold font-display text-[#101818]">MenuBridge</p>
+                                    <div class="flex items-center gap-2">
+                                        <div class="flex rounded bg-[#F3F4F6] p-0.5">
+                                            <span
+                                                class="px-1.5 py-0.5 text-[8px] font-bold bg-[#101818] text-white rounded">EN</span>
+                                            <span
+                                                class="px-1.5 py-0.5 text-[8px] font-bold text-gray-500">JP</span>
+                                        </div>
+                                        <div
+                                            class="w-5 h-5 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center">
+                                            <span
+                                                class="material-symbols-outlined text-gray-500" style="font-size: 10px;">person</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Content area -->
+                                <div class="bg-[#F9FAFB] p-4" style="height: 100px;">
+                                    <div class="flex items-center gap-1 mb-2">
+                                        <span class="material-symbols-outlined text-gray-400" style="font-size: 10px;">arrow_back</span>
+                                        <span class="text-[8px] text-gray-500">Back to Previous</span>
+                                    </div>
+                                    <div class="h-2.5 w-32 bg-[#101818]/10 rounded mb-1.5"></div>
+                                    <div class="h-1.5 w-48 bg-[#5c8a8a]/10 rounded"></div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-[#5c8a8a] mt-3">Consistent chrome: traffic lights + app header
+                                (MenuBridge logo + <code
+                                    class="bg-gray-100 px-1 rounded text-[10px]">&lt;menu-toggle&gt;</code> + person
+                                icon) + back navigation + content.</p>
+                        </div>
+
+                        <!-- Part 3: Documentation -->
+                        <div class="p-6">
+                            <div class="flex items-center gap-2 mb-3">
+                                <span
+                                    class="w-6 h-6 rounded-full bg-primary/10 text-primary text-xs font-bold flex items-center justify-center">3</span>
+                                <h3 class="text-sm font-bold text-[#101818]">Documentation Grid</h3>
+                            </div>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-[#f9fbfb] rounded-lg p-3 border border-[#eaf1f1]">
+                                    <div class="flex items-center gap-1 mb-2">
+                                        <span class="material-symbols-outlined text-primary"
+                                            style="font-size: 12px;">code</span>
+                                        <p class="text-[10px] font-bold text-[#101818]">Component Usage</p>
+                                    </div>
+                                    <div class="h-1.5 w-full bg-[#eaf1f1] rounded mb-1"></div>
+                                    <div class="h-1.5 w-4/5 bg-[#eaf1f1] rounded mb-1"></div>
+                                    <div class="h-1.5 w-3/5 bg-[#eaf1f1] rounded"></div>
+                                </div>
+                                <div class="bg-gray-900 rounded-lg p-3">
+                                    <div class="flex items-center gap-1 mb-2">
+                                        <span class="material-symbols-outlined text-gray-400"
+                                            style="font-size: 12px;">html</span>
+                                        <p class="text-[10px] font-bold text-gray-400">Structure</p>
+                                    </div>
+                                    <div class="h-1.5 w-full bg-gray-700 rounded mb-1"></div>
+                                    <div class="h-1.5 w-4/5 bg-gray-700 rounded mb-1"></div>
+                                    <div class="h-1.5 w-3/5 bg-gray-700 rounded"></div>
+                                </div>
+                            </div>
+                            <p class="text-xs text-[#5c8a8a] mt-3">Two-column grid (<code
+                                    class="bg-gray-100 px-1 rounded text-[10px]">grid-cols-1 lg:grid-cols-2
+                                    gap-12</code>) with usage notes on the left and HTML structure on the right.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════ -->
+                <!-- Usage / Setup                       -->
+                <!-- ═══════════════════════════════════ -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Setup</h2>
                     <div class="space-y-6">
                         <div class="bg-white p-8 rounded-xl border border-[#eaf1f1]">
-                            <p class="text-sm font-bold text-[#101818] mb-2">1. Include the Script</p>
-                            <p class="text-sm text-[#5c8a8a] mb-4">Add the script tag to your HTML head. Ensure it runs
-                                after the DOM is ready (handled internally by the script).</p>
-                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code class="text-gray-300 text-sm font-mono">
-                                    &lt;script src="../layout.js"&gt;&lt;/script&gt;
-                                </code>
+                            <p class="text-sm font-bold text-[#101818] mb-2">1. Include Scripts</p>
+                            <p class="text-sm text-[#5c8a8a] mb-4">Add the config and layout scripts to your HTML
+                                head. Both run after DOMContentLoaded.</p>
+                            <div
+                                class="bg-gray-900 rounded-lg p-4 overflow-x-auto text-xs font-mono text-gray-300 leading-relaxed">
+                                &lt;<span class="text-blue-400">script</span> src="<span class="text-green-400">../config.js</span>"&gt;&lt;/<span class="text-blue-400">script</span>&gt;<br>
+                                &lt;<span class="text-blue-400">script</span> src="<span class="text-green-400">../layout.js</span>"&gt;&lt;/<span class="text-blue-400">script</span>&gt;
                             </div>
                         </div>
 
                         <div class="bg-white p-8 rounded-xl border border-[#eaf1f1]">
                             <p class="text-sm font-bold text-[#101818] mb-2">2. Add the Sidebar Container</p>
-                            <p class="text-sm text-[#5c8a8a] mb-4">Place the empty <code>aside</code> element where you
-                                want the sidebar to appear.</p>
-                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code class="text-gray-300 text-sm font-mono">
-                                    &lt;aside id="app-sidebar"&gt;&lt;/aside&gt;
-                                </code>
+                            <p class="text-sm text-[#5c8a8a] mb-4">Place the empty <code
+                                    class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">aside</code> element as the
+                                first child inside the flex wrapper.</p>
+                            <div
+                                class="bg-gray-900 rounded-lg p-4 overflow-x-auto text-xs font-mono text-gray-300 leading-relaxed">
+                                &lt;<span class="text-blue-400">aside</span> id="<span class="text-amber-400">app-sidebar</span>"&gt;&lt;/<span class="text-blue-400">aside</span>&gt;
                             </div>
                         </div>
 
                         <div class="bg-white p-8 rounded-xl border border-[#eaf1f1]">
                             <p class="text-sm font-bold text-[#101818] mb-2">3. Structure Your Content</p>
-                            <p class="text-sm text-[#5c8a8a] mb-4">Wrap your main content in a <code>main</code> tag.
-                                The layout script will automatically add the necessary left margin on desktop.</p>
-                            <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
-                                <code class="text-gray-300 text-sm font-mono">
-                                    &lt;main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0"&gt;<br>
-                                    &nbsp;&nbsp;&lt;!-- Page Content --&gt;<br>
-                                    &lt;/main&gt;
-                                </code>
+                            <p class="text-sm text-[#5c8a8a] mb-4">Wrap page content in <code
+                                    class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">main</code>. The layout script
+                                automatically adds <code
+                                    class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">lg:ml-64</code> and <code
+                                    class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">w-full</code> at runtime.</p>
+                            <div
+                                class="bg-gray-900 rounded-lg p-4 overflow-x-auto text-xs font-mono text-gray-300 leading-relaxed">
+                                &lt;<span class="text-blue-400">main</span> class="<span class="text-green-400">flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0</span>"&gt;<br>
+                                &nbsp;&nbsp;&lt;<span class="text-blue-400">section</span> class="<span class="text-green-400">w-full max-w-[1200px] px-6 py-12 lg:px-40</span>"&gt;<br>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-gray-500">&lt;!-- Your content --&gt;</span><br>
+                                &nbsp;&nbsp;&lt;/<span class="text-blue-400">section</span>&gt;<br>
+                                &lt;/<span class="text-blue-400">main</span>&gt;
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <!-- ═══════════════════════════════════ -->
+                <!-- Active State Logic                  -->
+                <!-- ═══════════════════════════════════ -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Active State Logic</h2>
+
+                    <div class="bg-white p-8 rounded-xl border border-[#eaf1f1] space-y-4">
+                        <p class="text-sm text-[#5c8a8a] leading-relaxed">
+                            Sidebar links use <code
+                                class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">path.endsWith('/filename.html')</code>
+                            for exact matching. The leading <code
+                                class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">/</code> prevents false positives
+                            (e.g., <code
+                                class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">preview-menu.html</code> matching
+                            <code class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">review-menu.html</code>).
+                        </p>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="rounded-lg border border-[#eaf1f1] p-4">
+                                <p class="text-xs font-bold text-[#101818] mb-2">Active (current page)</p>
+                                <div
+                                    class="px-2 py-1.5 rounded-md text-sm font-medium bg-primary/10 text-primary inline-block">
+                                    Layout</div>
+                                <p class="text-[10px] text-[#5c8a8a] mt-2 font-mono">bg-primary/10 text-primary</p>
+                            </div>
+                            <div class="rounded-lg border border-[#eaf1f1] p-4">
+                                <p class="text-xs font-bold text-[#101818] mb-2">Inactive (default)</p>
+                                <div
+                                    class="px-2 py-1.5 rounded-md text-sm font-medium text-[#101818]/70 hover:text-[#101818] hover:bg-black/5 inline-block">
+                                    Components</div>
+                                <p class="text-[10px] text-[#5c8a8a] mt-2 font-mono">text-[#101818]/70
+                                    hover:bg-black/5</p>
+                            </div>
+                        </div>
+
+                        <p class="text-sm text-[#5c8a8a] leading-relaxed">
+                            Path resolution detects whether the page is in a subfolder (<code
+                                class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">/foundations/</code>, <code
+                                class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">/components/</code>, <code
+                                class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">/examples/</code>) and adjusts link
+                            prefixes accordingly (<code
+                                class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">../</code> vs <code
+                                class="bg-gray-100 px-1.5 py-0.5 rounded text-xs">./</code>).
+                        </p>
                     </div>
                 </div>
 
