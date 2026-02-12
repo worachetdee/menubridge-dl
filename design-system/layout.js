@@ -87,9 +87,13 @@ function injectSidebar() {
                        class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('create-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Create Menu
                     </a>
-                    <a href="${isInSubfolder ? '../examples/review-menu.html' : './examples/review-menu.html'}" 
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('review-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                    <a href="${isInSubfolder ? '../examples/review-menu.html' : './examples/review-menu.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('review-menu.html') && !path.includes('review-enhanced') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Review Menu
+                    </a>
+                    <a href="${isInSubfolder ? '../examples/review-enhanced.html' : './examples/review-enhanced.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('review-enhanced.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Review Enhanced
                     </a>
                  </div>
             </div>
