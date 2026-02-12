@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Grid & Breakpoints - MenuBridge Design System</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <style>
+        body { font-family: "Inter", sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: "Epilogue", serif; }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Foundations</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Grid & Breakpoints</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        A responsive layout system built on Tailwind's breakpoints, with a fixed sidebar and content containers.
+                    </p>
+                </div>
+
+                <!-- Breakpoints -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Breakpoints</h2>
+                    <div class="space-y-4">
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-4 flex items-center gap-4">
+                            <span class="material-symbols-outlined text-xl text-primary">smartphone</span>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-semibold text-[#101818]">sm</span>
+                                    <span class="text-xs font-mono text-primary">640px</span>
+                                </div>
+                                <div class="w-full bg-[#eaf1f1] rounded-full h-2">
+                                    <div class="bg-primary/40 h-2 rounded-full" style="width: 53%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-4 flex items-center gap-4">
+                            <span class="material-symbols-outlined text-xl text-primary">tablet</span>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-semibold text-[#101818]">md</span>
+                                    <span class="text-xs font-mono text-primary">768px</span>
+                                </div>
+                                <div class="w-full bg-[#eaf1f1] rounded-full h-2">
+                                    <div class="bg-primary/60 h-2 rounded-full" style="width: 64%"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-4 flex items-center gap-4">
+                            <span class="material-symbols-outlined text-xl text-primary">desktop_windows</span>
+                            <div class="flex-1">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-sm font-semibold text-[#101818]">lg</span>
+                                    <span class="text-xs font-mono text-primary">1024px</span>
+                                </div>
+                                <div class="w-full bg-[#eaf1f1] rounded-full h-2">
+                                    <div class="bg-primary h-2 rounded-full" style="width: 85%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-xs text-[#5c8a8a] mt-4">Note: <code class="text-primary font-mono">xl</code> (1280px) is not used in the current system.</p>
+                </div>
+
+                <!-- Container -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Container</h2>
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                        <div class="relative border-2 border-dashed border-primary/30 rounded-lg p-4">
+                            <div class="absolute -top-3 left-4 bg-white px-2 text-xs font-mono text-primary">max-w-[1200px]</div>
+                            <div class="border border-[#eaf1f1] rounded-lg bg-[#f9fbfb] p-6 text-center">
+                                <p class="text-sm text-[#5c8a8a]">Content area</p>
+                            </div>
+                            <div class="flex justify-between mt-2">
+                                <span class="text-xs font-mono text-[#5c8a8a]">px-6</span>
+                                <span class="text-xs font-mono text-[#5c8a8a]">lg:px-40</span>
+                            </div>
+                        </div>
+                        <div class="mt-4 rounded-lg bg-gray-900 p-4 overflow-x-auto">
+                            <code class="text-sm text-emerald-400 whitespace-pre">&lt;section class="w-full max-w-[1200px] px-6 py-12 lg:px-40"&gt;
+  &lt;!-- page content --&gt;
+&lt;/section&gt;</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Grid Patterns -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Grid Patterns</h2>
+
+                    <!-- 2 Column -->
+                    <div class="mb-8">
+                        <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">2-Column</p>
+                        <div class="grid grid-cols-2 gap-4 mb-2">
+                            <div class="bg-primary/20 rounded-lg p-4 text-center text-xs font-mono text-primary">1</div>
+                            <div class="bg-primary/20 rounded-lg p-4 text-center text-xs font-mono text-primary">2</div>
+                        </div>
+                        <code class="text-xs text-[#5c8a8a] font-mono">grid grid-cols-1 md:grid-cols-2 gap-6</code>
+                    </div>
+
+                    <!-- 4 Column -->
+                    <div class="mb-8">
+                        <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">4-Column</p>
+                        <div class="grid grid-cols-4 gap-4 mb-2">
+                            <div class="bg-primary/30 rounded-lg p-4 text-center text-xs font-mono text-primary">1</div>
+                            <div class="bg-primary/30 rounded-lg p-4 text-center text-xs font-mono text-primary">2</div>
+                            <div class="bg-primary/30 rounded-lg p-4 text-center text-xs font-mono text-primary">3</div>
+                            <div class="bg-primary/30 rounded-lg p-4 text-center text-xs font-mono text-primary">4</div>
+                        </div>
+                        <code class="text-xs text-[#5c8a8a] font-mono">grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6</code>
+                    </div>
+
+                    <!-- 12 Column (7/5 split) -->
+                    <div class="mb-8">
+                        <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">12-Column (7 / 5 split)</p>
+                        <div class="grid grid-cols-12 gap-4 mb-2">
+                            <div class="col-span-7 bg-primary/40 rounded-lg p-4 text-center text-xs font-mono text-primary">col-span-7</div>
+                            <div class="col-span-5 bg-secondary/40 rounded-lg p-4 text-center text-xs font-mono text-primary">col-span-5</div>
+                        </div>
+                        <code class="text-xs text-[#5c8a8a] font-mono">grid grid-cols-1 lg:grid-cols-12 gap-10</code>
+                    </div>
+                </div>
+
+                <!-- Max-Width Scale -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Max-Width Scale</h2>
+                    <div class="overflow-hidden rounded-xl border border-[#eaf1f1] bg-white">
+                        <table class="min-w-full divide-y divide-[#eaf1f1]">
+                            <thead class="bg-[#f9fbfb]">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Class</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Value</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#eaf1f1] bg-white">
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">max-w-sm</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">384px</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Login forms, narrow modals</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">max-w-md</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">448px</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Form containers, dialogs</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">max-w-2xl</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">672px</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Description text blocks</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">max-w-[1200px]</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">1200px</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Main content container</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Sidebar Behavior -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Sidebar Behavior</h2>
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                        <div class="flex items-start gap-4 mb-6">
+                            <span class="material-symbols-outlined text-xl text-primary">desktop_windows</span>
+                            <div>
+                                <p class="text-sm font-semibold text-[#101818] mb-1">Desktop (lg+)</p>
+                                <p class="text-sm text-[#5c8a8a]">Fixed sidebar at <code class="text-primary font-mono text-xs">w-64</code> (256px). Main content offset with <code class="text-primary font-mono text-xs">lg:ml-64</code>.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 mb-6">
+                            <span class="material-symbols-outlined text-xl text-primary">smartphone</span>
+                            <div>
+                                <p class="text-sm font-semibold text-[#101818] mb-1">Mobile (&lt; lg)</p>
+                                <p class="text-sm text-[#5c8a8a]">Sidebar collapses to a horizontal navigation bar at the top with overflow scroll.</p>
+                            </div>
+                        </div>
+                        <div class="rounded-lg bg-gray-900 p-4 overflow-x-auto">
+<code class="text-sm text-emerald-400 whitespace-pre">&lt;!-- Sidebar --&gt;
+&lt;aside class="lg:w-64 lg:fixed lg:inset-y-0 lg:left-0"&gt;...&lt;/aside&gt;
+
+&lt;!-- Main content --&gt;
+&lt;main class="lg:ml-64 w-full"&gt;...&lt;/main&gt;</code>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

@@ -13,7 +13,7 @@ function injectSidebar() {
 
    // determine current path to set active state and adjust relative links
    const path = window.location.pathname;
-   const isInSubfolder = path.includes('/foundations/') || path.includes('/components/') || path.includes('/examples/');
+   const isInSubfolder = path.includes('/foundations/') || path.includes('/components/') || path.includes('/examples/') || path.includes('/ai-toolkit/');
    const prefix = isInSubfolder ? '..' : '.';
 
    // Check active states
@@ -53,9 +53,29 @@ function injectSidebar() {
                        class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/colors.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Colors
                     </a>
-                    <a href="${isInSubfolder ? '../foundations/typography.html' : './foundations/typography.html'}" 
+                    <a href="${isInSubfolder ? '../foundations/typography.html' : './foundations/typography.html'}"
                        class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/typography.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Typography
+                    </a>
+                    <a href="${isInSubfolder ? '../foundations/spacing.html' : './foundations/spacing.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/spacing.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Spacing
+                    </a>
+                    <a href="${isInSubfolder ? '../foundations/iconography.html' : './foundations/iconography.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/iconography.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Iconography
+                    </a>
+                    <a href="${isInSubfolder ? '../foundations/elevation.html' : './foundations/elevation.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/elevation.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Elevation
+                    </a>
+                    <a href="${isInSubfolder ? '../foundations/grid.html' : './foundations/grid.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/grid.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Grid & Breakpoints
+                    </a>
+                    <a href="${isInSubfolder ? '../foundations/motion.html' : './foundations/motion.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/motion.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Motion
                     </a>
                  </div>
             </div>
@@ -108,6 +128,17 @@ function injectSidebar() {
 
             <!-- Section -->
             <div>
+                 <h3 class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3 px-2">AI Toolkit</h3>
+                 <div class="flex flex-col space-y-1">
+                    <a href="${isInSubfolder ? '../ai-toolkit/prompts.html' : './ai-toolkit/prompts.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/prompts.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Prompt Library
+                    </a>
+                 </div>
+            </div>
+
+            <!-- Section -->
+            <div>
                  <h3 class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3 px-2">Resources</h3>
                  <div class="flex flex-col space-y-1">
                     <a href="${isInSubfolder ? '../changelog.html' : './changelog.html'}" 
@@ -130,6 +161,8 @@ function injectSidebar() {
         <nav class="flex lg:hidden gap-4 overflow-x-auto pb-2">
              <a href="${isInSubfolder ? '../foundations/colors.html' : './foundations/colors.html'}" class="text-sm font-medium text-[#101818]">Colors</a>
              <a href="${isInSubfolder ? '../foundations/typography.html' : './foundations/typography.html'}" class="text-sm font-medium text-[#101818]">Typography</a>
+             <a href="${isInSubfolder ? '../foundations/spacing.html' : './foundations/spacing.html'}" class="text-sm font-medium text-[#101818]">Spacing</a>
+             <a href="${isInSubfolder ? '../foundations/iconography.html' : './foundations/iconography.html'}" class="text-sm font-medium text-[#101818]">Iconography</a>
              <a href="${isInSubfolder ? '../components/index.html' : './components/index.html'}" class="text-sm font-medium text-[#101818]">Components</a>
         </nav>
     `;
