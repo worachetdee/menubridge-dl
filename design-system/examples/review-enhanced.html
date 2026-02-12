@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Review Enhanced Menu - MenuBridge</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <!-- Web Components -->
+    <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-toggle.js" defer></script>
+
+    <style>
+        body {
+            font-family: "Inter", "Noto Sans JP", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+
+        /* Accordion toggle */
+        details summary::-webkit-details-marker { display: none; }
+        details summary { list-style: none; }
+        details[open] summary .chevron { transform: rotate(90deg); }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Examples</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Review Enhanced</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        Review AI-enhanced menu items with dietary information and guest explanations.
+                    </p>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">visibility</span>
+                        Preview
+                    </h2>
+
+                    <!-- Preview Frame -->
+                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-[#F9FAFB] shadow-sm">
+                        <!-- Browser Header Simulation -->
+                        <div class="bg-gray-50 border-b border-[#eaf1f1] px-4 py-2 flex items-center gap-2">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="flex-1 text-center">
+                                <span class="text-xs text-gray-400 font-mono">review-enhanced.html</span>
+                            </div>
+                        </div>
+
+                        <!-- Actual Content Preview -->
+                        <div class="px-8 py-10 min-h-[1200px] relative bg-white lg:bg-[#F9FAFB]">
+
+                            <!-- Header -->
+                            <div
+                                class="bg-white border-b border-[#eaf1f1] absolute top-0 left-0 w-full px-8 py-4 flex items-center justify-between z-10">
+                                <div class="text-lg font-bold font-display text-[#101818]">MenuBridge</div>
+                                <div class="flex items-center gap-4">
+                                    <menu-toggle items="EN, JP" selected="EN"></menu-toggle>
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
+                                        <span class="material-symbols-outlined text-sm">person</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Main Content -->
+                            <div class="max-w-4xl mx-auto pt-20 pb-20">
+
+                                <div class="mb-6">
+                                    <a href="review-menu.html"
+                                        class="text-xs font-medium text-gray-500 hover:text-[#101818] flex items-center gap-1 mb-4">
+                                        <span class="material-symbols-outlined text-sm">arrow_back</span>
+                                        Back to Review Original Menu
+                                    </a>
+                                    <h1 class="text-3xl font-bold font-display text-[#101818] mb-2">Review Enhanced Menu</h1>
+                                    <p class="text-[#5c8a8a] text-sm max-w-lg">Review the menu items below. Check the components selected for guest explanations and confirm the dietary information before previewing the translated menu.</p>
+                                </div>
+
+                                <!-- Guest Notes -->
+                                <div class="mb-8">
+                                    <span class="inline-block px-3 py-1 bg-gray-100 text-gray-600 text-xs font-bold rounded-full mb-3">Guest Notes</span>
+                                    <div class="bg-amber-50 border border-amber-100 rounded-lg p-4">
+                                        <ul class="text-sm text-[#101818] space-y-1 list-disc list-inside">
+                                            <li>テーブルチャージとして300円頂戴いたします (お通し付き)。</li>
+                                            <li>ラストオーダー : フード 22:30 / ドリンク 23:00</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- ═══════════════════════════════════ -->
+                                <!-- Section: 本日のタップリスト (ON TAP) -->
+                                <!-- ═══════════════════════════════════ -->
+                                <div class="mb-8">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <h2 class="text-base font-bold text-[#101818]">本日のタップリスト (ON TAP)</h2>
+                                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold rounded">alacarte</span>
+                                    </div>
+
+                                    <div class="space-y-3">
+
+                                        <!-- Item 1 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">1. ザ・ピープルズ・ペールエール アメリカンペールエール…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥900 / ¥1,300</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">モルト, ホップ, ビール</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                        <!-- Item 2 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">2. レボリューション・ヘイジーIPA ニューイングランド…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥1,000 / ¥1,450</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">マンゴー, パイナップル, IPA</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                        <!-- Item 3 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">3. サイレント・マジョリティ・スタウト オートミー…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥950 / ¥1,400</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">コーヒー, ダークチョコレート, オーツ麦, スタウト</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                        <!-- Item 4 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">4. ゴールデンエラ・ピルスナー ジャーマンピルスナ…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥900 / ¥1,300</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">ハーブ, ホップ, ピルスナー</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                        <!-- Item 5 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">5. リバティ・柚子セゾン ファームハウスエール (AB…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥950 / ¥1,400</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">柚子, 酵母, セゾン</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                    </div>
+                                </div>
+
+                                <!-- ═══════════════════════════════ -->
+                                <!-- Section: とりあえず一品 -->
+                                <!-- ═══════════════════════════════ -->
+                                <div class="mb-8">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <h2 class="text-base font-bold text-[#101818]">〈とりあえず一品〉</h2>
+                                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold rounded">alacarte</span>
+                                    </div>
+
+                                    <div class="space-y-3">
+
+                                        <!-- Item 6 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">自家製スモークナッツ (桜チップを使い、店内で燻製…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥500</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">ナッツ, 燻製</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                        <!-- Item 7 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">ガーリックチリ枝豆 (ガーリックとラー油で炒めた、…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥600</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">ガーリック, チリ, 枝豆, 炒め</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                        <!-- Item 8 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">いぶりがっこのポテトサラダ (クリーミーなポテトサ…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥650</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">いぶりがっこ, ポテトサラダ</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                    </div>
+                                </div>
+
+                                <!-- ═══════════════════════════════ -->
+                                <!-- Section: 揚げ物・焼き物 -->
+                                <!-- ═══════════════════════════════ -->
+                                <div class="mb-8">
+                                    <div class="flex items-center gap-3 mb-4">
+                                        <h2 class="text-base font-bold text-[#101818]">〈揚げ物・焼き物〉</h2>
+                                        <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold rounded">alacarte</span>
+                                    </div>
+
+                                    <div class="space-y-3">
+
+                                        <!-- Item 9 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">トリュフ塩のフライドポテト (細切りのポテトに香り…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥800</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">トリュフ塩, フライドポテト</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                        <!-- Item 10 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">クラフトビア唐揚げ (当店のペールエールに漬け込み…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥950</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">ペールエール, 唐揚げ</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center text-red-500">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                        <!-- Item 11 -->
+                                        <details class="group border border-[#eaf1f1] rounded-xl bg-white hover:shadow-sm transition-all">
+                                            <summary class="flex items-center gap-3 p-4 cursor-pointer">
+                                                <span class="material-symbols-outlined text-gray-400 text-base chevron transition-transform duration-200">chevron_right</span>
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="text-sm font-semibold text-[#101818] truncate">ソーセージ3種盛り合わせ (チョリソー、ハーブ、プ…</p>
+                                                </div>
+                                                <span class="text-sm font-semibold text-[#101818] shrink-0 ml-4">¥1,200</span>
+                                            </summary>
+                                            <div class="px-4 pb-4 pt-0 ml-7">
+                                                <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">チョリソー, ハーブ, マスタード</span></p>
+                                                <div>
+                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
+                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
+                                                    <div class="flex gap-4">
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">eco</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
+                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        </div>
+                                                        <div class="flex flex-col items-center gap-1">
+                                                            <div class="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center text-red-500">
+                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
+                                                            </div>
+                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
+                                                </div>
+                                            </div>
+                                        </details>
+
+                                    </div>
+                                </div>
+
+                                <!-- Footer Action -->
+                                <div class="mt-8 flex justify-center">
+                                    <menu-button icon="arrow_forward" label="Preview Menu Layout" variant="primary"
+                                        class="shadow-lg"></menu-button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">code</span>
+                            Component Usage
+                        </h2>
+                        <ul
+                            class="space-y-4 text-sm text-[#5c8a8a] list-disc list-inside bg-white p-6 rounded-xl border border-[#eaf1f1]">
+                            <li>
+                                <strong class="text-[#101818]">Accordion Items:</strong> Native <code>&lt;details&gt;</code> elements for expandable menu items with CSS-only chevron rotation.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Dietary Icons:</strong> Color-coded circles (emerald = vegetarian, blue = fish/shellfish, red = meat) with Material icons.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Guest Notes:</strong> Amber-tinted callout box for restaurant-wide notices and policies.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Section Tags:</strong> Blue badge labels to categorize menu sections (alacarte, set menu, etc.).
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">html</span>
+                            Structure
+                        </h2>
+                        <div
+                            class="bg-gray-900 rounded-xl p-6 overflow-x-auto text-xs font-mono text-gray-300 leading-relaxed shadow-sm">
+                            &lt;details class="border rounded-xl bg-white"&gt;<br>
+                            &nbsp;&nbsp;&lt;summary class="flex items-center p-4"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;chevron_right&lt;/span&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Item Name...&lt;/p&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;span&gt;¥900&lt;/span&gt;<br>
+                            &nbsp;&nbsp;&lt;/summary&gt;<br>
+                            &nbsp;&nbsp;&lt;div class="px-4 pb-4"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Components + Dietary --&gt;<br>
+                            &nbsp;&nbsp;&lt;/div&gt;<br>
+                            &lt;/details&gt;
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

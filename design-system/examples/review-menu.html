@@ -146,21 +146,20 @@
                                     <!-- Items List -->
                                     <div class="space-y-3">
 
-                                        <!-- Sweet Note -->
+                                        <!-- Guest Notes -->
                                         <div
                                             class="group relative flex items-start gap-3 p-4 rounded-lg bg-gray-50 border border-transparent hover:border-gray-200 transition-all">
                                             <span
                                                 class="material-symbols-outlined text-gray-300 cursor-grab mt-1">drag_indicator</span>
                                             <div class="flex-1">
-                                                <p class="text-xs text-gray-400 italic mb-1">Add maker info (Optional)
+                                                <p class="text-xs text-gray-400 italic mb-1">Add notes title (optional)
                                                 </p>
-                                                <div class="text-sm font-medium text-[#101818]">テーブルチャージとして
-                                                    (300円頂戴いたします) (お通し付き)。<br>ラストオーダー : フード 22:30 / ドリンク 23:00</div>
+                                                <div class="text-sm font-medium text-[#101818]">テーブルチャージとして300円頂戴いたします (お通し付き)。<br>ラストオーダー : フード 22:30 / ドリンク 23:00</div>
                                             </div>
                                             <div class="flex items-center gap-2">
                                                 <span
-                                                    class="px-2 py-0.5 bg-gray-200 text-gray-600 text-[10px] font-bold rounded">Sweet
-                                                    Note</span>
+                                                    class="px-2 py-0.5 bg-gray-200 text-gray-600 text-[10px] font-bold rounded">Guest
+                                                    Notes</span>
                                                 <button class="text-gray-300 hover:text-red-500">
                                                     <span class="material-symbols-outlined text-sm">close</span>
                                                 </button>
@@ -276,7 +275,7 @@
                                         <div
                                             class="group relative flex items-center gap-3 p-4 rounded-lg border border-[#eaf1f1] bg-white hover:shadow-sm transition-all mt-6">
                                             <div class="w-1 h-8 bg-[#101818] rounded-full"></div>
-                                            <div class="flex-1 text-sm font-bold text-[#101818]">[とりあえず一品]</div>
+                                            <div class="flex-1 text-sm font-bold text-[#101818]">〈とりあえず一品〉</div>
                                             <div class="flex items-center gap-2">
                                                 <span
                                                     class="px-2 py-0.5 bg-gray-100 text-gray-500 text-[10px] font-bold rounded border border-gray-200">Section
@@ -329,8 +328,8 @@
                                         <!-- Section Heading 3 -->
                                         <div
                                             class="group relative flex items-center gap-3 p-4 rounded-lg border border-[#eaf1f1] bg-white hover:shadow-sm transition-all mt-6">
-                                            <div class="w-1 h-8 bg-[#101818] rounded-full"></div>
-                                            <div class="flex-1 text-sm font-bold text-[#101818]">[揚げ物・焼き物]</div>
+                                            <div class="w-1 h-8 bg-amber-400 rounded-full"></div>
+                                            <div class="flex-1 text-sm font-bold text-[#101818]">〈揚げ物・焼き物〉</div>
                                             <div class="flex items-center gap-2">
                                                 <span
                                                     class="px-2 py-0.5 bg-gray-100 text-gray-500 text-[10px] font-bold rounded border border-gray-200">Section
@@ -347,7 +346,33 @@
                                             <span
                                                 class="material-symbols-outlined text-gray-300 cursor-grab mt-0.5 text-sm">drag_indicator</span>
                                             <div class="flex-1 text-sm text-[#101818]">
-                                                トリュフ塩のフライドポテト (厚切りのポテトに香り高いトリュフ塩をまぶしました) ¥800
+                                                トリュフ塩のフライドポテト (細切りのポテトに香り高いトリュフ塩をまぶしました) ¥800
+                                            </div>
+                                            <button class="text-gray-300 hover:text-red-500">
+                                                <span class="material-symbols-outlined text-sm">close</span>
+                                            </button>
+                                        </div>
+
+                                        <!-- Item 11 -->
+                                        <div
+                                            class="group relative flex items-start gap-3 p-4 rounded-lg border border-[#eaf1f1] bg-white hover:shadow-sm transition-all">
+                                            <span
+                                                class="material-symbols-outlined text-gray-300 cursor-grab mt-0.5 text-sm">drag_indicator</span>
+                                            <div class="flex-1 text-sm text-[#101818]">
+                                                クラフトビア唐揚げ (当店のペールエールに漬け込み柔らかく仕上げた、ジューシーな唐揚げ) ¥950
+                                            </div>
+                                            <button class="text-gray-300 hover:text-red-500">
+                                                <span class="material-symbols-outlined text-sm">close</span>
+                                            </button>
+                                        </div>
+
+                                        <!-- Item 12 -->
+                                        <div
+                                            class="group relative flex items-start gap-3 p-4 rounded-lg border border-[#eaf1f1] bg-white hover:shadow-sm transition-all">
+                                            <span
+                                                class="material-symbols-outlined text-gray-300 cursor-grab mt-0.5 text-sm">drag_indicator</span>
+                                            <div class="flex-1 text-sm text-[#101818]">
+                                                ソーセージ3種盛り合わせ (チョリソー、ハーブ、プレーンの3種。粒マスタード添え) ¥1,200
                                             </div>
                                             <button class="text-gray-300 hover:text-red-500">
                                                 <span class="material-symbols-outlined text-sm">close</span>
@@ -359,8 +384,10 @@
 
                                 <!-- Footer Action -->
                                 <div class="mt-8 flex justify-center">
-                                    <menu-button icon="arrow_forward" label="Generate Enhanced Menu" variant="primary"
-                                        class="shadow-lg"></menu-button>
+                                    <a href="review-enhanced.html">
+                                        <menu-button icon="arrow_forward" label="Generate Enhanced Menu" variant="primary"
+                                            class="shadow-lg"></menu-button>
+                                    </a>
                                 </div>
 
                             </div>
