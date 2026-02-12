@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Motion - MenuBridge Design System</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <style>
+        body { font-family: "Inter", sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: "Epilogue", serif; }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-12px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .animate-slide-in {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Foundations</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Motion</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        Subtle transitions and animations provide feedback, guide attention, and make the interface feel responsive.
+                    </p>
+                </div>
+
+                <!-- Transition Properties -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Transition Properties</h2>
+                    <div class="overflow-hidden rounded-xl border border-[#eaf1f1] bg-white mb-6">
+                        <table class="min-w-full divide-y divide-[#eaf1f1]">
+                            <thead class="bg-[#f9fbfb]">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Class</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Properties</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#eaf1f1] bg-white">
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">transition-all</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">All properties</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Cards, buttons (shadow + color + transform)</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">transition-colors</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">color, background, border, outline</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Links, nav items, text hover</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">transition-opacity</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">opacity</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Logo hover, fade effects</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">transition-transform</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">transform</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Scale, rotate, translate animations</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">Hover Demos</p>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-4 text-center hover:shadow-soft hover:bg-primary/5 transition-all cursor-pointer">
+                            <p class="text-xs font-mono text-primary mb-2">transition-all</p>
+                            <p class="text-xs text-[#5c8a8a]">Hover me</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-4 text-center transition-colors hover:bg-primary hover:text-white cursor-pointer">
+                            <p class="text-xs font-mono text-primary mb-2">transition-colors</p>
+                            <p class="text-xs text-[#5c8a8a]">Hover me</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-4 text-center transition-opacity hover:opacity-50 cursor-pointer">
+                            <p class="text-xs font-mono text-primary mb-2">transition-opacity</p>
+                            <p class="text-xs text-[#5c8a8a]">Hover me</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-4 text-center transition-transform hover:scale-105 cursor-pointer">
+                            <p class="text-xs font-mono text-primary mb-2">transition-transform</p>
+                            <p class="text-xs text-[#5c8a8a]">Hover me</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Durations -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Durations</h2>
+                    <div class="overflow-hidden rounded-xl border border-[#eaf1f1] bg-white">
+                        <table class="min-w-full divide-y divide-[#eaf1f1]">
+                            <thead class="bg-[#f9fbfb]">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Class</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Duration</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#eaf1f1] bg-white">
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">default</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">~150ms</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Hover colors, opacity changes, micro-interactions</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">duration-200</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">200ms</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Shadow transitions, card hover states</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">duration-500</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">500ms</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500">Layout shifts, panel expand/collapse</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Transforms -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Transforms</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Scale -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6 text-center">
+                            <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-4">Scale</p>
+                            <div class="flex justify-center mb-4">
+                                <div class="w-16 h-16 bg-primary rounded-xl flex items-center justify-center text-white transition-transform duration-200 hover:scale-110 cursor-pointer">
+                                    <span class="material-symbols-outlined">search</span>
+                                </div>
+                            </div>
+                            <p class="text-xs font-mono text-primary">hover:scale-110</p>
+                            <p class="text-xs text-[#5c8a8a] mt-1">Hover the icon</p>
+                        </div>
+
+                        <!-- Translate -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6 text-center">
+                            <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-4">Translate</p>
+                            <div class="flex justify-center mb-4">
+                                <div id="toggle-track" onclick="this.classList.toggle('bg-primary'); this.querySelector('#toggle-thumb').classList.toggle('translate-x-6')"
+                                     class="w-14 h-8 bg-gray-300 rounded-full p-1 cursor-pointer transition-colors duration-200">
+                                    <div id="toggle-thumb" class="w-6 h-6 bg-white rounded-full shadow-sm transition-transform duration-200"></div>
+                                </div>
+                            </div>
+                            <p class="text-xs font-mono text-primary">translate-x-6</p>
+                            <p class="text-xs text-[#5c8a8a] mt-1">Click the toggle</p>
+                        </div>
+
+                        <!-- Rotate -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6 text-center">
+                            <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-4">Rotate</p>
+                            <div class="flex justify-center mb-4">
+                                <button onclick="this.querySelector('span').classList.toggle('rotate-90')"
+                                        class="w-16 h-16 bg-[#f9fbfb] rounded-xl flex items-center justify-center cursor-pointer border border-[#eaf1f1]">
+                                    <span class="material-symbols-outlined text-primary transition-transform duration-200">chevron_right</span>
+                                </button>
+                            </div>
+                            <p class="text-xs font-mono text-primary">rotate-90</p>
+                            <p class="text-xs text-[#5c8a8a] mt-1">Click the chevron</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keyframe Animations -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Keyframe Animations</h2>
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                        <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-4">Toast — slideIn</p>
+                        <div class="flex items-center gap-4 mb-4">
+                            <div id="toast-demo" class="flex-1 animate-slide-in bg-emerald-50 border border-emerald-200 rounded-lg p-4 flex items-center gap-3">
+                                <span class="material-symbols-outlined text-emerald-600">check_circle</span>
+                                <span class="text-sm text-emerald-800">Menu saved successfully!</span>
+                            </div>
+                            <button onclick="replayToast()"
+                                    class="shrink-0 px-4 py-2 bg-primary text-white text-sm font-bold rounded-lg hover:bg-primary/90 transition-colors">
+                                Replay
+                            </button>
+                        </div>
+                        <div class="rounded-lg bg-gray-900 p-4 overflow-x-auto">
+<code class="text-sm text-emerald-400 whitespace-pre">@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-slide-in {
+  animation: slideIn 0.3s ease-out forwards;
+}</code>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Focus States -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Focus States</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                            <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">Default Focus</p>
+                            <input type="text" placeholder="Click to focus"
+                                   class="w-full rounded-lg border border-[#eaf1f1] px-4 py-2.5 text-sm focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all" />
+                            <p class="text-xs font-mono text-primary mt-2">focus:ring-primary/30</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                            <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">Error Focus</p>
+                            <input type="text" placeholder="Click to focus"
+                                   class="w-full rounded-lg border border-red-300 px-4 py-2.5 text-sm focus:border-red-500 focus:ring-2 focus:ring-red-200 outline-none transition-all" />
+                            <p class="text-xs font-mono text-primary mt-2">focus:ring-red-200</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Usage Guidelines -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Usage Guidelines</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="material-symbols-outlined text-emerald-600">check_circle</span>
+                                <h3 class="text-sm font-bold text-emerald-600 uppercase tracking-wider">Do</h3>
+                            </div>
+                            <ul class="space-y-2 text-sm text-[#5c8a8a]">
+                                <li>Use transitions for interactive feedback (hover, focus, active)</li>
+                                <li>Keep durations under 300ms for micro-interactions</li>
+                                <li>Use ease-out for enter animations, ease-in for exit</li>
+                                <li>Animate opacity and transform (GPU-accelerated)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="material-symbols-outlined text-red-500">error</span>
+                                <h3 class="text-sm font-bold text-red-500 uppercase tracking-wider">Don't</h3>
+                            </div>
+                            <ul class="space-y-2 text-sm text-[#5c8a8a]">
+                                <li>Animate layout properties (width, height, top, left)</li>
+                                <li>Use durations longer than 500ms for UI transitions</li>
+                                <li>Add animation to non-interactive elements</li>
+                                <li>Ignore <code class="text-primary bg-primary/5 px-1 rounded">prefers-reduced-motion</code></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function replayToast() {
+            const toast = document.getElementById('toast-demo');
+            toast.classList.remove('animate-slide-in');
+            // Force reflow to restart animation
+            void toast.offsetWidth;
+            toast.classList.add('animate-slide-in');
+        }
+    </script>
+</body>
+
+</html>

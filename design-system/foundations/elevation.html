@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Elevation - MenuBridge Design System</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <style>
+        body { font-family: "Inter", sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: "Epilogue", serif; }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Foundations</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Elevation</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        Shadows, borders, and radii work together to create depth and visual hierarchy across the interface.
+                    </p>
+                </div>
+
+                <!-- Shadows -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Shadows</h2>
+                    <div class="space-y-6">
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6 flex items-center justify-between gap-4 flex-wrap">
+                            <div class="w-32 h-20 bg-white rounded-lg border border-[#eaf1f1]"></div>
+                            <div>
+                                <p class="text-sm font-semibold text-[#101818]">None</p>
+                                <p class="text-xs text-primary font-mono">shadow-none</p>
+                            </div>
+                            <p class="text-xs text-[#5c8a8a]">Flat elements, inline content</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6 flex items-center justify-between gap-4 flex-wrap">
+                            <div class="w-32 h-20 bg-white rounded-lg shadow-sm"></div>
+                            <div>
+                                <p class="text-sm font-semibold text-[#101818]">Small</p>
+                                <p class="text-xs text-primary font-mono">shadow-sm</p>
+                            </div>
+                            <p class="text-xs text-[#5c8a8a]">Cards, swatches, thumbnails</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6 flex items-center justify-between gap-4 flex-wrap">
+                            <div class="w-32 h-20 bg-white rounded-lg shadow-soft"></div>
+                            <div>
+                                <p class="text-sm font-semibold text-[#101818]">Soft</p>
+                                <p class="text-xs text-primary font-mono">shadow-soft</p>
+                            </div>
+                            <p class="text-xs text-[#5c8a8a]">Hover states, elevated cards</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6 flex items-center justify-between gap-4 flex-wrap">
+                            <div class="w-32 h-20 bg-white rounded-lg shadow-lg"></div>
+                            <div>
+                                <p class="text-sm font-semibold text-[#101818]">Large</p>
+                                <p class="text-xs text-primary font-mono">shadow-lg</p>
+                            </div>
+                            <p class="text-xs text-[#5c8a8a]">Dropdowns, popovers</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6 flex items-center justify-between gap-4 flex-wrap">
+                            <div class="w-32 h-20 bg-white rounded-lg shadow-xl"></div>
+                            <div>
+                                <p class="text-sm font-semibold text-[#101818]">Extra Large</p>
+                                <p class="text-xs text-primary font-mono">shadow-xl</p>
+                            </div>
+                            <p class="text-xs text-[#5c8a8a]">Modals, dialogs</p>
+                        </div>
+                    </div>
+                    <div class="mt-6 rounded-lg bg-gray-900 p-4 overflow-x-auto">
+<code class="text-sm text-emerald-400 whitespace-pre">/* shadow-sm  */ box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+/* shadow-soft */ box-shadow: 0 4px 20px -2px rgba(38, 115, 115, 0.08);
+/* shadow-lg  */ box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+/* shadow-xl  */ box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);</code>
+                    </div>
+                </div>
+
+                <!-- Borders -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Borders</h2>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4">
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-full aspect-square rounded-lg border-2 border-[#eaf1f1] bg-white"></div>
+                            <div class="text-center">
+                                <p class="text-xs font-mono text-primary">border-[#eaf1f1]</p>
+                                <p class="text-xs text-[#5c8a8a]">Default</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-full aspect-square rounded-lg border-2 border-primary bg-white"></div>
+                            <div class="text-center">
+                                <p class="text-xs font-mono text-primary">border-primary</p>
+                                <p class="text-xs text-[#5c8a8a]">Active / Focus</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-full aspect-square rounded-lg border-2 border-red-300 bg-white"></div>
+                            <div class="text-center">
+                                <p class="text-xs font-mono text-primary">border-red-300</p>
+                                <p class="text-xs text-[#5c8a8a]">Error</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-full aspect-square rounded-lg border-2 border-amber-200 bg-white"></div>
+                            <div class="text-center">
+                                <p class="text-xs font-mono text-primary">border-amber-200</p>
+                                <p class="text-xs text-[#5c8a8a]">Warning</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-full aspect-square rounded-lg border-2 border-blue-100 bg-white"></div>
+                            <div class="text-center">
+                                <p class="text-xs font-mono text-primary">border-blue-100</p>
+                                <p class="text-xs text-[#5c8a8a]">Info</p>
+                            </div>
+                        </div>
+                        <div class="flex flex-col items-center gap-3">
+                            <div class="w-full aspect-square rounded-lg border-2 border-emerald-200 bg-white"></div>
+                            <div class="text-center">
+                                <p class="text-xs font-mono text-primary">border-emerald-200</p>
+                                <p class="text-xs text-[#5c8a8a]">Success</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Border Radius -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Border Radius</h2>
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-8">
+                        <div class="flex items-end gap-8 flex-wrap">
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-16 h-16 bg-primary/20 border-2 border-primary rounded"></div>
+                                <div class="text-center">
+                                    <p class="text-xs font-mono text-primary">rounded</p>
+                                    <p class="text-xs text-[#5c8a8a]">4px</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-16 h-16 bg-primary/20 border-2 border-primary rounded-md"></div>
+                                <div class="text-center">
+                                    <p class="text-xs font-mono text-primary">rounded-md</p>
+                                    <p class="text-xs text-[#5c8a8a]">6px</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-16 h-16 bg-primary/20 border-2 border-primary rounded-lg"></div>
+                                <div class="text-center">
+                                    <p class="text-xs font-mono text-primary">rounded-lg</p>
+                                    <p class="text-xs text-[#5c8a8a]">8px</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-16 h-16 bg-primary/20 border-2 border-primary rounded-xl"></div>
+                                <div class="text-center">
+                                    <p class="text-xs font-mono text-primary">rounded-xl</p>
+                                    <p class="text-xs text-[#5c8a8a]">12px</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-16 h-16 bg-primary/20 border-2 border-primary rounded-2xl"></div>
+                                <div class="text-center">
+                                    <p class="text-xs font-mono text-primary">rounded-2xl</p>
+                                    <p class="text-xs text-[#5c8a8a]">16px</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-16 h-16 bg-primary/20 border-2 border-primary rounded-full"></div>
+                                <div class="text-center">
+                                    <p class="text-xs font-mono text-primary">rounded-full</p>
+                                    <p class="text-xs text-[#5c8a8a]">9999px</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Elevation Scale -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Elevation Scale</h2>
+                    <div class="overflow-hidden rounded-xl border border-[#eaf1f1] bg-white">
+                        <table class="min-w-full divide-y divide-[#eaf1f1]">
+                            <thead class="bg-[#f9fbfb]">
+                                <tr>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Level</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Shadow</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Radius</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">Border</th>
+                                    <th class="px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider hidden md:table-cell">Usage</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-[#eaf1f1] bg-white">
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium text-[#101818]">0 — Flat</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">none</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">rounded-lg</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">border-[#eaf1f1]</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 hidden md:table-cell">Table rows, list items</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium text-[#101818]">1 — Resting</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">shadow-sm</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">rounded-xl</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">border-[#eaf1f1]</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 hidden md:table-cell">Cards, swatches</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium text-[#101818]">2 — Raised</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">shadow-soft</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">rounded-xl</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">—</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 hidden md:table-cell">Hover cards, active panels</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium text-[#101818]">3 — Floating</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">shadow-lg</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">rounded-xl</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">—</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 hidden md:table-cell">Dropdowns, popovers, toasts</td>
+                                </tr>
+                                <tr>
+                                    <td class="px-6 py-4 text-sm font-medium text-[#101818]">4 — Overlay</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">shadow-xl</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">rounded-2xl</td>
+                                    <td class="px-6 py-4 text-sm text-primary font-mono">—</td>
+                                    <td class="px-6 py-4 text-sm text-gray-500 hidden md:table-cell">Modals, dialogs</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>

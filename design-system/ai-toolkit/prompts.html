@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Prompt Library - MenuBridge Design System</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <style>
+        body { font-family: "Inter", sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: "Epilogue", serif; }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">AI Toolkit</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Prompt Library</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        Copy-ready prompts for AI coding assistants. Paste these into ChatGPT, Claude, Copilot, or any LLM to generate
+                        UI that follows MenuBridge conventions out of the box.
+                    </p>
+                </div>
+
+                <!-- How to Use -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">How to Use</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                                <span class="text-primary font-display font-bold text-lg">1</span>
+                            </div>
+                            <p class="text-sm font-semibold text-[#101818] mb-1">Start with the System Prompt</p>
+                            <p class="text-sm text-[#5c8a8a]">Paste the system context at the beginning of your conversation to teach the AI all design tokens.</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                                <span class="text-primary font-display font-bold text-lg">2</span>
+                            </div>
+                            <p class="text-sm font-semibold text-[#101818] mb-1">Pick a Recipe</p>
+                            <p class="text-sm text-[#5c8a8a]">Choose a component or page prompt below and paste it as your follow-up message.</p>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                            <div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                                <span class="text-primary font-display font-bold text-lg">3</span>
+                            </div>
+                            <p class="text-sm font-semibold text-[#101818] mb-1">Customize & Ship</p>
+                            <p class="text-sm text-[#5c8a8a]">Edit the placeholder content in the AI output, tweak as needed, and drop it into your project.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Prompt -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">
+                        <span class="material-symbols-outlined text-primary align-middle mr-2">code</span>System Context Prompt
+                    </h2>
+                    <p class="text-sm text-[#5c8a8a] mb-4">Paste this as the first message (or system prompt) in a new AI conversation. It gives the model full knowledge of the MenuBridge design system.</p>
+                    <div class="relative bg-white rounded-xl border border-[#eaf1f1]">
+                        <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                            <span class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider">System Context</span>
+                            <button onclick="copyPrompt(this)" data-target="system-prompt"
+                                    class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                            </button>
+                        </div>
+                        <pre id="system-prompt" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed overflow-x-auto max-h-[600px] overflow-y-auto">You are a frontend developer building UI for the MenuBridge design system. Follow these conventions exactly:
+
+## Tech Stack
+- Tailwind CSS via CDN (with forms + container-queries plugins)
+- Google Fonts: Epilogue (display/headings), Inter (body/UI), Noto Sans JP (Japanese)
+- Material Symbols Outlined icons
+
+## Tailwind Config (extend)
+Colors: primary=#267373, secondary=#86B386, tertiary=#CC5C2E, background-light=#f8f8f7, background-dark=#18181b, surface=#ffffff
+Font families: font-display=["Epilogue","serif"], font-body=["Inter","sans-serif"]
+Border radius: rounded=4px, rounded-lg=8px, rounded-xl=12px, rounded-2xl=16px, rounded-full=9999px
+Box shadow: shadow-soft="0 4px 20px -2px rgba(38,115,115,0.08)"
+
+## Color Usage
+- Primary text: text-[#101818]
+- Muted/secondary text: text-[#5c8a8a]
+- Borders and dividers: border-[#eaf1f1]
+- Page background: bg-background-light (#f8f8f7)
+- Card background: bg-white with border border-[#eaf1f1] and rounded-xl
+- Primary actions/links: text-primary or bg-primary text-white
+- Error: text-red-500, border-red-300, bg-red-50
+- Success: text-emerald-600, border-emerald-200, bg-emerald-50
+- Warning: text-amber-600, border-amber-200, bg-amber-50
+- Info: text-blue-600, border-blue-100, bg-blue-50
+
+## Typography
+- Page title: font-display text-4xl md:text-5xl font-black text-[#101818]
+- Section heading: font-display text-2xl font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2
+- Category label: text-primary font-bold tracking-wider uppercase text-xs mb-2
+- Body text: text-base text-[#101818] (Inter, inherited)
+- Muted description: text-[#5c8a8a] text-lg mt-4 max-w-2xl
+- Caption/label: text-xs font-bold text-[#5c8a8a] uppercase tracking-wider
+- Monospace token: text-primary font-mono text-xs (or text-sm)
+
+## Spacing
+- 4px grid: use Tailwind spacing scale (1=4px, 2=8px, 3=12px, 4=16px, 6=24px, 8=32px, 12=48px, 16=64px)
+- Page header margin: mb-12
+- Section wrapper margin: mb-16
+- Card padding: p-6 (default) or p-8 (spacious)
+- Page section: px-6 lg:px-40 py-12
+
+## Elevation
+- Level 0 (flat): border border-[#eaf1f1], no shadow
+- Level 1 (resting): shadow-sm + border-[#eaf1f1]
+- Level 2 (raised): shadow-soft (hover states)
+- Level 3 (floating): shadow-lg (dropdowns)
+- Level 4 (overlay): shadow-xl (modals)
+
+## Layout
+- Sidebar: lg:w-64 fixed, main offset with lg:ml-64
+- Content container: max-w-[1200px] px-6 lg:px-40
+- Grids: grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 (4-col), grid-cols-12 gap-10 (content split col-span-7/5)
+- Breakpoints: sm=640px, md=768px, lg=1024px
+
+## Components Pattern
+- Buttons: rounded-lg bg-primary px-4 py-2 text-white text-sm font-bold shadow-sm hover:bg-primary/90 transition-all
+- Inputs: rounded-lg border border-[#eaf1f1] px-4 py-2.5 text-sm focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition-all
+- Cards: bg-white rounded-xl border border-[#eaf1f1] p-6 (add hover:shadow-soft transition-shadow for interactive)
+- Tables: rounded-xl border border-[#eaf1f1] bg-white, thead bg-[#f9fbfb], th/td px-6 py-4, divide-y divide-[#eaf1f1]
+- Badges: text-xs font-medium px-2 py-0.5 rounded (e.g. bg-primary/10 text-primary)
+- Icons: &lt;span class="material-symbols-outlined"&gt;icon_name&lt;/span&gt;
+- Code blocks: rounded-lg bg-gray-900 p-4, code text-sm text-emerald-400
+
+## Motion
+- Transitions: transition-all (cards/buttons), transition-colors (links/nav), transition-opacity (fade)
+- Default duration: ~150ms. Use duration-200 for shadow transitions, duration-500 for layout shifts
+- Focus: focus:ring-2 focus:ring-primary/30 (default), focus:ring-red-200 (error)
+- Transforms: hover:scale-110, translate-x-6 (toggles), rotate-90 (chevrons)</pre>
+                    </div>
+                </div>
+
+                <!-- Component Prompts -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">
+                        <span class="material-symbols-outlined text-primary align-middle mr-2">widgets</span>Component Prompts
+                    </h2>
+                    <p class="text-sm text-[#5c8a8a] mb-6">Generate individual UI components that follow the design system. Use after pasting the system context.</p>
+
+                    <div class="space-y-6">
+
+                        <!-- Form with Validation -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">description</span>
+                                    <span class="text-sm font-semibold text-[#101818]">Form with Validation</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-form"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-form" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Build a form component with the following fields: [describe your fields]. Include:
+- Each input uses: rounded-lg border border-[#eaf1f1] px-4 py-2.5 text-sm with focus:border-primary focus:ring-2 focus:ring-primary/30
+- Labels: text-sm font-medium text-[#101818] mb-1.5
+- Error state: border-red-300 with a text-red-500 text-xs mt-1 error message below the input
+- Submit button: rounded-lg bg-primary px-6 py-2.5 text-white text-sm font-bold hover:bg-primary/90 transition-all
+- Wrap in a bg-white rounded-xl border border-[#eaf1f1] p-6 card
+- Use flex flex-col gap-4 for field spacing
+- Add a form title using font-display text-xl font-bold text-[#101818] mb-6</pre>
+                        </div>
+
+                        <!-- Data Table -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">category</span>
+                                    <span class="text-sm font-semibold text-[#101818]">Data Table</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-table"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-table" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Create a data table displaying [describe your data] with these columns: [list columns]. Follow the MenuBridge table pattern:
+- Wrap in overflow-hidden rounded-xl border border-[#eaf1f1] bg-white
+- Table header: bg-[#f9fbfb], th with px-6 py-4 text-left text-xs font-bold text-[#5c8a8a] uppercase tracking-wider
+- Body rows: divide-y divide-[#eaf1f1], td with px-6 py-4 text-sm
+- Use text-primary font-mono for code/token values
+- Use text-gray-500 for secondary info
+- Add a status badge column using: text-xs font-medium px-2 py-0.5 rounded with appropriate color (bg-emerald-50 text-emerald-600 for active, bg-red-50 text-red-500 for error, etc.)
+- Make it responsive: hide less important columns with hidden md:table-cell</pre>
+                        </div>
+
+                        <!-- Card Grid -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">widgets</span>
+                                    <span class="text-sm font-semibold text-[#101818]">Card Grid</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-cards"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-cards" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Create a responsive card grid displaying [describe items]. Each card should:
+- Use: bg-white rounded-xl border border-[#eaf1f1] p-6 hover:shadow-soft transition-shadow
+- Include a Material Symbols icon (text-2xl text-primary) at the top
+- Title: text-sm font-semibold text-[#101818]
+- Description: text-sm text-[#5c8a8a]
+- Grid layout: grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 (or lg:grid-cols-4 for smaller cards)
+- Add group class to the card and group-hover: effects if interactive
+- If the card has a link, make the entire card clickable with cursor-pointer</pre>
+                        </div>
+
+                        <!-- Navigation Bar -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">home</span>
+                                    <span class="text-sm font-semibold text-[#101818]">Navigation / Header</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-nav"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-nav" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Build a top navigation bar with the following links: [list nav items]. Follow MenuBridge conventions:
+- Container: bg-white border-b border-[#eaf1f1] px-6 py-4
+- Logo area: flex items-center gap-3, icon with material-symbols-outlined text-3xl text-primary, brand name with font-display text-xl font-bold text-[#101818]
+- Nav links: text-sm font-medium text-[#101818]/70 hover:text-[#101818] transition-colors
+- Active link: text-primary (or bg-primary/10 text-primary px-3 py-1.5 rounded-md)
+- Right side: include a primary CTA button with rounded-lg bg-primary px-4 py-2 text-white text-sm font-bold
+- Make it responsive: hide nav links on mobile behind a hamburger menu icon (menu Material Symbol)</pre>
+                        </div>
+
+                        <!-- Modal / Dialog -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">info</span>
+                                    <span class="text-sm font-semibold text-[#101818]">Modal / Dialog</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-modal"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-modal" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Create a modal dialog for [describe purpose]. Include:
+- Backdrop: fixed inset-0 bg-black/40 z-50 flex items-center justify-center
+- Modal panel: bg-white rounded-2xl shadow-xl max-w-md w-full mx-4 p-8
+- Close button: absolute top-4 right-4 with material-symbols-outlined "close" icon, text-gray-400 hover:text-[#101818] transition-colors
+- Title: font-display text-xl font-bold text-[#101818] mb-2
+- Body text: text-sm text-[#5c8a8a] mb-6
+- Actions: flex justify-end gap-3, secondary button (border border-[#eaf1f1] px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50 transition-colors) and primary button
+- Add open/close toggle with JavaScript</pre>
+                        </div>
+
+                        <!-- Toast / Alert -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">check_circle</span>
+                                    <span class="text-sm font-semibold text-[#101818]">Toast / Alert Banner</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-toast"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-toast" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Create a set of toast/alert components for success, error, warning, and info states:
+- Success: bg-emerald-50 border border-emerald-200 rounded-lg p-4, icon check_circle in text-emerald-600, message in text-sm text-emerald-800
+- Error: bg-red-50 border border-red-300 rounded-lg p-4, icon error in text-red-500, message in text-sm text-red-800
+- Warning: bg-amber-50 border border-amber-200 rounded-lg p-4, icon warning in text-amber-600, message in text-sm text-amber-800
+- Info: bg-blue-50 border border-blue-100 rounded-lg p-4, icon info in text-blue-600, message in text-sm text-blue-800
+- Each toast: flex items-center gap-3 with a close button on the right
+- Add a slideIn animation: @keyframes slideIn { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+- Include a dismiss function with JavaScript</pre>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Page Scaffolding Prompts -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">
+                        <span class="material-symbols-outlined text-primary align-middle mr-2">html</span>Page Scaffolding Prompts
+                    </h2>
+                    <p class="text-sm text-[#5c8a8a] mb-6">Scaffold full pages with the correct layout shell, sidebar, and content structure.</p>
+
+                    <div class="space-y-6">
+
+                        <!-- Design System Page -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">palette</span>
+                                    <span class="text-sm font-semibold text-[#101818]">Design System Documentation Page</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-ds-page"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-ds-page" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Create a new design system documentation page for [topic]. Use this exact HTML shell:
+
+&lt;!DOCTYPE html&gt;
+&lt;html class="light" lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="utf-8" /&gt;
+    &lt;meta content="width=device-width, initial-scale=1.0" name="viewport" /&gt;
+    &lt;title&gt;[Topic] - MenuBridge Design System&lt;/title&gt;
+    &lt;script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"&gt;&lt;/script&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet" /&gt;
+    &lt;link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" /&gt;
+    &lt;script src="../config.js"&gt;&lt;/script&gt;
+    &lt;script src="../layout.js"&gt;&lt;/script&gt;
+    &lt;style&gt;
+        body { font-family: "Inter", sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: "Epilogue", serif; }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body class="bg-background-light text-[#101818] antialiased"&gt;
+    &lt;div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden"&gt;
+        &lt;aside id="app-sidebar"&gt;&lt;/aside&gt;
+        &lt;main class="flex flex-1 flex-col items-center pb-20"&gt;
+            &lt;section class="w-full max-w-[1200px] px-6 py-12 lg:px-40"&gt;
+                &lt;!-- Page header --&gt;
+                &lt;div class="mb-12"&gt;
+                    &lt;p class="text-primary font-bold tracking-wider uppercase text-xs mb-2"&gt;Foundations&lt;/p&gt;
+                    &lt;h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]"&gt;[Topic]&lt;/h1&gt;
+                    &lt;p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl"&gt;[Description]&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;!-- Sections with mb-16 wrappers --&gt;
+            &lt;/section&gt;
+        &lt;/main&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+Now add sections for [describe what to document]. Each section should use:
+- h2 with: text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2
+- Section wrapper: mb-16
+- Tables: rounded-xl border border-[#eaf1f1] bg-white with proper thead/tbody styles
+- Code blocks: rounded-lg bg-gray-900 p-4 with code text-sm text-emerald-400
+- Visual demos using live Tailwind classes where possible</pre>
+                        </div>
+
+                        <!-- Dashboard Page -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">desktop_windows</span>
+                                    <span class="text-sm font-semibold text-[#101818]">Dashboard / Admin Page</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-dashboard"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-dashboard" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Build a dashboard page for [describe what it manages — e.g., "restaurant menu management"]. Include:
+
+Layout:
+- Use the MenuBridge sidebar layout: aside#app-sidebar + main with max-w-[1200px] px-6 lg:px-40
+- Page header with font-display text-4xl font-black title and a primary action button on the right
+
+Stats row:
+- 3-4 stat cards in grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6
+- Each card: bg-white rounded-xl border border-[#eaf1f1] p-6
+- Stat value: font-display text-3xl font-bold text-[#101818]
+- Stat label: text-sm text-[#5c8a8a]
+- Icon: material-symbols-outlined text-primary
+
+Main content:
+- A data table showing [describe rows] with columns: [list columns]
+- Follow MenuBridge table conventions (rounded-xl border, bg-[#f9fbfb] header, divide-y)
+- Add status badges, action buttons (edit icon, delete icon)
+- Include a search/filter bar above the table
+
+Use the full MenuBridge color palette, spacing scale, and elevation tokens.</pre>
+                        </div>
+
+                        <!-- CRUD Form Page -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">edit</span>
+                                    <span class="text-sm font-semibold text-[#101818]">CRUD Form Page</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-crud"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-crud" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Build a create/edit form page for [describe the entity — e.g., "a restaurant menu item"]. Include:
+
+Page shell:
+- MenuBridge sidebar layout with aside#app-sidebar + main
+- Breadcrumb: flex items-center gap-2 text-sm text-[#5c8a8a] mb-6 with chevron_right separators
+- Page title: font-display text-3xl font-bold text-[#101818]
+
+Form layout (grid grid-cols-1 lg:grid-cols-12 gap-10):
+- Left column (lg:col-span-7): main form fields in a bg-white rounded-xl border border-[#eaf1f1] p-8 card
+- Right column (lg:col-span-5): sidebar card with metadata fields, preview, or status controls
+
+Form fields: [list your fields — text inputs, textareas, select dropdowns, file upload, etc.]
+- Input styling: rounded-lg border border-[#eaf1f1] px-4 py-2.5 text-sm focus:border-primary focus:ring-2 focus:ring-primary/30
+- Labels: text-sm font-medium text-[#101818] mb-1.5
+- Helper text: text-xs text-[#5c8a8a] mt-1
+- Required indicator: text-red-500 ml-0.5
+
+Actions bar:
+- Sticky bottom or at form end: flex justify-between gap-3
+- Cancel: border border-[#eaf1f1] px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-50
+- Save: bg-primary text-white px-6 py-2.5 rounded-lg text-sm font-bold hover:bg-primary/90</pre>
+                        </div>
+
+                        <!-- Landing / Marketing Page -->
+                        <div class="bg-white rounded-xl border border-[#eaf1f1]">
+                            <div class="flex items-center justify-between px-4 py-3 border-b border-[#eaf1f1]">
+                                <div class="flex items-center gap-2">
+                                    <span class="material-symbols-outlined text-primary text-lg">auto_stories</span>
+                                    <span class="text-sm font-semibold text-[#101818]">Landing / Marketing Page</span>
+                                </div>
+                                <button onclick="copyPrompt(this)" data-target="prompt-landing"
+                                        class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary text-white text-xs font-bold hover:bg-primary/90 transition-colors">
+                                    <span class="material-symbols-outlined text-sm">content_copy</span> Copy
+                                </button>
+                            </div>
+                            <pre id="prompt-landing" class="p-4 text-sm text-[#101818] whitespace-pre-wrap leading-relaxed">Build a landing page for [describe the feature or product]. Use the MenuBridge design system with no sidebar. Include:
+
+Hero section:
+- Full-width with max-w-[1200px] mx-auto px-6 py-20
+- Headline: font-display text-5xl md:text-6xl font-black text-[#101818] max-w-3xl
+- Subhead: text-xl text-[#5c8a8a] mt-6 max-w-2xl
+- CTA: rounded-lg bg-primary px-8 py-3 text-white font-bold text-lg shadow-sm hover:bg-primary/90 transition-all mt-8
+- Optional secondary CTA: border border-[#eaf1f1] px-8 py-3 rounded-lg text-sm font-medium
+
+Features grid:
+- 3-column grid of feature cards with Material Symbols icons
+- Each card: p-8 text-center (or text-left), icon in w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-4
+
+Social proof / stats:
+- bg-[#f9fbfb] py-16 section with 3-4 large numbers using font-display text-4xl font-bold text-primary
+
+Footer:
+- border-t border-[#eaf1f1] py-12, multi-column links with text-sm text-[#5c8a8a]
+
+Use the bg-background-light (#f8f8f7) page background, all colors from the palette, and Epilogue for headlines / Inter for body.</pre>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Tips -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Tips for Better Results</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="material-symbols-outlined text-emerald-600">check_circle</span>
+                                <h3 class="text-sm font-bold text-emerald-600 uppercase tracking-wider">Do</h3>
+                            </div>
+                            <ul class="space-y-2 text-sm text-[#5c8a8a]">
+                                <li>Always start with the system context prompt</li>
+                                <li>Be specific about data: list exact field names, column headers, and content</li>
+                                <li>Reference MenuBridge class names explicitly to keep the AI on-system</li>
+                                <li>Ask for "one complete HTML file" to get a working result you can preview</li>
+                            </ul>
+                        </div>
+                        <div class="bg-white rounded-xl border border-[#eaf1f1] p-6">
+                            <div class="flex items-center gap-2 mb-4">
+                                <span class="material-symbols-outlined text-red-500">error</span>
+                                <h3 class="text-sm font-bold text-red-500 uppercase tracking-wider">Don't</h3>
+                            </div>
+                            <ul class="space-y-2 text-sm text-[#5c8a8a]">
+                                <li>Skip the system context — the AI will default to generic Tailwind</li>
+                                <li>Ask for "a nice looking page" without specifics — be precise</li>
+                                <li>Override design tokens with arbitrary colors or custom CSS</li>
+                                <li>Forget to mention responsive behavior if you need it</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script>
+        function copyPrompt(button) {
+            const targetId = button.getAttribute('data-target');
+            const el = document.getElementById(targetId);
+            const text = el.textContent;
+
+            navigator.clipboard.writeText(text).then(() => {
+                const original = button.innerHTML;
+                button.innerHTML = '<span class="material-symbols-outlined text-sm">check</span> Copied!';
+                button.classList.remove('bg-primary', 'hover:bg-primary/90');
+                button.classList.add('bg-emerald-600');
+                setTimeout(() => {
+                    button.innerHTML = original;
+                    button.classList.remove('bg-emerald-600');
+                    button.classList.add('bg-primary', 'hover:bg-primary/90');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
