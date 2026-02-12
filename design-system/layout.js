@@ -50,11 +50,11 @@ function injectSidebar() {
                  <h3 class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3 px-2">Foundations</h3>
                  <div class="flex flex-col space-y-1">
                     <a href="${isInSubfolder ? '../foundations/colors.html' : './foundations/colors.html'}" 
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('colors.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/colors.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Colors
                     </a>
                     <a href="${isInSubfolder ? '../foundations/typography.html' : './foundations/typography.html'}" 
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('typography.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/typography.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Typography
                     </a>
                  </div>
@@ -65,11 +65,11 @@ function injectSidebar() {
                  <h3 class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3 px-2">Library</h3>
                  <div class="flex flex-col space-y-1">
                     <a href="${isInSubfolder ? '../components/index.html' : './components/index.html'}" 
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${isComponents && !path.includes('layout.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${isComponents && !path.endsWith('/layout.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Components
                     </a>
-                    <a href="${isInSubfolder ? '../components/layout.html' : './components/layout.html'}" 
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('layout.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                    <a href="${isInSubfolder ? '../components/layout.html' : './components/layout.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/layout.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Layout
                     </a>
                  </div>
@@ -79,21 +79,29 @@ function injectSidebar() {
             <div>
                  <h3 class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3 px-2">Examples</h3>
                  <div class="flex flex-col space-y-1">
-                    <a href="${isInSubfolder ? '../examples/login.html' : './examples/login.html'}" 
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('login.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                    <a href="${isInSubfolder ? '../examples/login.html' : './examples/login.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/login.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Login Page
                     </a>
-                    <a href="${isInSubfolder ? '../examples/create-menu.html' : './examples/create-menu.html'}" 
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('create-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                    <a href="${isInSubfolder ? '../examples/create-menu.html' : './examples/create-menu.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/create-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Create Menu
                     </a>
                     <a href="${isInSubfolder ? '../examples/review-menu.html' : './examples/review-menu.html'}"
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('review-menu.html') && !path.includes('review-enhanced') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/review-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Review Menu
                     </a>
                     <a href="${isInSubfolder ? '../examples/review-enhanced.html' : './examples/review-enhanced.html'}"
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('review-enhanced.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/review-enhanced.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Review Enhanced
+                    </a>
+                    <a href="${isInSubfolder ? '../examples/preview-menu.html' : './examples/preview-menu.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/preview-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Preview Menu
+                    </a>
+                    <a href="${isInSubfolder ? '../examples/published-menu.html' : './examples/published-menu.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/published-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Published Menu
                     </a>
                  </div>
             </div>
@@ -103,7 +111,7 @@ function injectSidebar() {
                  <h3 class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3 px-2">Resources</h3>
                  <div class="flex flex-col space-y-1">
                     <a href="${isInSubfolder ? '../changelog.html' : './changelog.html'}" 
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.includes('changelog.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/changelog.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Changelog
                     </a>
                  </div>

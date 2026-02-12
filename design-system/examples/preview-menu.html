@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Preview Shared Menu Layout - MenuBridge</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <!-- Web Components -->
+    <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-toggle.js" defer></script>
+
+    <style>
+        body {
+            font-family: "Inter", "Noto Sans JP", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Examples</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Preview Menu</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        Side-by-side bilingual menu preview before publishing.
+                    </p>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">visibility</span>
+                        Preview
+                    </h2>
+
+                    <!-- Preview Frame -->
+                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-[#F9FAFB] shadow-sm">
+                        <!-- Browser Header Simulation -->
+                        <div class="bg-gray-50 border-b border-[#eaf1f1] px-4 py-2 flex items-center gap-2">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="flex-1 text-center">
+                                <span class="text-xs text-gray-400 font-mono">preview-menu.html</span>
+                            </div>
+                        </div>
+
+                        <!-- Actual Content Preview -->
+                        <div class="px-8 py-10 min-h-[1200px] relative bg-white lg:bg-[#F9FAFB]">
+
+                            <!-- Header -->
+                            <div
+                                class="bg-white border-b border-[#eaf1f1] absolute top-0 left-0 w-full px-8 py-4 flex items-center justify-between z-10">
+                                <div class="text-lg font-bold font-display text-[#101818]">MenuBridge</div>
+                                <div class="flex items-center gap-4">
+                                    <menu-toggle items="EN, JP" selected="EN"></menu-toggle>
+                                    <div
+                                        class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
+                                        <span class="material-symbols-outlined text-sm">person</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Main Content -->
+                            <div class="max-w-5xl mx-auto pt-20 pb-20">
+
+                                <div class="mb-8">
+                                    <a href="review-enhanced.html"
+                                        class="text-xs font-medium text-gray-500 hover:text-[#101818] flex items-center gap-1 mb-4">
+                                        <span class="material-symbols-outlined text-sm">arrow_back</span>
+                                        Back to Review Enhanced Shared Menu
+                                    </a>
+                                    <h1 class="text-3xl font-bold font-display text-[#101818] mb-2">Preview Shared Menu Layout</h1>
+                                    <p class="text-[#5c8a8a] text-sm max-w-lg">Check how your menu will appear to customers. You can preview both languages side-by-side and open individual item details if needed.</p>
+                                </div>
+
+                                <!-- Side-by-side Menu Preview -->
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-0 border border-[#eaf1f1] rounded-xl overflow-hidden bg-white shadow-sm">
+
+                                    <!-- ══════════════════════ -->
+                                    <!-- JP Column             -->
+                                    <!-- ══════════════════════ -->
+                                    <div class="border-r border-[#eaf1f1] p-6">
+
+                                        <!-- Restaurant Header -->
+                                        <div class="flex items-start justify-between mb-5">
+                                            <div>
+                                                <h2 class="text-base font-bold text-[#101818]">Athipatai Brewery</h2>
+                                                <p class="text-xs text-[#5c8a8a]">Athipatai Bar</p>
+                                            </div>
+                                            <span class="px-2.5 py-1 bg-[#101818] text-white text-[10px] font-bold rounded-md">JP</span>
+                                        </div>
+
+                                        <!-- Dietary Filters -->
+                                        <div class="flex gap-2 mb-4 flex-wrap">
+                                            <button class="px-3 py-1.5 bg-[#101818] text-white text-xs font-bold rounded-full">すべて</button>
+                                            <button class="px-3 py-1.5 bg-white border border-[#eaf1f1] text-xs text-[#5c8a8a] rounded-full flex items-center gap-1 hover:border-gray-300 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">eco</span>ベジタリアン
+                                            </button>
+                                            <button class="px-3 py-1.5 bg-white border border-[#eaf1f1] text-xs text-[#5c8a8a] rounded-full flex items-center gap-1 hover:border-gray-300 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">set_meal</span>魚
+                                            </button>
+                                            <button class="px-3 py-1.5 bg-white border border-[#eaf1f1] text-xs text-[#5c8a8a] rounded-full flex items-center gap-1 hover:border-gray-300 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">restaurant</span>肉
+                                            </button>
+                                        </div>
+
+                                        <!-- Search -->
+                                        <div class="relative mb-5">
+                                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-base text-gray-300">search</span>
+                                            <input type="text" placeholder="メニューを検索..."
+                                                class="w-full rounded-lg border border-[#eaf1f1] bg-white pl-9 pr-3 py-2 text-xs text-[#101818] placeholder-gray-300 outline-none focus:border-primary focus:ring-1 focus:ring-primary/30" />
+                                        </div>
+
+                                        <!-- Guest Notes -->
+                                        <div class="mb-5 text-xs text-[#101818]">
+                                            <p class="font-bold mb-1">ゲストノート</p>
+                                            <p class="text-[#5c8a8a] leading-relaxed">・テーブルチャージとして300円頂戴いたします (お通し付き)。<br>・ラストオーダー : フード 22:30 / ドリンク 23:00</p>
+                                        </div>
+
+                                        <!-- Section: ON TAP -->
+                                        <div class="mb-5">
+                                            <h3 class="text-sm font-bold text-[#101818] mb-3">本日のタップリスト (ON TAP)</h3>
+                                            <div class="space-y-0 divide-y divide-[#eaf1f1]">
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">1. ザ・ピープルズ・ペールエール アメリカンペールエール (A…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0 whitespace-nowrap">900 /<br>¥1,300<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">2. レボリューション・ヘイジーIPA ニューイングランドIPA (A…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0 whitespace-nowrap">1,000 /<br>¥1,450<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">3. サイレント・マジョリティ・スタウト オートミールスタウ…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0 whitespace-nowrap">950 /<br>¥1,400<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">4. ゴールデンエラ・ピルスナー ジャーマンピルスナー (ABV: …</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0 whitespace-nowrap">900 /<br>¥1,300<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">5. リバティ・柚子セゾン ファームハウスエール (ABV: 5.5% /…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0 whitespace-nowrap">950 /<br>¥1,400<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Section: とりあえず一品 -->
+                                        <div class="mb-5 pt-4 border-t border-[#eaf1f1]">
+                                            <h3 class="text-sm font-bold text-[#101818] mb-3">〈とりあえず一品〉</h3>
+                                            <div class="space-y-0 divide-y divide-[#eaf1f1]">
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">自家製スモークナッツ (桜チップを使い、店内で燻製しました)</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">500円</p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">ガーリックチリ枝豆 (ガーリックとラー油で炒めた、ビールが進…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">600<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">いぶりがっこのポテトサラダ (クリーミーなポテトサラダに、秋…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">650<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Section: 揚げ物・焼き物 -->
+                                        <div class="mb-5 pt-4 border-t border-[#eaf1f1]">
+                                            <h3 class="text-sm font-bold text-[#101818] mb-3">〈揚げ物・焼き物〉</h3>
+                                            <div class="space-y-0 divide-y divide-[#eaf1f1]">
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">トリュフ塩のフライドポテト (細切りのポテトに香り高いトリュ…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">800<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">クラフトビア唐揚げ (当店のペールエールに漬け込み柔らかく仕…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">950<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">ソーセージ3種盛り合わせ (チョリソー、ハーブ、プレーンの3…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">1,200<br><span class="text-[#5c8a8a]">円</span></p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- ══════════════════════ -->
+                                    <!-- EN Column             -->
+                                    <!-- ══════════════════════ -->
+                                    <div class="p-6">
+
+                                        <!-- Restaurant Header -->
+                                        <div class="flex items-start justify-between mb-5">
+                                            <div>
+                                                <h2 class="text-base font-bold text-[#101818]">Athipatai Brewery</h2>
+                                                <p class="text-xs text-[#5c8a8a]">Athipatai Bar</p>
+                                            </div>
+                                            <span class="px-2.5 py-1 bg-[#101818] text-white text-[10px] font-bold rounded-md">EN</span>
+                                        </div>
+
+                                        <!-- Dietary Filters -->
+                                        <div class="flex gap-2 mb-4 flex-wrap">
+                                            <button class="px-3 py-1.5 bg-[#101818] text-white text-xs font-bold rounded-full">All</button>
+                                            <button class="px-3 py-1.5 bg-white border border-[#eaf1f1] text-xs text-[#5c8a8a] rounded-full flex items-center gap-1 hover:border-gray-300 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">eco</span>Vegetarian
+                                            </button>
+                                            <button class="px-3 py-1.5 bg-white border border-[#eaf1f1] text-xs text-[#5c8a8a] rounded-full flex items-center gap-1 hover:border-gray-300 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">set_meal</span>Fish
+                                            </button>
+                                            <button class="px-3 py-1.5 bg-white border border-[#eaf1f1] text-xs text-[#5c8a8a] rounded-full flex items-center gap-1 hover:border-gray-300 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">restaurant</span>Meat
+                                            </button>
+                                        </div>
+
+                                        <!-- Search -->
+                                        <div class="relative mb-5">
+                                            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-base text-gray-300">search</span>
+                                            <input type="text" placeholder="Search menu..."
+                                                class="w-full rounded-lg border border-[#eaf1f1] bg-white pl-9 pr-3 py-2 text-xs text-[#101818] placeholder-gray-300 outline-none focus:border-primary focus:ring-1 focus:ring-primary/30" />
+                                        </div>
+
+                                        <!-- Guest Notes -->
+                                        <div class="mb-5 text-xs text-[#101818]">
+                                            <p class="font-bold mb-1">Guest Notes</p>
+                                            <p class="text-[#5c8a8a] leading-relaxed">・We charge 300 yen as a table charge (includes appetizer).<br>・Last order: Food 22:30 / Drinks 23:00</p>
+                                        </div>
+
+                                        <!-- Section: ON TAP -->
+                                        <div class="mb-5">
+                                            <h3 class="text-sm font-bold text-[#101818] mb-3">Today's Tap List (ON TAP)</h3>
+                                            <div class="space-y-0 divide-y divide-[#eaf1f1]">
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">1. The People's Pale Ale American Pale Ale (ABV: 5.5% / IB..</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥900 /<br>¥1,300</p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">2. Revolution Hazy IPA New England IPA (ABV: 7.0% / IBU:…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥1,000<br>/ ¥1,450</p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">3. Silent Majority Stout Oatmeal Stout (ABV: 6.0% / IBU: 4..</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥950 /<br>¥1,400</p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">4. Golden Era Pilsner German Pilsner (ABV: 5.0% / IBU: 30..</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥900 /<br>¥1,300</p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">5. Liberty Yuzu Saison Farmhouse Ale (ABV: 5.5% / IBU: 15..</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥950 /<br>¥1,400</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Section: A Quick Bite -->
+                                        <div class="mb-5 pt-4 border-t border-[#eaf1f1]">
+                                            <h3 class="text-sm font-bold text-[#101818] mb-3">A Quick Bite</h3>
+                                            <div class="space-y-0 divide-y divide-[#eaf1f1]">
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">Homemade Smoked Nuts (Smoked in-house using cherry …</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥500</p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">Garlic Chili Edamame (Spicy edamame stir-fried with garlic …</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥600</p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">Smoked Pickle Potato Salad (Creamy potato salad accente…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥650</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Section: Fried & Grilled -->
+                                        <div class="mb-5 pt-4 border-t border-[#eaf1f1]">
+                                            <h3 class="text-sm font-bold text-[#101818] mb-3">Fried & Grilled Dishes</h3>
+                                            <div class="space-y-0 divide-y divide-[#eaf1f1]">
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">Truffle Salt French Fries (Thin-cut fries sprinkled with arom…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥800</p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">Craft Beer Karaage (Juicy fried chicken marinated in our pa…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥950</p>
+                                                </div>
+                                                <div class="flex justify-between items-start py-3">
+                                                    <p class="text-xs text-[#101818] flex-1 pr-4">Assorted 3 Sausages (Chorizo, herb, and plain. Served wi…</p>
+                                                    <p class="text-xs text-[#101818] text-right shrink-0">¥1,200</p>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <!-- Footer Action -->
+                                <div class="mt-8 flex justify-center">
+                                    <a href="published-menu.html">
+                                        <menu-button label="Publish Shared Menu" variant="primary" class="shadow-lg"></menu-button>
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Code Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">code</span>
+                            Component Usage
+                        </h2>
+                        <ul
+                            class="space-y-4 text-sm text-[#5c8a8a] list-disc list-inside bg-white p-6 rounded-xl border border-[#eaf1f1]">
+                            <li>
+                                <strong class="text-[#101818]">Side-by-side Layout:</strong> CSS Grid <code>grid-cols-2</code> with a center divider for bilingual comparison.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Filter Pills:</strong> Rounded pill buttons with icons for dietary filtering (All, Vegetarian, Fish, Meat).
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Menu Items:</strong> Flex rows with truncated text and right-aligned prices using divide-y separators.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Typography:</strong> Noto Sans JP for Japanese content, Inter for English content.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">html</span>
+                            Structure
+                        </h2>
+                        <div
+                            class="bg-gray-900 rounded-xl p-6 overflow-x-auto text-xs font-mono text-gray-300 leading-relaxed shadow-sm">
+                            &lt;div class="grid grid-cols-2"&gt;<br>
+                            &nbsp;&nbsp;&lt;!-- JP Column --&gt;<br>
+                            &nbsp;&nbsp;&lt;div class="border-r p-6"&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Restaurant Name&lt;/h2&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="flex gap-2"&gt;Filter pills&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;input placeholder="検索..."&gt;<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&lt;div class="divide-y"&gt;Items&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&lt;/div&gt;<br>
+                            &nbsp;&nbsp;&lt;!-- EN Column --&gt;<br>
+                            &nbsp;&nbsp;&lt;div class="p-6"&gt;...&lt;/div&gt;<br>
+                            &lt;/div&gt;
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
