@@ -15,8 +15,8 @@ The MenuBridge Design System (formerly MenuAI) is a comprehensive collection of 
 
 - **`design-system/`**: The core project files.
   - **`foundations/`**: Colors, typography, and basic tokens.
-  - **`components/`**: Reusable Web Components (Buttons, Cards, Toggles).
-  - **`examples/`**: Full page implementations (Login, Menu Creation, Review Menu).
+  - **`components/`**: Reusable Web Components (Button, Badge, Card, Alert, Toggle, Input, Textarea, Select, Checkbox, Radio, Tabs, Breadcrumb, Pagination, Modal, Toast, Switch, Avatar).
+  - **`examples/`**: Full page implementations (Login, Create Menu, Review Menu, Review Enhanced, Preview Menu, Published Menu).
 - **`index.html`**: Root redirect to the design system.
 - **`layout.js`**: Shared layout logic.
 
@@ -49,6 +49,53 @@ The site will be available at `https://<username>.github.io/menubridge-dl/`.
 ### Configuration
 *   **`.nojekyll`**: Included to ensure files starting with `_` are not ignored.
 *   **`index.html`**: Redirects traffic from the root to `design-system/index.html`.
+
+## Changelog
+
+### v1.8 — February 12, 2026
+- Added **Preview Menu** page with bilingual JP/EN side-by-side layout, dietary filters, and search
+- Added **Published Menu** page with QR code, shareable link, and action buttons
+- Fixed sidebar highlighting collision; improved all active-state checks to exact path matching
+
+### v1.7 — February 10, 2026
+- Added **Review Enhanced** page with native `<details>` accordion for menu categories
+- Dietary restriction icons (vegetarian, vegan, gluten-free) per menu item
+- Guest Notes section with editable textarea and character counter
+
+### v1.6 — February 7, 2026
+- Added `<menu-modal>` with backdrop click and ESC key dismissal
+- Added `<menu-toast>` with auto-dismiss and success/error/warning/info variants
+- Added `<menu-switch>` toggle with accessible ARIA attributes
+- Added `<menu-avatar>` with image, initials fallback, and status indicator
+
+### v1.5 — February 5, 2026
+- Added form controls: `<menu-input>`, `<menu-textarea>`, `<menu-select>`, `<menu-checkbox>`, `<menu-radio>`
+- Added navigation components: `<menu-tabs>`, `<menu-breadcrumb>`, `<menu-pagination>`
+- Updated Components showcase page with live demos for all 8 new components
+
+### v1.4 — February 2, 2026
+- Added **Review Menu** example page for menu verification flow
+- Added **Layout** documentation explaining the zero-build injection system
+- Updated sidebar with new Example and Library links
+
+### v1.3 — January 30, 2026
+- Added `<menu-toggle>` component for boolean states
+- Added Japanese typography support using Noto Sans JP
+- New sections for Toggle patterns and localized type scales
+
+### v1.2 — January 28, 2026
+- Added Login Page and Create Menu example implementations
+- Updated `<menu-card>` to support custom badge icons
+- Updated `<menu-button>` to support `full-width` layout
+
+### v1.1 — January 28, 2026
+- Switched from top header to fixed sidebar layout
+- Added detailed Type Scale table and usage guidelines
+- Official rename to "MenuBridge"
+
+### v1.0 — January 28, 2026
+- Initial release: Color Palette, Typography, Buttons, Badges, Translation Cards
+- Zero-build HTML/JS architecture with Tailwind CSS
 
 ## Technologies
 
