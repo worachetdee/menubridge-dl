@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MenuBridge</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="../config.js"></script>
+    <style>
+        * { margin: 0; padding: 0; }
+        html, body { width: 100%; height: 100%; overflow: hidden; }
+        #prototype-frame { border: none; width: 100%; height: 100%; display: block; }
+    </style>
+</head>
+
+<body>
+    <iframe id="prototype-frame"></iframe>
+
+    <script>
+        var iframe = document.getElementById('prototype-frame');
+
+        // Flow order: pages that follow in the natural product journey
+        var flowOrder = [
+            'login.html',
+            'create-menu.html',
+            'review-menu.html',
+            'review-enhanced.html',
+            'preview-menu.html',
+            'published-menu.html',
+            'account-settings.html'
+        ];
+
+        function getNextPage(currentFile) {
+            for (var i = 0; i < flowOrder.length - 1; i++) {
+                if (currentFile.endsWith(flowOrder[i])) return flowOrder[i + 1];
+            }
+            return null;
+        }
+
+        // Embed CSS: strips sidebar, page header, implementation details, browser frame dots
+        var embedCSS =
+            '#app-sidebar { display: none !important; }' +
+            'main { margin-left: 0 !important; margin-top: 0 !important; padding-bottom: 0 !important; }' +
+            'section { max-width: none !important; padding: 0 !important; width: 100% !important; }' +
+            'section > .mb-12 { display: none !important; }' +
+            'section > .mb-16 ~ * { display: none !important; }' +
+            'section > .mb-16 > h2 { display: none !important; }' +
+            'section > .mb-16 { margin-bottom: 0 !important; }' +
+            'section > .mb-16 > div { border: none !important; border-radius: 0 !important; box-shadow: none !important; }' +
+            'section > .mb-16 > div > .bg-gray-50.border-b { display: none !important; }';
+
+        iframe.addEventListener('load', function () {
+            try {
+                var doc = this.contentDocument;
+                var win = this.contentWindow;
+                if (!doc) return;
+
+                // Inject embed styles
+                var style = doc.createElement('style');
+                style.textContent = embedCSS;
+                doc.head.appendChild(style);
+
+                // Wire up buttons on pages that don't have natural forward links
+                var page = win.location.pathname;
+                var nextPage = getNextPage(page);
+
+                if (page.endsWith('/login.html') && nextPage) {
+                    // Wire the "Log In" menu-button
+                    var loginBtn = doc.querySelector('menu-button[full-width]');
+                    if (loginBtn) {
+                        loginBtn.addEventListener('click', function () {
+                            win.location.href = nextPage;
+                        });
+                    }
+                }
+
+                if (page.endsWith('/published-menu.html') && nextPage) {
+                    // Wire "Go to Menu Home" button -> Account Settings
+                    var homeBtn = doc.querySelector('menu-button[icon="home"]');
+                    if (homeBtn) {
+                        homeBtn.addEventListener('click', function () {
+                            win.location.href = nextPage;
+                        });
+                    }
+                }
+
+                if (page.endsWith('/account-settings.html')) {
+                    // Wire "Save changes" -> restart the flow
+                    var btns = doc.querySelectorAll('menu-button');
+                    btns.forEach(function (btn) {
+                        if (btn.textContent.trim() === 'Save changes') {
+                            btn.addEventListener('click', function () {
+                                win.location.href = 'login.html';
+                            });
+                        }
+                    });
+                }
+
+            } catch (e) { /* cross-origin fallback */ }
+        });
+
+        // Escape key exits back to design system
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                window.location.href = 'prototype.html';
+            }
+        });
+
+        // Start the flow
+        iframe.src = 'login.html';
+    </script>
+</body>
+
+</html>

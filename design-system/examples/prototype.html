@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Run Prototype - MenuBridge</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-toggle.js" defer></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+
+        #prototype-frame {
+            border: none;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col mt-16 lg:mt-0 min-h-screen">
+
+            <!-- Prototype Header -->
+            <div class="sticky top-0 z-20 bg-white/95 backdrop-blur-sm border-b border-[#eaf1f1] px-6 py-4">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary text-2xl">play_circle</span>
+                        <h1 class="font-display text-lg font-bold text-[#101818]">Run Prototype</h1>
+                    </div>
+                    <span id="step-label" class="text-sm text-[#5c8a8a] font-medium">Step 1 of 7</span>
+                </div>
+
+                <!-- Step Indicator -->
+                <div class="flex items-center gap-1" id="step-indicator"></div>
+            </div>
+
+            <!-- Iframe Container -->
+            <div class="flex-1 p-4 lg:p-6">
+                <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-[#F9FAFB] shadow-sm">
+                    <!-- Browser Header Simulation -->
+                    <div class="bg-gray-50 border-b border-[#eaf1f1] px-4 py-2 flex items-center gap-2">
+                        <div class="flex gap-1.5">
+                            <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                        </div>
+                        <div class="flex-1 text-center">
+                            <span id="frame-url" class="text-xs text-gray-400 font-mono">login.html</span>
+                        </div>
+                    </div>
+                    <iframe id="prototype-frame" style="min-height:600px"></iframe>
+                </div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <div
+                class="sticky bottom-0 bg-white/95 backdrop-blur-sm border-t border-[#eaf1f1] px-6 py-3 flex items-center justify-between">
+                <button id="btn-prev" onclick="prevStep()"
+                    class="flex items-center gap-2 px-4 py-2 rounded-lg border border-[#eaf1f1] text-sm font-medium text-[#101818] hover:bg-gray-50 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
+                    <span class="material-symbols-outlined text-base">arrow_back</span>
+                    Previous
+                </button>
+                <span id="step-name" class="text-sm font-bold text-[#101818]">Login</span>
+                <button id="btn-next" onclick="nextStep()"
+                    class="flex items-center gap-2 px-4 py-2 rounded-lg bg-primary text-white text-sm font-medium hover:bg-primary/90 transition-colors disabled:opacity-30 disabled:cursor-not-allowed">
+                    Next
+                    <span class="material-symbols-outlined text-base">arrow_forward</span>
+                </button>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        var steps = [
+            { name: 'Login', file: 'login.html' },
+            { name: 'Create Menu', file: 'create-menu.html' },
+            { name: 'Review Menu', file: 'review-menu.html' },
+            { name: 'Review Enhanced', file: 'review-enhanced.html' },
+            { name: 'Preview Menu', file: 'preview-menu.html' },
+            { name: 'Published Menu', file: 'published-menu.html' },
+            { name: 'Account Settings', file: 'account-settings.html' }
+        ];
+
+        var currentStep = 0;
+        var iframe = document.getElementById('prototype-frame');
+        var frameUrl = document.getElementById('frame-url');
+
+        function buildStepIndicator() {
+            var container = document.getElementById('step-indicator');
+            container.innerHTML = '';
+            steps.forEach(function (step, i) {
+                if (i > 0) {
+                    var line = document.createElement('div');
+                    line.className = 'flex-1 h-0.5 transition-colors ' + (i <= currentStep ? 'bg-primary' : 'bg-[#eaf1f1]');
+                    container.appendChild(line);
+                }
+                var dot = document.createElement('button');
+                dot.onclick = function () { goToStep(i); };
+                dot.className = 'w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 transition-all cursor-pointer border-0 ' +
+                    (i === currentStep ? 'bg-primary text-white shadow-sm' :
+                        i < currentStep ? 'bg-primary/20 text-primary' : 'bg-[#eaf1f1] text-[#5c8a8a]');
+                dot.textContent = i + 1;
+                dot.title = step.name;
+                container.appendChild(dot);
+            });
+        }
+
+        function updateUI() {
+            buildStepIndicator();
+            document.getElementById('step-label').textContent = 'Step ' + (currentStep + 1) + ' of ' + steps.length;
+            document.getElementById('step-name').textContent = steps[currentStep].name;
+            frameUrl.textContent = steps[currentStep].file;
+            document.getElementById('btn-prev').disabled = currentStep === 0;
+            document.getElementById('btn-next').disabled = currentStep === steps.length - 1;
+        }
+
+        function goToStep(n) {
+            if (n < 0 || n >= steps.length) return;
+            currentStep = n;
+            iframe.src = steps[n].file;
+            updateUI();
+        }
+
+        function nextStep() { goToStep(currentStep + 1); }
+        function prevStep() { goToStep(currentStep - 1); }
+
+        // On iframe load, strip design system chrome to show only the preview content
+        iframe.addEventListener('load', function () {
+            try {
+                var doc = this.contentDocument;
+                if (!doc) return;
+
+                // Sync step indicator if user clicked a link inside the preview
+                var iframePath = this.contentWindow.location.pathname;
+                for (var i = 0; i < steps.length; i++) {
+                    if (iframePath.endsWith('/' + steps[i].file)) {
+                        if (i !== currentStep) {
+                            currentStep = i;
+                            updateUI();
+                        }
+                        break;
+                    }
+                }
+
+                // Inject embed styles to hide sidebar, page header, implementation details
+                var style = doc.createElement('style');
+                style.textContent =
+                    '#app-sidebar { display: none !important; }' +
+                    'main { margin-left: 0 !important; margin-top: 0 !important; padding-bottom: 0 !important; }' +
+                    'section { max-width: none !important; padding: 0 !important; width: 100% !important; }' +
+                    'section > .mb-12 { display: none !important; }' +
+                    'section > .mb-16 ~ * { display: none !important; }' +
+                    'section > .mb-16 > h2 { display: none !important; }' +
+                    'section > .mb-16 { margin-bottom: 0 !important; }' +
+                    'section > .mb-16 > div { border: none !important; border-radius: 0 !important; box-shadow: none !important; }' +
+                    'section > .mb-16 > div > .bg-gray-50.border-b { display: none !important; }';
+                doc.head.appendChild(style);
+
+                // Auto-resize iframe to fit content
+                var self = this;
+                setTimeout(function () {
+                    var h = doc.documentElement.scrollHeight;
+                    if (h > 0) self.style.height = h + 'px';
+                }, 200);
+            } catch (e) { /* cross-origin fallback - show as-is */ }
+        });
+
+        // Initialize first step
+        goToStep(0);
+    </script>
+</body>
+
+</html>
