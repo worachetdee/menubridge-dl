@@ -146,6 +146,10 @@ function injectSidebar() {
                        class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/account-settings.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Account Settings
                     </a>
+                    <a href="${isInSubfolder ? '../examples/menu-home.html' : './examples/menu-home.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/menu-home.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Menu Home
+                    </a>
                  </div>
             </div>
 

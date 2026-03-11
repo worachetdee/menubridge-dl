@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Menu Home - MenuBridge</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <!-- Web Components -->
+    <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-toggle.js" defer></script>
+
+    <style>
+        body {
+            font-family: "Inter", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Examples</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Menu Home</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        The main dashboard for managing menus — view shared menus, create new ones, and access previous versions.
+                    </p>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">visibility</span>
+                        Preview
+                    </h2>
+
+                    <!-- App Shell Preview -->
+                    <div class="bg-white rounded-2xl border border-[#eaf1f1] shadow-soft overflow-hidden">
+
+                        <!-- Top Bar -->
+                        <div class="flex items-center justify-between px-6 py-4 border-b border-[#eaf1f1]">
+                            <span class="font-display font-bold text-lg text-[#101818]">MenuBridge</span>
+                            <div class="flex items-center gap-3">
+                                <div class="flex rounded-full overflow-hidden border border-[#eaf1f1]">
+                                    <button class="px-3 py-1 text-xs font-bold bg-primary text-white">EN</button>
+                                    <button class="px-3 py-1 text-xs font-bold text-[#5c8a8a] hover:bg-gray-50 transition-colors">JP</button>
+                                </div>
+                                <button class="w-8 h-8 rounded-full flex items-center justify-center text-[#5c8a8a] hover:bg-gray-100 transition-colors">
+                                    <span class="material-symbols-outlined text-xl">person</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Content -->
+                        <div class="px-6 py-8 max-w-2xl mx-auto space-y-6">
+
+                            <!-- Page Title -->
+                            <h2 class="font-display text-2xl font-bold text-[#101818]">Menu Home</h2>
+
+                            <!-- What this app can do -->
+                            <div class="border border-[#eaf1f1] rounded-xl p-6">
+                                <div class="flex items-center justify-between mb-5">
+                                    <h3 class="font-semibold text-[#101818]">What this app can do</h3>
+                                    <button class="text-[#5c8a8a] hover:text-[#101818] transition-colors" onclick="this.closest('.border').style.display='none'">
+                                        <span class="material-symbols-outlined text-xl">close</span>
+                                    </button>
+                                </div>
+                                <div class="space-y-4">
+                                    <div class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-[#5c8a8a] mt-0.5">upload</span>
+                                        <p class="text-sm text-[#101818]">Upload or enter a Japanese menu</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-[#5c8a8a] mt-0.5">auto_awesome</span>
+                                        <p class="text-sm text-[#101818]">Automatically generate an English version with short descriptions and tags</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-[#5c8a8a] mt-0.5">task_alt</span>
+                                        <p class="text-sm text-[#101818]">Confirm dietary tags like 🌱 vegetarian or 🐟 fish</p>
+                                    </div>
+                                    <div class="flex items-start gap-3">
+                                        <span class="material-symbols-outlined text-[#5c8a8a] mt-0.5">qr_code_2</span>
+                                        <p class="text-sm text-[#101818]">Share the menu via QR code</p>
+                                    </div>
+                                </div>
+                                <div class="mt-6">
+                                    <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
+                                        <span class="material-symbols-outlined text-base">visibility</span>
+                                        View Sample Menu
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Shared Menu -->
+                            <div class="border border-[#eaf1f1] rounded-xl p-6">
+                                <h3 class="font-semibold text-[#101818] mb-5">Shared Menu</h3>
+                                <div class="flex flex-col sm:flex-row gap-6">
+                                    <!-- Menu Image / QR area -->
+                                    <div class="w-full sm:w-48 shrink-0 space-y-4">
+                                        <div class="w-full aspect-[4/3] bg-gray-100 rounded-xl border border-[#eaf1f1]"></div>
+                                        <!-- QR Code placeholder -->
+                                        <div class="w-28 h-28 bg-gray-100 rounded-lg border border-[#eaf1f1] flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-4xl text-gray-300">qr_code_2</span>
+                                        </div>
+                                    </div>
+                                    <!-- Menu Details -->
+                                    <div class="flex-1">
+                                        <p class="text-xs text-[#5c8a8a] mb-1">Menu Name:</p>
+                                        <p class="font-semibold text-[#101818] mb-3">Athipatai Bar</p>
+                                        <p class="text-xs text-[#5c8a8a] mb-1">Last updated:</p>
+                                        <p class="text-sm text-[#101818] mb-5">Feb 12, 2026</p>
+                                        <div class="flex flex-wrap gap-2">
+                                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">visibility</span>
+                                                Open Shared Menu (guest view)
+                                            </button>
+                                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">edit</span>
+                                                Edit
+                                            </button>
+                                        </div>
+                                        <div class="flex flex-wrap gap-2 mt-2">
+                                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">content_copy</span>
+                                                Copy Link
+                                            </button>
+                                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">download</span>
+                                                Download QR
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Replace Menu -->
+                            <div class="border border-[#eaf1f1] rounded-xl p-8 text-center">
+                                <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
+                                    <span class="material-symbols-outlined text-2xl text-[#5c8a8a]">add</span>
+                                </div>
+                                <h3 class="font-semibold text-[#101818] mb-1">Replace Menu</h3>
+                                <p class="text-sm text-[#5c8a8a] mb-5">Replace the current published menu with a new menu</p>
+                                <button class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all">
+                                    <span class="material-symbols-outlined text-base">add</span>
+                                    Create Menu
+                                </button>
+                            </div>
+
+                            <!-- Previous Menus -->
+                            <div class="border border-[#eaf1f1] rounded-xl p-6">
+                                <h3 class="font-semibold text-[#101818] mb-4">Previous Menus</h3>
+                                <div class="divide-y divide-[#eaf1f1]">
+                                    <!-- Item 1 -->
+                                    <div class="flex items-center justify-between py-3">
+                                        <div>
+                                            <p class="font-medium text-sm text-[#101818]">Athipatai Brewery Bar</p>
+                                            <p class="text-xs text-[#5c8a8a]">Last updated: Feb 12, 2026</p>
+                                        </div>
+                                        <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
+                                            <span class="material-symbols-outlined text-sm">visibility</span>
+                                            View
+                                        </button>
+                                    </div>
+                                    <!-- Item 2 -->
+                                    <div class="flex items-center justify-between py-3">
+                                        <div>
+                                            <p class="font-medium text-sm text-[#101818]">Athipatai Brewery Bar</p>
+                                            <p class="text-xs text-[#5c8a8a]">Last updated: Jan 14, 2026</p>
+                                        </div>
+                                        <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
+                                            <span class="material-symbols-outlined text-sm">visibility</span>
+                                            View
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anatomy Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">schema</span>
+                        Anatomy
+                    </h2>
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-8">
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Top Bar</p>
+                                    <p class="text-[#5c8a8a]">App logo, language toggle (EN/JP), and user avatar — persistent across all authenticated views.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">2</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Onboarding Card</p>
+                                    <p class="text-[#5c8a8a]">Dismissible info card explaining core features — shown to new users, hidden via close button.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">3</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Shared Menu</p>
+                                    <p class="text-[#5c8a8a]">Displays the currently published menu with image preview, QR code, metadata, and action buttons (view, edit, copy link, download QR).</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">4</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Replace Menu</p>
+                                    <p class="text-[#5c8a8a]">CTA area to replace the current published menu — routes to the Create Menu flow.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">5</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Previous Menus</p>
+                                    <p class="text-[#5c8a8a]">Version history list showing past menu iterations with timestamps and view links.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+    </div>
+</body>
+
+</html>
