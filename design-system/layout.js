@@ -150,6 +150,18 @@ function injectSidebar() {
                        class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/menu-home.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Menu Home
                     </a>
+                    <a href="${isInSubfolder ? '../examples/edit-shared-menu.html' : './examples/edit-shared-menu.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/edit-shared-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Edit Shared Menu
+                    </a>
+                    <a href="${isInSubfolder ? '../examples/edit-menu-item.html' : './examples/edit-menu-item.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/edit-menu-item.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Edit Menu Item
+                    </a>
+                    <a href="${isInSubfolder ? '../examples/guest-menu.html' : './examples/guest-menu.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/guest-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Guest Menu
+                    </a>
                  </div>
             </div>
 

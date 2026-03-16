@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Guest Menu - MenuBridge</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Theme fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&amp;family=Zen+Maru+Gothic:wght@400;500;700&amp;family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=DM+Serif+Display&amp;display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <!-- Web Components -->
+    <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-toggle.js" defer></script>
+
+    <style>
+        body {
+            font-family: "Inter", "Noto Sans JP", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+
+        /* ===== Theme System ===== */
+
+        /* Theme: Brewery (default) */
+        .theme-brewery {
+            --t-bg: #ffffff;
+            --t-bg-alt: #f9fafb;
+            --t-text: #101818;
+            --t-text-secondary: #6b7280;
+            --t-text-muted: #9ca3af;
+            --t-border: #f3f4f6;
+            --t-border-input: #d1d5db;
+            --t-pill-active-bg: #2d3142;
+            --t-pill-active-text: #ffffff;
+            --t-accent: #374151;
+            --t-heading-font: "Inter", "Noto Sans JP", sans-serif;
+            --t-body-font: "Inter", "Noto Sans JP", sans-serif;
+            --t-section-transform: none;
+            --t-section-spacing: 0;
+            --t-section-weight: 700;
+            --t-section-size: 1rem;
+            --t-item-weight: 400;
+            --t-radius: 0.5rem;
+            --t-notes-border: none;
+        }
+
+        /* Theme: Fine Dining */
+        .theme-fine-dining {
+            --t-bg: #1a1a1f;
+            --t-bg-alt: #25252b;
+            --t-text: #f0ece4;
+            --t-text-secondary: #a39e93;
+            --t-text-muted: #6b665d;
+            --t-border: #2e2e35;
+            --t-border-input: #3d3d45;
+            --t-pill-active-bg: #c9a96e;
+            --t-pill-active-text: #1a1a1f;
+            --t-accent: #c9a96e;
+            --t-heading-font: "Playfair Display", "Noto Sans JP", serif;
+            --t-body-font: "Cormorant Garamond", "Noto Sans JP", serif;
+            --t-section-transform: uppercase;
+            --t-section-spacing: 0.15em;
+            --t-section-weight: 400;
+            --t-section-size: 0.75rem;
+            --t-item-weight: 400;
+            --t-radius: 0;
+            --t-notes-border: 1px solid #2e2e35;
+        }
+
+        /* Theme: Izakaya */
+        .theme-izakaya {
+            --t-bg: #faf6f0;
+            --t-bg-alt: #f3ebe0;
+            --t-text: #3b2f20;
+            --t-text-secondary: #8b7355;
+            --t-text-muted: #b5a088;
+            --t-border: #e8dfd2;
+            --t-border-input: #d4c8b5;
+            --t-pill-active-bg: #c44b28;
+            --t-pill-active-text: #ffffff;
+            --t-accent: #c44b28;
+            --t-heading-font: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+            --t-body-font: "Zen Maru Gothic", "Noto Sans JP", sans-serif;
+            --t-section-transform: none;
+            --t-section-spacing: 0;
+            --t-section-weight: 700;
+            --t-section-size: 1rem;
+            --t-item-weight: 400;
+            --t-radius: 0.75rem;
+            --t-notes-border: 2px dashed #d4c8b5;
+        }
+
+        /* Theme: Modern Cafe */
+        .theme-cafe {
+            --t-bg: #f7f9f5;
+            --t-bg-alt: #eef2e8;
+            --t-text: #2d3a2e;
+            --t-text-secondary: #6b7c6b;
+            --t-text-muted: #9aab9a;
+            --t-border: #dfe8d8;
+            --t-border-input: #c5d4b8;
+            --t-pill-active-bg: #5a8a5a;
+            --t-pill-active-text: #ffffff;
+            --t-accent: #5a8a5a;
+            --t-heading-font: "DM Serif Display", "Noto Sans JP", serif;
+            --t-body-font: "DM Sans", "Noto Sans JP", sans-serif;
+            --t-section-transform: none;
+            --t-section-spacing: 0;
+            --t-section-weight: 400;
+            --t-section-size: 1.125rem;
+            --t-item-weight: 400;
+            --t-radius: 1rem;
+            --t-notes-border: 1px solid #dfe8d8;
+        }
+
+        /* Apply theme variables to phone screen */
+        #phone-screen[data-theme] {
+            background-color: var(--t-bg);
+            color: var(--t-text);
+            font-family: var(--t-body-font);
+        }
+        #phone-screen[data-theme] .t-header { font-family: var(--t-heading-font); color: var(--t-text); }
+        #phone-screen[data-theme] .t-subtitle { color: var(--t-text-secondary); }
+        #phone-screen[data-theme] .t-section-title {
+            color: var(--t-text);
+            font-family: var(--t-heading-font);
+            text-transform: var(--t-section-transform);
+            letter-spacing: var(--t-section-spacing);
+            font-weight: var(--t-section-weight);
+            font-size: var(--t-section-size);
+        }
+        #phone-screen[data-theme] .t-item-name { color: var(--t-text); font-family: var(--t-body-font); }
+        #phone-screen[data-theme] .t-item-desc { color: var(--t-text-secondary); }
+        #phone-screen[data-theme] .t-price { color: var(--t-accent); }
+        #phone-screen[data-theme] .t-chevron { color: var(--t-text-muted); }
+        #phone-screen[data-theme] .t-divider { border-color: var(--t-border); }
+        #phone-screen[data-theme] .t-notes {
+            background-color: var(--t-bg-alt);
+            border: var(--t-notes-border);
+            border-radius: var(--t-radius);
+        }
+        #phone-screen[data-theme] .t-notes-title { color: var(--t-text); }
+        #phone-screen[data-theme] .t-notes-text { color: var(--t-text-secondary); }
+        #phone-screen[data-theme] .t-search {
+            border-color: var(--t-border-input);
+            border-radius: var(--t-radius);
+        }
+        #phone-screen[data-theme] .t-search input { color: var(--t-text); }
+        #phone-screen[data-theme] .t-search input::placeholder { color: var(--t-text-muted); }
+        #phone-screen[data-theme] .t-search .material-symbols-outlined { color: var(--t-text-muted); }
+        #phone-screen[data-theme] .t-section-note { color: var(--t-text-secondary); }
+        #phone-screen[data-theme] .t-no-results { color: var(--t-text-muted); }
+        #phone-screen[data-theme] .t-no-results .material-symbols-outlined { color: var(--t-text-muted); }
+
+        /* Pill overrides per theme */
+        #phone-screen[data-theme] .filter-pill {
+            border-radius: var(--t-radius);
+            font-family: var(--t-body-font);
+        }
+        #phone-screen[data-theme] .filter-pill.pill-inactive {
+            border-color: var(--t-border-input);
+            color: var(--t-text-secondary);
+            background: transparent;
+        }
+        #phone-screen[data-theme] .filter-pill.pill-active {
+            background-color: var(--t-pill-active-bg);
+            color: var(--t-pill-active-text);
+            border-color: transparent;
+        }
+
+        /* Phone frame theming */
+        .phone-frame-dark { border-color: #1a1a1f !important; }
+        .phone-frame-dark .status-bar { background-color: #1a1a1f; }
+        .phone-frame-dark .status-bar span { color: #a39e93; }
+        .phone-frame-dark .dynamic-island { background-color: #0d0d10; }
+        .phone-frame-dark .battery-icon { border-color: #a39e93; }
+        .phone-frame-dark .battery-fill { background-color: #a39e93; }
+        .phone-frame-dark .home-indicator-bar { background-color: #1a1a1f; }
+        .phone-frame-dark .home-indicator-line { background-color: #6b665d; }
+
+        /* Theme selector styling */
+        .theme-btn { transition: all 0.2s ease; }
+        .theme-btn.active { box-shadow: 0 0 0 2px #267373; }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Examples</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Guest Menu</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        The guest-facing shared menu as seen on a mobile device — bilingual menu with dietary filters, search, and section navigation.
+                    </p>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">visibility</span>
+                        Preview
+                    </h2>
+
+                    <!-- Theme Selector -->
+                    <div class="mb-6">
+                        <p class="text-sm font-bold text-[#101818] mb-3">Theme</p>
+                        <div class="flex flex-wrap gap-3">
+                            <button onclick="setTheme('brewery')" class="theme-btn active flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#eaf1f1] bg-white hover:shadow-md transition-all">
+                                <div class="w-5 h-5 rounded-full bg-[#2d3142] shrink-0"></div>
+                                <div class="text-left">
+                                    <p class="text-xs font-bold text-[#101818] leading-none">Craft Brewery</p>
+                                    <p class="text-[10px] text-[#5c8a8a] mt-0.5">Inter &middot; Clean & modern</p>
+                                </div>
+                            </button>
+                            <button onclick="setTheme('fine-dining')" class="theme-btn flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#eaf1f1] bg-white hover:shadow-md transition-all">
+                                <div class="w-5 h-5 rounded-full bg-[#1a1a1f] shrink-0" style="background: linear-gradient(135deg, #1a1a1f 60%, #c9a96e)"></div>
+                                <div class="text-left">
+                                    <p class="text-xs font-bold text-[#101818] leading-none">Fine Dining</p>
+                                    <p class="text-[10px] text-[#5c8a8a] mt-0.5">Playfair &middot; Dark & elegant</p>
+                                </div>
+                            </button>
+                            <button onclick="setTheme('izakaya')" class="theme-btn flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#eaf1f1] bg-white hover:shadow-md transition-all">
+                                <div class="w-5 h-5 rounded-full shrink-0" style="background: linear-gradient(135deg, #faf6f0 60%, #c44b28)"></div>
+                                <div class="text-left">
+                                    <p class="text-xs font-bold text-[#101818] leading-none">Izakaya</p>
+                                    <p class="text-[10px] text-[#5c8a8a] mt-0.5">Zen Maru &middot; Warm & friendly</p>
+                                </div>
+                            </button>
+                            <button onclick="setTheme('cafe')" class="theme-btn flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#eaf1f1] bg-white hover:shadow-md transition-all">
+                                <div class="w-5 h-5 rounded-full shrink-0" style="background: linear-gradient(135deg, #f7f9f5 60%, #5a8a5a)"></div>
+                                <div class="text-left">
+                                    <p class="text-xs font-bold text-[#101818] leading-none">Modern Cafe</p>
+                                    <p class="text-[10px] text-[#5c8a8a] mt-0.5">DM Serif &middot; Natural & soft</p>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Phone Preview Container -->
+                    <div id="phone-bg" class="flex justify-center bg-[#f0f2f5] rounded-xl border border-[#eaf1f1] py-12 px-4 transition-colors duration-300">
+                        <div class="relative w-[375px]">
+                            <!-- Phone Frame -->
+                            <div id="phone-frame" class="relative rounded-[3rem] border-[10px] border-[#2d3142] bg-white shadow-2xl overflow-hidden transition-colors duration-300" style="box-shadow: 0 0 0 3px #b0b3bf, 0 20px 60px rgba(0,0,0,0.15);">
+
+                                <!-- Status Bar -->
+                                <div class="status-bar px-6 pt-3 pb-2 flex items-center justify-between relative transition-colors duration-300" style="background-color: var(--t-bg, #fff)">
+                                    <span class="text-xs font-semibold text-[#2d3142]">9:41</span>
+                                    <!-- Dynamic Island -->
+                                    <div class="dynamic-island w-28 h-6 bg-[#2d3142] rounded-full absolute left-1/2 -translate-x-1/2 top-3"></div>
+                                    <!-- Battery & Signal -->
+                                    <div class="flex items-center gap-1">
+                                        <div class="battery-icon w-6 h-3 border border-[#2d3142] rounded-sm relative">
+                                            <div class="battery-fill absolute inset-0.5 bg-[#2d3142] rounded-[1px]"></div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Scrollable Screen Content -->
+                                <div class="max-h-[720px] overflow-y-auto transition-colors duration-300 theme-brewery" id="phone-screen" data-theme="brewery">
+
+                                    <!-- Header -->
+                                    <div class="px-5 pt-4 pb-3">
+                                        <h3 class="t-header text-lg font-bold leading-tight" id="restaurant-name">Athipatai Brewery</h3>
+                                        <p class="t-subtitle text-sm" id="restaurant-subtitle">Athipatai Bar</p>
+                                    </div>
+
+                                    <!-- Filter Pills -->
+                                    <div id="filter-pills" class="px-5 pb-3 flex gap-2 overflow-x-auto">
+                                        <button data-filter="all" class="filter-pill pill-active shrink-0 px-4 py-1.5 rounded-full text-xs font-medium border transition-all">All</button>
+                                        <button data-filter="vegetarian" class="filter-pill pill-inactive shrink-0 px-4 py-1.5 rounded-full text-xs font-medium border transition-all">Vegetarian</button>
+                                        <button data-filter="fish" class="filter-pill pill-inactive shrink-0 px-4 py-1.5 rounded-full text-xs font-medium border transition-all">Fish</button>
+                                        <button data-filter="meat" class="filter-pill pill-inactive shrink-0 px-4 py-1.5 rounded-full text-xs font-medium border transition-all">Meat</button>
+                                    </div>
+
+                                    <!-- Search -->
+                                    <div class="px-5 pb-4">
+                                        <div class="t-search flex items-center gap-2 border px-3 py-2">
+                                            <span class="material-symbols-outlined text-base">search</span>
+                                            <input id="menu-search" type="text" placeholder="Search menu..." class="text-sm border-0 outline-none bg-transparent w-full p-0 focus:ring-0" />
+                                        </div>
+                                    </div>
+
+                                    <!-- Guest Notes -->
+                                    <div class="t-notes mx-5 mb-5 p-4" id="guest-notes">
+                                        <p class="t-notes-title text-xs font-bold mb-2">Guest Notes</p>
+                                        <div class="t-notes-text text-xs space-y-1">
+                                            <p>・テーブルチャージとして300円頂戴いたします（お通し付き）。</p>
+                                            <p>・ラストオーダー：フード 22:30 / ドリンク 23:00</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- No results message (hidden by default) -->
+                                    <div id="no-results" class="hidden px-5 py-12 text-center t-no-results">
+                                        <span class="material-symbols-outlined text-3xl mb-2">search_off</span>
+                                        <p class="text-sm">No menu items match your filter.</p>
+                                    </div>
+
+                                    <!-- ===================== -->
+                                    <!-- Section: ON TAP -->
+                                    <!-- ===================== -->
+                                    <div class="menu-section" data-section="ontap">
+                                        <div class="menu-section-header px-5 pb-2">
+                                            <h4 class="t-section-title mb-1">本日のタップリスト（ON TAP）</h4>
+                                            <p class="t-section-note text-xs mb-3">・サイズ: ハーフ (270ml) / パイント (470ml)</p>
+                                        </div>
+
+                                        <div class="t-divider divide-y">
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="vegetarian" data-name="ザ・ピープルズ・ペールエール アメリカンペールエール モルト ホップ ビール 柑橘">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm leading-relaxed">
+                                                        1. ザ・ピープルズ・ペールエール<br>
+                                                        <span class="t-item-desc text-xs">アメリカンペールエール (ABV: 5.5% / IBU: 35) モルトの甘みとホップのバランスが絶妙な看板ビール。柑橘系の爽やかな香り。</span>
+                                                    </p>
+                                                </div>
+                                                <div class="shrink-0 text-right flex items-center gap-1.5">
+                                                    <span class="t-price text-xs whitespace-nowrap">¥900 / ¥1,300</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="vegetarian" data-name="レボリューション・ヘイジーIPA ニューイングランド マンゴー パイナップル トロピカル ジューシー">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm leading-relaxed">
+                                                        2. レボリューション・ヘイジーIPA<br>
+                                                        <span class="t-item-desc text-xs">ニューイングランドIPA (ABV: 7.0% / IBU: 20) 芳醇な香りと、マンゴーやパイナップルのようなトロピカルな香りを堪能できるジューシーな一杯。</span>
+                                                    </p>
+                                                </div>
+                                                <div class="shrink-0 text-right flex items-center gap-1.5">
+                                                    <span class="t-price text-xs whitespace-nowrap">¥1,000 / ¥1,450</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="vegetarian" data-name="サイレント・マジョリティ・スタウト オートミール コーヒー ダークチョコレート オーツ麦 クリーミー">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm leading-relaxed">
+                                                        3. サイレント・マジョリティ・スタウト<br>
+                                                        <span class="t-item-desc text-xs">オートミールスタウト (ABV: 6.0% / IBU: 40) コーヒーやダークチョコレートのロースト香、オーツ麦由来のクリーミーで滑らかな口当たり。</span>
+                                                    </p>
+                                                </div>
+                                                <div class="shrink-0 text-right flex items-center gap-1.5">
+                                                    <span class="t-price text-xs whitespace-nowrap">¥950 / ¥1,400</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="vegetarian" data-name="ゴールデンエラ・ピルスナー ジャーマン クリスプ ドライ ハーブ ホップ">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm leading-relaxed">
+                                                        4. ゴールデンエラ・ピルスナー<br>
+                                                        <span class="t-item-desc text-xs">ジャーマンピルスナー (ABV: 5.0% / IBU: 30) クリスプでドライな喉越し。ハーブのようなホップの香りが食欲を引き立てます。</span>
+                                                    </p>
+                                                </div>
+                                                <div class="shrink-0 text-right flex items-center gap-1.5">
+                                                    <span class="t-price text-xs whitespace-nowrap">¥900 / ¥1,300</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="vegetarian" data-name="リバティ・柚子セゾン ファームハウスエール 柚子 スパイシー 酵母 柑橘">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm leading-relaxed">
+                                                        5. リバティ・柚子セゾン<br>
+                                                        <span class="t-item-desc text-xs">ファームハウスエール (ABV: 5.5% / IBU: 15) 日本の柚子を使用したセゾン。スパイシーな酵母の香りと柑橘の酸味が爽やか。</span>
+                                                    </p>
+                                                </div>
+                                                <div class="shrink-0 text-right flex items-center gap-1.5">
+                                                    <span class="t-price text-xs whitespace-nowrap">¥950 / ¥1,400</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ===================== -->
+                                    <!-- Section: とりあえず一品 -->
+                                    <!-- ===================== -->
+                                    <div class="menu-section" data-section="snacks">
+                                        <div class="menu-section-header px-5 pt-6 pb-2">
+                                            <h4 class="t-section-title">〈とりあえず一品〉</h4>
+                                        </div>
+
+                                        <div class="t-divider divide-y">
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="vegetarian" data-name="自家製スモークナッツ 桜チップ 燻製 ナッツ">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm">自家製スモークナッツ</p>
+                                                    <p class="t-item-desc text-xs">(桜チップを使い、店内で燻製しました)</p>
+                                                </div>
+                                                <div class="shrink-0 flex items-center gap-1.5">
+                                                    <span class="t-price text-xs">¥500</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="vegetarian" data-name="ガーリックチリ枝豆 ガーリック ラー油 ピリ辛 枝豆 ビール">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm">ガーリックチリ枝豆</p>
+                                                    <p class="t-item-desc text-xs">(ガーリックとラー油で炒めた、ビールが進むピリ辛枝豆)</p>
+                                                </div>
+                                                <div class="shrink-0 flex items-center gap-1.5">
+                                                    <span class="t-price text-xs">¥600</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="vegetarian" data-name="いぶりがっこポテトサラダ クリーミー ポテサラ 秋田 食感">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm">いぶりがっこポテトサラダ</p>
+                                                    <p class="t-item-desc text-xs">(クリーミーなポテサラに、秋田名物いぶりがっこ食感がアクセント)</p>
+                                                </div>
+                                                <div class="shrink-0 flex items-center gap-1.5">
+                                                    <span class="t-price text-xs">¥650</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- ===================== -->
+                                    <!-- Section: 揚げ物・焼き物 -->
+                                    <!-- ===================== -->
+                                    <div class="menu-section" data-section="fried">
+                                        <div class="menu-section-header px-5 pt-6 pb-2">
+                                            <h4 class="t-section-title">〈揚げ物・焼き物〉</h4>
+                                        </div>
+
+                                        <div class="t-divider divide-y">
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="vegetarian" data-name="トリュフ塩のフライドポテト 細切り ポテト トリュフ塩 フライ">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm">トリュフ塩のフライドポテト</p>
+                                                    <p class="t-item-desc text-xs">(細切りのポテトに香り高いトリュフ塩をまぶしました)</p>
+                                                </div>
+                                                <div class="shrink-0 flex items-center gap-1.5">
+                                                    <span class="t-price text-xs">¥800</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="meat" data-name="クラフトビア唐揚げ ペールエール 鶏 唐揚げ ジューシー チキン">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm">クラフトビア唐揚げ</p>
+                                                    <p class="t-item-desc text-xs">(当店のペールエールに漬け込み柔らかく仕上げた、ジューシーな唐揚げ)</p>
+                                                </div>
+                                                <div class="shrink-0 flex items-center gap-1.5">
+                                                    <span class="t-price text-xs">¥950</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                            <div class="menu-item px-5 py-3.5 flex items-start justify-between gap-3" data-tags="meat" data-name="ソーセージ3種盛り合わせ チョリソー ハーブ プレーン 粒マスタード 豚">
+                                                <div class="flex-1 min-w-0">
+                                                    <p class="t-item-name text-sm">ソーセージ3種盛り合わせ</p>
+                                                    <p class="t-item-desc text-xs">(チョリソー、ハーブ、プレーンの3種。粒マスタード添え)</p>
+                                                </div>
+                                                <div class="shrink-0 flex items-center gap-1.5">
+                                                    <span class="t-price text-xs">¥1,200</span>
+                                                    <span class="t-chevron material-symbols-outlined text-sm">chevron_right</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Bottom safe area -->
+                                    <div class="h-8"></div>
+
+                                </div>
+
+                                <!-- Home Indicator -->
+                                <div class="home-indicator-bar py-2 flex justify-center transition-colors duration-300" style="background-color: var(--t-bg, #fff)">
+                                    <div class="home-indicator-line w-32 h-1 bg-[#2d3142] rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anatomy Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">schema</span>
+                        Anatomy
+                    </h2>
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-8">
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Restaurant Header</p>
+                                    <p class="text-[#5c8a8a]">Restaurant name and subtitle displayed at the top — sets context for the guest.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">2</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Dietary Filter Pills</p>
+                                    <p class="text-[#5c8a8a]">Horizontal filter bar (All, Vegetarian, Fish, Meat) — guests tap to filter items by dietary category. Active pill is filled dark.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">3</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Search Bar</p>
+                                    <p class="text-[#5c8a8a]">Full-width search input for quick item lookup by name or ingredient keyword.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">4</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Guest Notes</p>
+                                    <p class="text-[#5c8a8a]">Subtle info box with restaurant policies — table charge, last order times, and other notices set by the restaurant owner.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">5</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Menu Sections</p>
+                                    <p class="text-[#5c8a8a]">Grouped by category (ON TAP, とりあえず一品, 揚げ物・焼き物). Each section has a bold header with optional subtitle notes.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">6</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Menu Item Row</p>
+                                    <p class="text-[#5c8a8a]">Each item shows Japanese name, parenthetical description, price(s), and a chevron indicating a detail view is available. ON TAP items show half/pint pricing.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Implementation Details -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">code</span>
+                            Design Notes
+                        </h2>
+                        <ul class="space-y-4 text-sm text-[#5c8a8a] list-disc list-inside bg-white p-6 rounded-xl border border-[#eaf1f1]">
+                            <li>
+                                <strong class="text-[#101818]">Mobile-first:</strong> This is the primary view guests see via QR code on their phones. The layout is optimized for single-column mobile reading.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Bilingual Content:</strong> Item names are in Japanese with descriptions in parentheses. The EN/JP toggle on the owner side controls which translations are shown.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Filter Pills:</strong> Dietary filters use pill buttons with filled/outline states. "All" is the default active state.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Chevron Detail:</strong> Each item row has a right chevron indicating tappable detail — leads to ingredient breakdown, dietary tags, and guest explanation.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Minimal Chrome:</strong> No app navigation bar — this is a public-facing page accessed via shared link or QR code. Clean, distraction-free reading experience.
+                            </li>
+                            <li>
+                                <strong class="text-[#101818]">Themeable:</strong> The menu supports 4 themes via CSS custom properties — Craft Brewery (Inter, clean), Fine Dining (Playfair Display, dark/gold), Izakaya (Zen Maru Gothic, warm earth tones), and Modern Cafe (DM Serif, natural sage green). Themes control fonts, colors, border radius, and section title treatment.
+                            </li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                            <span class="material-symbols-outlined text-primary">html</span>
+                            Structure
+                        </h2>
+                        <div class="bg-gray-900 rounded-xl p-6 overflow-x-auto text-xs font-mono text-gray-300 leading-relaxed shadow-sm">
+                            &lt;!-- Guest Menu (public, no auth) --&gt;
+                            &lt;header&gt;Restaurant Name&lt;/header&gt;
+                            &lt;nav&gt;Filter Pills (All | Veg | Fish | Meat)&lt;/nav&gt;
+                            &lt;input&gt;Search menu...&lt;/input&gt;
+
+                            &lt;section class="guest-notes"&gt;
+                            &lt;!-- Table charge, last order --&gt;
+                            &lt;/section&gt;
+
+                            &lt;section&gt;
+                            &lt;h4&gt;本日のタップリスト（ON TAP）&lt;/h4&gt;
+                            &lt;div class="menu-item"&gt;
+                            &lt;span&gt;Name + description&lt;/span&gt;
+                            &lt;span&gt;¥half / ¥pint&lt;/span&gt;
+                            &lt;/div&gt;
+                            &lt;/section&gt;
+
+                            &lt;section&gt;
+                            &lt;h4&gt;〈とりあえず一品〉&lt;/h4&gt;
+                            &lt;div class="menu-item"&gt;...&lt;/div&gt;
+                            &lt;/section&gt;
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+    </div>
+
+    <script>
+    // ===== Theme Switcher =====
+    var themeConfigs = {
+        brewery: {
+            name: 'Athipatai Brewery',
+            subtitle: 'Athipatai Bar',
+            frameDark: false,
+            phoneBg: '#f0f2f5'
+        },
+        'fine-dining': {
+            name: 'Nagi',
+            subtitle: 'Omakase & Seasonal Cuisine',
+            frameDark: true,
+            phoneBg: '#0d0d10'
+        },
+        izakaya: {
+            name: '酒場 たぬき',
+            subtitle: 'Tanuki Izakaya',
+            frameDark: false,
+            phoneBg: '#e8dfd2'
+        },
+        cafe: {
+            name: 'Midori Coffee',
+            subtitle: 'Specialty Coffee & Light Meals',
+            frameDark: false,
+            phoneBg: '#dfe8d8'
+        }
+    };
+
+    function setTheme(theme) {
+        var screen = document.getElementById('phone-screen');
+        var frame = document.getElementById('phone-frame');
+        var bg = document.getElementById('phone-bg');
+        var conf = themeConfigs[theme];
+
+        // Swap theme class
+        screen.className = screen.className.replace(/theme-\S+/g, '');
+        screen.classList.add('theme-' + theme);
+        screen.setAttribute('data-theme', theme);
+
+        // Update restaurant name
+        document.getElementById('restaurant-name').textContent = conf.name;
+        document.getElementById('restaurant-subtitle').textContent = conf.subtitle;
+
+        // Phone frame dark mode
+        if (conf.frameDark) {
+            frame.classList.add('phone-frame-dark');
+            frame.style.borderColor = '#1a1a1f';
+            frame.style.boxShadow = '0 0 0 3px #3d3d45, 0 20px 60px rgba(0,0,0,0.4)';
+        } else {
+            frame.classList.remove('phone-frame-dark');
+            frame.style.borderColor = '#2d3142';
+            frame.style.boxShadow = '0 0 0 3px #b0b3bf, 0 20px 60px rgba(0,0,0,0.15)';
+        }
+
+        // Background
+        bg.style.backgroundColor = conf.phoneBg;
+
+        // Update theme selector buttons
+        document.querySelectorAll('.theme-btn').forEach(function (btn) {
+            btn.classList.remove('active');
+        });
+        event.currentTarget.classList.add('active');
+    }
+
+    // ===== Filter & Search =====
+    document.addEventListener('DOMContentLoaded', function () {
+        var activeFilter = 'all';
+        var pills = document.querySelectorAll('.filter-pill');
+        var items = document.querySelectorAll('.menu-item');
+        var sections = document.querySelectorAll('.menu-section');
+        var searchInput = document.getElementById('menu-search');
+        var noResults = document.getElementById('no-results');
+        var guestNotes = document.getElementById('guest-notes');
+
+        function applyFilters() {
+            var query = (searchInput.value || '').toLowerCase();
+            var visibleCount = 0;
+
+            items.forEach(function (item) {
+                var tags = (item.getAttribute('data-tags') || '').split(' ');
+                var name = (item.getAttribute('data-name') || '') + ' ' + item.textContent;
+                var matchesFilter = activeFilter === 'all' || tags.indexOf(activeFilter) !== -1;
+                var matchesSearch = !query || name.toLowerCase().indexOf(query) !== -1;
+                var visible = matchesFilter && matchesSearch;
+                item.style.display = visible ? '' : 'none';
+                if (visible) visibleCount++;
+            });
+
+            sections.forEach(function (section) {
+                var sectionItems = section.querySelectorAll('.menu-item');
+                var anyVisible = false;
+                sectionItems.forEach(function (item) {
+                    if (item.style.display !== 'none') anyVisible = true;
+                });
+                section.style.display = anyVisible ? '' : 'none';
+            });
+
+            noResults.style.display = visibleCount === 0 ? '' : 'none';
+            guestNotes.style.display = (activeFilter === 'all' && !query) ? '' : 'none';
+        }
+
+        pills.forEach(function (pill) {
+            pill.addEventListener('click', function () {
+                activeFilter = pill.getAttribute('data-filter');
+
+                pills.forEach(function (p) {
+                    p.classList.remove('pill-active');
+                    p.classList.add('pill-inactive');
+                });
+                pill.classList.remove('pill-inactive');
+                pill.classList.add('pill-active');
+
+                applyFilters();
+            });
+        });
+
+        searchInput.addEventListener('input', applyFilters);
+    });
+    </script>
+</body>
+
+</html>

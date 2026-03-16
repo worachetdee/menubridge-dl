@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Edit Menu Item - MenuBridge</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <!-- Web Components -->
+    <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-toggle.js" defer></script>
+
+    <style>
+        body {
+            font-family: "Inter", "Noto Sans JP", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+
+        /* Accordion toggle */
+        details summary::-webkit-details-marker { display: none; }
+        details summary { list-style: none; }
+        details[open] summary .chevron { transform: rotate(180deg); }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Examples</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Edit Menu Item</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        Interaction detail for editing a single menu item — name, price, reorder, guest explanations, and dietary information.
+                    </p>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">visibility</span>
+                        Preview
+                    </h2>
+
+                    <!-- App Shell Preview -->
+                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-[#F9FAFB] shadow-sm">
+                        <!-- Browser Header Simulation -->
+                        <div class="bg-gray-50 border-b border-[#eaf1f1] px-4 py-2 flex items-center gap-2">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="flex-1 mx-4">
+                                <div class="bg-white rounded-md px-3 py-1 text-xs text-[#5c8a8a] border border-[#eaf1f1] max-w-md">
+                                    menubridge.app/edit-shared-menu/item
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white">
+                            <!-- Top Bar -->
+                            <div class="bg-white border-b border-[#eaf1f1] px-8 py-4 flex items-center justify-between">
+                                <div class="text-lg font-bold font-display text-[#101818]">MenuBridge</div>
+                                <div class="flex items-center gap-4">
+                                    <menu-toggle items="EN, JP" selected="EN"></menu-toggle>
+                                    <div class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
+                                        <span class="material-symbols-outlined text-sm">person</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="px-6 py-10 max-w-3xl mx-auto">
+
+                                <!-- Page Title -->
+                                <div class="mb-8">
+                                    <h2 class="font-display text-2xl font-bold text-[#101818]">Edit Shared Menu Interactions</h2>
+                                    <p class="text-lg text-[#5c8a8a] mt-1">Menu item: Edit menu item or price</p>
+                                </div>
+
+                                <!-- Edit Card -->
+                                <div class="border border-[#eaf1f1] rounded-xl p-8 bg-white shadow-sm">
+
+                                    <!-- Name & Price Row -->
+                                    <div class="flex flex-col md:flex-row md:items-end gap-4 mb-2">
+                                        <div class="flex-1">
+                                            <label class="block text-sm text-[#5c8a8a] mb-1.5">Item Name（品名）</label>
+                                            <input type="text" value="一口大葉素麺"
+                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm" />
+                                        </div>
+                                        <div class="w-28">
+                                            <label class="block text-sm text-[#5c8a8a] mb-1.5">Price（価格）</label>
+                                            <input type="text" value="800円"
+                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm" />
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <button class="w-10 h-10 rounded-lg border border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a] hover:bg-gray-50 hover:text-[#101818] transition-colors">
+                                                <span class="material-symbols-outlined text-lg">arrow_upward</span>
+                                            </button>
+                                            <button class="w-10 h-10 rounded-lg border border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a] hover:bg-gray-50 hover:text-[#101818] transition-colors">
+                                                <span class="material-symbols-outlined text-lg">arrow_downward</span>
+                                            </button>
+                                            <button class="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-bold bg-[#101818] text-white rounded-lg hover:bg-[#101818]/90 transition-all">
+                                                <span class="material-symbols-outlined text-sm">check</span> Done
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-tertiary mb-6">Note: Editing item name will regenerate menu item components</p>
+
+                                    <!-- Delete Item -->
+                                    <div class="flex justify-center mb-8">
+                                        <button class="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-red-50 hover:border-red-200 hover:text-red-600 transition-colors">
+                                            <span class="material-symbols-outlined text-base">delete</span>
+                                            Delete Item
+                                        </button>
+                                    </div>
+
+                                    <!-- Guest Explanations Accordion -->
+                                    <details open>
+                                        <summary class="flex items-center gap-2 cursor-pointer py-3 border-t border-[#eaf1f1] select-none">
+                                            <span class="material-symbols-outlined text-base text-[#5c8a8a] transition-transform duration-200 chevron">expand_less</span>
+                                            <span class="text-sm text-[#5c8a8a]">Guest explanations and dietary information</span>
+                                        </summary>
+
+                                        <div class="pt-4 space-y-6">
+
+                                            <!-- Components Header -->
+                                            <div class="flex items-center justify-between">
+                                                <p class="text-sm font-medium text-primary">Components selected for guest explanation</p>
+                                                <button class="inline-flex items-center gap-1.5 text-xs text-[#5c8a8a] hover:text-[#101818] transition-colors">
+                                                    <span class="material-symbols-outlined text-sm">edit_note</span> Edit
+                                                </button>
+                                            </div>
+
+                                            <!-- Component Card 1 -->
+                                            <div class="border border-[#eaf1f1] rounded-xl p-5">
+                                                <div class="flex items-start justify-between gap-4">
+                                                    <div class="flex-1">
+                                                        <p class="text-sm text-[#101818] mb-2">
+                                                            <span class="font-bold">大葉:</span>
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                                                        </p>
+                                                        <p class="text-xs text-[#5c8a8a]">
+                                                            Reason: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                                                        </p>
+                                                    </div>
+                                                    <div class="shrink-0">
+                                                        <div class="inline-flex rounded-lg border border-[#eaf1f1] overflow-hidden">
+                                                            <button class="px-4 py-1.5 text-xs font-medium bg-[#101818] text-white">Include</button>
+                                                            <button class="px-4 py-1.5 text-xs font-medium text-[#5c8a8a] hover:bg-gray-50 transition-colors">Hide</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Component Card 2 -->
+                                            <div class="border border-[#eaf1f1] rounded-xl p-5">
+                                                <div class="flex items-start justify-between gap-4">
+                                                    <div class="flex-1">
+                                                        <p class="text-sm text-[#101818] mb-2">
+                                                            <span class="font-bold">素麺:</span>
+                                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                                                        </p>
+                                                        <p class="text-xs text-[#5c8a8a]">
+                                                            Reason: Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
+                                                        </p>
+                                                    </div>
+                                                    <div class="shrink-0">
+                                                        <div class="inline-flex rounded-lg border border-[#eaf1f1] overflow-hidden">
+                                                            <button class="px-4 py-1.5 text-xs font-medium bg-[#101818] text-white">Include</button>
+                                                            <button class="px-4 py-1.5 text-xs font-medium text-[#5c8a8a] hover:bg-gray-50 transition-colors">Hide</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Dietary Information -->
+                                            <div>
+                                                <p class="text-sm text-primary mb-3">Dietary Information</p>
+                                                <div class="flex items-center gap-6">
+                                                    <div class="flex flex-col items-center gap-1.5">
+                                                        <div class="w-12 h-12 rounded-full border-2 border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                            <span class="material-symbols-outlined text-xl">eco</span>
+                                                        </div>
+                                                        <span class="text-[11px] text-[#5c8a8a]">Vegetarian</span>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-1.5">
+                                                        <div class="w-12 h-12 rounded-full border-2 border-[#101818] flex items-center justify-center text-[#101818]">
+                                                            <span class="material-symbols-outlined text-xl">set_meal</span>
+                                                        </div>
+                                                        <span class="text-[11px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                        <span class="text-[10px] font-bold text-[#101818]">Suggested</span>
+                                                    </div>
+                                                    <div class="flex flex-col items-center gap-1.5">
+                                                        <div class="w-12 h-12 rounded-full border-2 border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                            <span class="material-symbols-outlined text-xl">kebab_dining</span>
+                                                        </div>
+                                                        <span class="text-[11px] text-[#5c8a8a]">Meat</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </details>
+
+                                </div>
+
+                                <!-- Notes Section (outside card) -->
+                                <div class="mt-12">
+                                    <h3 class="text-lg font-bold text-[#101818] mb-4">Notes:</h3>
+                                    <ul class="list-disc list-inside space-y-3 text-sm text-[#101818]">
+                                        <li>Editing item name or price disables component edit button</li>
+                                        <li>If item name is edited, prompt user to regenerate components and guest explanations: "Regenerate menu item components and guest explanations?" (yes/no)</li>
+                                        <li>Consider where reorder controls (next to Done button) should be placed or whether they should be removed.</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anatomy Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">schema</span>
+                        Anatomy
+                    </h2>
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-8">
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Item Name & Price</p>
+                                    <p class="text-[#5c8a8a]">Editable fields for the Japanese item name and price. Editing the name triggers a regeneration warning.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">2</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Reorder & Done Controls</p>
+                                    <p class="text-[#5c8a8a]">Up/down arrow buttons to reorder within the section, and a Done button to confirm changes.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">3</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Delete Item</p>
+                                    <p class="text-[#5c8a8a]">Centered destructive action button — removes the menu item from the section.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">4</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Guest Explanation Components</p>
+                                    <p class="text-[#5c8a8a]">AI-generated explanation cards for each ingredient component. Each card has an Include/Hide toggle to control visibility in the guest-facing menu.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">5</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Dietary Information</p>
+                                    <p class="text-[#5c8a8a]">Icon-based dietary tags (Vegetarian, Fish/Shellfish, Meat). Active/suggested tags show a darker border. AI suggests tags based on ingredients.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+    </div>
+</body>
+
+</html>

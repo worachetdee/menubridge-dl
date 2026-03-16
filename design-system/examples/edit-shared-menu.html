@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Edit Shared Menu - MenuBridge</title>
+    <!-- Dependencies -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+
+    <!-- Config & Layout -->
+    <script src="../config.js"></script>
+    <script src="../layout.js"></script>
+    <!-- Web Components -->
+    <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-toggle.js" defer></script>
+
+    <style>
+        body {
+            font-family: "Inter", "Noto Sans JP", sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: "Epilogue", serif;
+        }
+    </style>
+</head>
+
+<body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
+    <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
+
+        <!-- Sidebar Injected by layout.js -->
+        <aside id="app-sidebar"></aside>
+
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
+            <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <div class="mb-12">
+                    <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Examples</p>
+                    <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Edit Shared Menu</h1>
+                    <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
+                        Full editing interface for the published shared menu — manage courses, à la carte sections, menu items, prices, and dietary information.
+                    </p>
+                </div>
+
+                <!-- Preview Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">visibility</span>
+                        Preview
+                    </h2>
+
+                    <!-- App Shell Preview -->
+                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-[#F9FAFB] shadow-sm">
+                        <!-- Browser Header Simulation -->
+                        <div class="bg-gray-50 border-b border-[#eaf1f1] px-4 py-2 flex items-center gap-2">
+                            <div class="flex gap-1.5">
+                                <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                            </div>
+                            <div class="flex-1 mx-4">
+                                <div class="bg-white rounded-md px-3 py-1 text-xs text-[#5c8a8a] border border-[#eaf1f1] max-w-md">
+                                    menubridge.app/edit-shared-menu
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bg-white">
+                            <!-- Top Bar -->
+                            <div class="bg-white border-b border-[#eaf1f1] px-8 py-4 flex items-center justify-between">
+                                <div class="text-lg font-bold font-display text-[#101818]">MenuBridge</div>
+                                <div class="flex items-center gap-4">
+                                    <menu-toggle items="EN, JP" selected="EN"></menu-toggle>
+                                    <div class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
+                                        <span class="material-symbols-outlined text-sm">person</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Content -->
+                            <div class="px-6 py-8 max-w-3xl mx-auto space-y-8">
+
+                                <!-- Back link & Page Title -->
+                                <div>
+                                    <a href="menu-home.html" class="text-xs font-medium text-gray-500 hover:text-[#101818] flex items-center gap-1 mb-2">
+                                        <span class="material-symbols-outlined text-sm">arrow_back</span>
+                                        Back to Menu Page
+                                    </a>
+                                    <p class="text-xs text-[#5c8a8a] mb-1">共有メニューの編集</p>
+                                    <h2 class="font-display text-2xl font-bold text-[#101818] mb-2">Edit Shared Menu</h2>
+                                    <p class="text-sm text-[#5c8a8a]">Edit your published menu. Update Japanese text, ingredients, preparations, and dietary information.</p>
+                                    <p class="text-sm text-[#5c8a8a]">（公開されたメニューを編集します。日本語テキスト、材料、調理法、食事情報を更新できます。）</p>
+                                </div>
+
+                                <!-- ===================== -->
+                                <!-- COURSE SECTION -->
+                                <!-- ===================== -->
+
+                                <!-- Course Header -->
+                                <div>
+                                    <div class="flex items-center justify-between mb-1">
+                                        <h3 class="font-bold text-[#101818]">おまかせコース <span class="text-sm font-normal text-[#5c8a8a]">Course</span></h3>
+                                        <div class="flex items-center gap-2">
+                                            <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">edit</span> Edit
+                                            </button>
+                                            <button class="text-xs text-red-400 hover:text-red-600 flex items-center gap-1 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">delete</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-[#5c8a8a] mb-4">コースは1人一品で10品程度になります。</p>
+
+                                    <!-- Editing a Course Item (expanded state) -->
+                                    <div class="border border-[#eaf1f1] rounded-lg p-5 mb-4 bg-white">
+                                        <p class="text-xs text-[#5c8a8a] mb-2">Course Item Name（コースアイテム名）</p>
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <input type="text" value="季節前菜" class="flex-1 rounded-lg border-[#eaf1f1] bg-white px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+                                            <button class="text-[#5c8a8a] hover:text-[#101818] transition-colors"><span class="material-symbols-outlined text-lg">arrow_upward</span></button>
+                                            <button class="text-[#5c8a8a] hover:text-[#101818] transition-colors"><span class="material-symbols-outlined text-lg">arrow_downward</span></button>
+                                            <button class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold bg-[#101818] text-white rounded-lg hover:bg-[#101818]/90 transition-all">
+                                                <span class="material-symbols-outlined text-sm">check</span> Done
+                                            </button>
+                                            <button class="text-red-400 hover:text-red-600 transition-colors"><span class="material-symbols-outlined text-lg">delete</span></button>
+                                        </div>
+
+                                        <div class="flex items-center gap-2 mb-4">
+                                            <input type="checkbox" class="rounded border-gray-300 text-primary focus:ring-primary" checked />
+                                            <span class="text-xs text-[#5c8a8a]">Regenerate Ingredients & Preparations</span>
+                                        </div>
+                                        <p class="text-xs text-[#5c8a8a] mb-1">材料と調理法を再生成</p>
+
+                                        <!-- Ingredients & Preparations -->
+                                        <div class="space-y-3 mt-4">
+                                            <p class="text-sm font-semibold text-[#101818]">Ingredients & Preparations（食材と調理法の説明）</p>
+
+                                            <div>
+                                                <p class="text-xs text-[#5c8a8a] mb-1">Ingredient / Preparation（食材 / 調理法）</p>
+                                                <input type="text" value="旬の野菜" class="w-full rounded-lg border-[#eaf1f1] bg-white px-3 py-2 text-sm focus:border-primary focus:ring-primary" />
+                                            </div>
+
+                                            <div>
+                                                <p class="text-xs text-[#5c8a8a] mb-1">Guest Explanation（ゲスト向け説明）</p>
+                                                <textarea rows="2" class="w-full rounded-lg border-[#eaf1f1] bg-white px-3 py-2 text-sm focus:border-primary focus:ring-primary resize-none">お手を使いながら召し上げれます</textarea>
+                                            </div>
+                                        </div>
+
+                                        <!-- Add Ingredient -->
+                                        <button class="mt-4 text-xs text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+                                            <span class="material-symbols-outlined text-sm">add</span>
+                                            Add Ingredient or Preparation
+                                        </button>
+                                        <p class="text-xs text-[#5c8a8a] ml-5">（材料または調理法を追加）</p>
+
+                                        <!-- Dietary Information -->
+                                        <div class="mt-6">
+                                            <p class="text-sm text-[#5c8a8a] mb-3">Dietary Information（食事情報）</p>
+                                            <div class="flex items-center gap-4">
+                                                <div class="flex flex-col items-center gap-1">
+                                                    <div class="w-10 h-10 rounded-full border-2 border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                        <span class="material-symbols-outlined text-xl">eco</span>
+                                                    </div>
+                                                    <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
+                                                </div>
+                                                <div class="flex flex-col items-center gap-1">
+                                                    <div class="w-10 h-10 rounded-full border-2 border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                        <span class="material-symbols-outlined text-xl">set_meal</span>
+                                                    </div>
+                                                    <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
+                                                </div>
+                                                <div class="flex flex-col items-center gap-1">
+                                                    <div class="w-10 h-10 rounded-full border-2 border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                        <span class="material-symbols-outlined text-xl">kebab_dining</span>
+                                                    </div>
+                                                    <span class="text-[10px] text-[#5c8a8a]">Meat</span>
+                                                </div>
+                                            </div>
+                                            <p class="text-xs text-[#5c8a8a] mt-2">Suggested: <span class="font-medium">Not suggested</span> · Not suggested</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Course Items List -->
+                                    <div class="space-y-2">
+                                        <div class="flex items-center justify-between py-2 pl-4 border-l-2 border-[#eaf1f1]">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>本日の刺身 お造り <span class="text-xs text-[#5c8a8a] ml-1">Course Item</span></p>
+                                            <div class="flex items-center gap-2">
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 pl-4 border-l-2 border-[#eaf1f1]">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>焼き物 <span class="text-xs text-[#5c8a8a] ml-1">Course Item</span></p>
+                                            <div class="flex items-center gap-2">
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 pl-4 border-l-2 border-[#eaf1f1]">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>揚げ物 <span class="text-xs text-[#5c8a8a] ml-1">Course Item</span></p>
+                                            <div class="flex items-center gap-2">
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-2 pl-4 border-l-2 border-[#eaf1f1]">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>メのご飯 <span class="text-xs text-[#5c8a8a] ml-1">Course Item</span></p>
+                                            <div class="flex items-center gap-2">
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Add Course Item -->
+                                    <button class="mt-3 text-xs text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+                                        <span class="material-symbols-outlined text-sm">add</span>
+                                        Add Course Item
+                                    </button>
+                                    <p class="text-xs text-[#5c8a8a] ml-5">（コースアイテムを追加）</p>
+                                </div>
+
+                                <!-- Guest Notes -->
+                                <div class="border-t border-[#eaf1f1] pt-6">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h3 class="font-bold text-[#101818]">ご来店のお客様へ <span class="text-sm font-normal text-[#5c8a8a]">Guest Notes</span></h3>
+                                        <div class="flex items-center gap-2">
+                                            <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">edit</span> Edit
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="text-xs text-[#5c8a8a] space-y-1">
+                                        <p>※コースは1人一品で10品程度になります。</p>
+                                        <p>※アラカルトはシェアです。ただしメニー数が限られていますので、できるだけシェアでお願いいたします。</p>
+                                        <p>※プラスは出し上げ1品、周辺から3品、周辺から3品目を食べかけ1品、品メキメバパ、</p>
+                                        <p>※おはほとんど趣味と仕事の兼ね合いですので</p>
+                                        <p>本日はよろしくお願いいたします。</p>
+                                    </div>
+                                </div>
+
+                                <!-- Divider: À la Carte -->
+                                <div class="flex items-center gap-4 py-4">
+                                    <div class="flex-1 border-t border-[#eaf1f1]"></div>
+                                    <span class="text-xs text-[#5c8a8a] font-medium">À la Carte Items (アラカルト)</span>
+                                    <div class="flex-1 border-t border-[#eaf1f1]"></div>
+                                </div>
+
+                                <!-- ===================== -->
+                                <!-- À LA CARTE SECTIONS -->
+                                <!-- ===================== -->
+
+                                <!-- Section: おつまみ -->
+                                <div>
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div>
+                                            <h3 class="font-bold text-[#101818]">おつまみ</h3>
+                                            <p class="text-xs text-[#5c8a8a]">À la carte section · Small Plates</p>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">edit</span> Edit
+                                            </button>
+                                            <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="divide-y divide-[#eaf1f1]">
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>トマトのおキムチ</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">800円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>焼き茄子のおひたし</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">800円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>サバポテトサラダ</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">850円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>アボカドのぬか漬け</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1000円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>馬肉盛中 2p</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1200円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="mt-3 text-xs text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+                                        <span class="material-symbols-outlined text-sm">add</span>
+                                        Add Menu Item
+                                    </button>
+                                    <p class="text-xs text-[#5c8a8a] ml-5">（メニューアイテムを追加）</p>
+                                </div>
+
+                                <!-- Section: 主菜 -->
+                                <div class="border-t border-[#eaf1f1] pt-6">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div>
+                                            <h3 class="font-bold text-[#101818]">主菜</h3>
+                                            <p class="text-xs text-[#5c8a8a]">À la carte section · Main Dishes</p>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">edit</span> Edit
+                                            </button>
+                                            <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="divide-y divide-[#eaf1f1]">
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>うなぎ 蒲焼 焼酎パイナップル</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1400円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>鰻肝 炙り マンゴー柚子ピクルス</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">2000円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>燻 蒲鉾き スモモ マスカルポーネ</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1800円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>スミイカ カリフラワー お造り</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1400円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>いちご アンディーブ 白和え</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1300円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>モバジ ゆめゆ金沢甜菜 青パパイヤ</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1400円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="mt-3 text-xs text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+                                        <span class="material-symbols-outlined text-sm">add</span>
+                                        Add Menu Item
+                                    </button>
+                                    <p class="text-xs text-[#5c8a8a] ml-5">（メニューアイテムを追加）</p>
+                                </div>
+
+                                <!-- Section: 前菜 -->
+                                <div class="border-t border-[#eaf1f1] pt-6">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div>
+                                            <h3 class="font-bold text-[#101818]">前菜</h3>
+                                            <p class="text-xs text-[#5c8a8a]">À la carte section · Hot Dishes</p>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">edit</span> Edit
+                                            </button>
+                                            <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="divide-y divide-[#eaf1f1]">
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>手羽先餃子</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1500円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>鶏足 フェンネル 蕎麦粉のクレープ</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1600円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>トリッパ 生ハムと鶏の出汁 白味</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1000円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>鮭オイル煮 メロンソース</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1600円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>だし巻き玉子 きざのり</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1100円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>万願寺とうが 海老団子はさみ焼き</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1600円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>とうもろこし オレガノ コロッケ</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1600円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="mt-3 text-xs text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+                                        <span class="material-symbols-outlined text-sm">add</span>
+                                        Add Menu Item
+                                    </button>
+                                    <p class="text-xs text-[#5c8a8a] ml-5">（メニューアイテムを追加）</p>
+                                </div>
+
+                                <!-- Section: 前方物 -->
+                                <div class="border-t border-[#eaf1f1] pt-6">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div>
+                                            <h3 class="font-bold text-[#101818]">前方物</h3>
+                                            <p class="text-xs text-[#5c8a8a]">À la carte section · Grilled Dishes</p>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">edit</span> Edit
+                                            </button>
+                                            <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="divide-y divide-[#eaf1f1]">
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>角煮鶏腿 バジルマヨ 塩昆布タレ</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1600円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>太刀魚 冬瓜 翡翠キウイソース</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">2000円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>鶏鳳翅 黒米のサラダ 黒ニンニク</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">2000円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>大好しいたけ もち</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">700円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="mt-3 text-xs text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+                                        <span class="material-symbols-outlined text-sm">add</span>
+                                        Add Menu Item
+                                    </button>
+                                    <p class="text-xs text-[#5c8a8a] ml-5">（メニューアイテムを追加）</p>
+                                </div>
+
+                                <!-- Section: 〆 (Closing) -->
+                                <div class="border-t border-[#eaf1f1] pt-6">
+                                    <div class="flex items-center justify-between mb-3">
+                                        <div>
+                                            <h3 class="font-bold text-[#101818]">〆</h3>
+                                            <p class="text-xs text-[#5c8a8a]">À la carte section · Closing Course</p>
+                                        </div>
+                                        <div class="flex items-center gap-2">
+                                            <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1 transition-colors">
+                                                <span class="material-symbols-outlined text-sm">edit</span> Edit
+                                            </button>
+                                            <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                        </div>
+                                    </div>
+                                    <div class="divide-y divide-[#eaf1f1]">
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>白飯 葉山椒 素鶏</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">1800円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>汁子 コリンキー 炊き込みご飯</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">2600円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between py-3">
+                                            <p class="text-sm text-[#101818]"><span class="text-primary mr-2">→</span>ツナマヨおにぎり</p>
+                                            <div class="flex items-center gap-3">
+                                                <span class="text-sm font-medium text-[#101818]">400円</span>
+                                                <button class="text-xs text-[#5c8a8a] hover:text-[#101818] flex items-center gap-1"><span class="material-symbols-outlined text-sm">edit</span> Edit</button>
+                                                <button class="text-red-400 hover:text-red-600"><span class="material-symbols-outlined text-sm">delete</span></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <button class="mt-3 text-xs text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+                                        <span class="material-symbols-outlined text-sm">add</span>
+                                        Add Menu Item
+                                    </button>
+                                    <p class="text-xs text-[#5c8a8a] ml-5">（メニューアイテムを追加）</p>
+                                </div>
+
+                                <!-- Add Section -->
+                                <div class="flex justify-center pt-6">
+                                    <button class="text-sm text-primary hover:text-primary/80 flex items-center gap-1 font-medium">
+                                        <span class="material-symbols-outlined text-base">add</span>
+                                        Add Section
+                                    </button>
+                                </div>
+                                <p class="text-xs text-[#5c8a8a] text-center">（セクションを追加）</p>
+
+                                <!-- Sticky Footer CTA -->
+                                <div class="sticky bottom-0 bg-white border-t border-[#eaf1f1] py-4 mt-8 flex justify-center">
+                                    <a href="preview-menu.html">
+                                        <button class="inline-flex items-center gap-2 px-8 py-3 text-sm font-bold bg-tertiary text-white rounded-lg shadow-sm hover:bg-tertiary/90 transition-all">
+                                            Preview Shared Menu Layout
+                                            <span class="material-symbols-outlined text-base">arrow_forward</span>
+                                        </button>
+                                    </a>
+                                    <p class="text-xs text-[#5c8a8a] ml-3 flex items-center">（共有メニューレイアウトをプレビュー）</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anatomy Section -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">schema</span>
+                        Anatomy
+                    </h2>
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-8">
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Course Section</p>
+                                    <p class="text-[#5c8a8a]">Omakase course with expandable course items. Each item has inline edit (name, ingredients, preparations) and dietary icons.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">2</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Guest Notes</p>
+                                    <p class="text-[#5c8a8a]">Editable notice text shown to guests, with bilingual content about the restaurant's serving style.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">3</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">À la Carte Sections</p>
+                                    <p class="text-[#5c8a8a]">Multiple sections (おつまみ, 主菜, 前菜, 前方物, 〆) each containing menu items with prices, edit/delete controls.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">4</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Inline Item Row</p>
+                                    <p class="text-[#5c8a8a]">Each menu item shows Japanese name, price, and edit/delete actions. Clicking Edit opens the detailed edit interaction (see Edit Menu Item page).</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">5</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Add Controls</p>
+                                    <p class="text-[#5c8a8a]">Add Course Item, Add Menu Item per section, and Add Section at the bottom — all with bilingual labels.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">6</span>
+                                <div>
+                                    <p class="font-semibold text-[#101818]">Preview CTA</p>
+                                    <p class="text-[#5c8a8a]">Sticky footer button to preview the shared menu layout before publishing, styled with the tertiary (terracotta) color.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+
+    </div>
+</body>
+
+</html>
