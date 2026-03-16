@@ -168,23 +168,6 @@ function injectSidebar() {
             <!-- Section -->
             <div>
                  <h3 class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-0 px-2">
-                    <button onclick="toggleSection('prototype')" class="flex items-center justify-between w-full text-xs font-bold text-[#5c8a8a] uppercase tracking-wider py-2 hover:text-[#3a6b6b] transition-colors cursor-pointer bg-transparent border-0" aria-expanded="true" aria-controls="nav-prototype">
-                       <span>Prototype</span>
-                       <span class="material-symbols-outlined text-base transition-transform duration-200" id="chevron-prototype" style="transform:rotate(90deg)">chevron_right</span>
-                    </button>
-                 </h3>
-                 <div id="nav-prototype" class="flex flex-col space-y-1" style="transition:max-height 0.2s ease,opacity 0.15s ease;overflow:hidden">
-                    <a href="${isInSubfolder ? '../examples/prototype.html' : './examples/prototype.html'}"
-                       class="flex items-center gap-2 px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/prototype.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
-                       <span class="material-symbols-outlined text-base">play_circle</span>
-                       Run Prototype
-                    </a>
-                 </div>
-            </div>
-
-            <!-- Section -->
-            <div>
-                 <h3 class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-0 px-2">
                     <button onclick="toggleSection('ai-toolkit')" class="flex items-center justify-between w-full text-xs font-bold text-[#5c8a8a] uppercase tracking-wider py-2 hover:text-[#3a6b6b] transition-colors cursor-pointer bg-transparent border-0" aria-expanded="true" aria-controls="nav-ai-toolkit">
                        <span>AI Toolkit</span>
                        <span class="material-symbols-outlined text-base transition-transform duration-200" id="chevron-ai-toolkit" style="transform:rotate(90deg)">chevron_right</span>
@@ -217,10 +200,6 @@ function injectSidebar() {
         </nav>
 
         <div class="hidden lg:block mt-auto pt-6 border-t border-[#eaf1f1]">
-            <a href="${isInSubfolder ? '../examples/prototype-fullscreen.html' : './examples/prototype-fullscreen.html'}" class="flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-white text-sm font-bold shadow-sm hover:bg-primary/90 transition-all mb-4 no-underline">
-                <span class="material-symbols-outlined text-base">play_arrow</span>
-                <span>Test Prototype</span>
-            </a>
             <p class="text-xs text-[#5c8a8a] text-center">© 2026 MenuBridge</p>
         </div>
         
@@ -285,7 +264,7 @@ function toggleSection(id) {
 }
 
 function initSidebarCollapse() {
-   const sectionIds = ['foundations', 'library', 'examples', 'prototype', 'ai-toolkit', 'resources'];
+   const sectionIds = ['foundations', 'library', 'examples', 'ai-toolkit', 'resources'];
 
    // Determine which section has the active link
    let activeSection = null;
