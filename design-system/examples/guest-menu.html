@@ -39,7 +39,30 @@
 
         /* ===== Theme System ===== */
 
-        /* Theme: Brewery (default) */
+        /* Theme: MenuBridge (branded) */
+        .theme-menubridge {
+            --t-bg: #f8f8f7;
+            --t-bg-alt: #eef5f5;
+            --t-text: #101818;
+            --t-text-secondary: #5c8a8a;
+            --t-text-muted: #9bb5b5;
+            --t-border: #eaf1f1;
+            --t-border-input: #c8dede;
+            --t-pill-active-bg: #267373;
+            --t-pill-active-text: #ffffff;
+            --t-accent: #267373;
+            --t-heading-font: "Epilogue", "Noto Sans JP", serif;
+            --t-body-font: "Inter", "Noto Sans JP", sans-serif;
+            --t-section-transform: none;
+            --t-section-spacing: 0.02em;
+            --t-section-weight: 800;
+            --t-section-size: 1rem;
+            --t-item-weight: 400;
+            --t-radius: 0.75rem;
+            --t-notes-border: 1px solid #d4e6e6;
+        }
+
+        /* Theme: Brewery */
         .theme-brewery {
             --t-bg: #ffffff;
             --t-bg-alt: #f9fafb;
@@ -229,7 +252,14 @@
                     <div class="mb-6">
                         <p class="text-sm font-bold text-[#101818] mb-3">Theme</p>
                         <div class="flex flex-wrap gap-3">
-                            <button onclick="setTheme('brewery')" class="theme-btn active flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#eaf1f1] bg-white hover:shadow-md transition-all">
+                            <button onclick="setTheme('menubridge')" class="theme-btn active flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#eaf1f1] bg-white hover:shadow-md transition-all">
+                                <div class="w-5 h-5 rounded-full shrink-0" style="background: linear-gradient(135deg, #267373 50%, #86B386 80%, #CC5C2E)"></div>
+                                <div class="text-left">
+                                    <p class="text-xs font-bold text-[#101818] leading-none">MenuBridge</p>
+                                    <p class="text-[10px] text-[#5c8a8a] mt-0.5">Epilogue &middot; Branded</p>
+                                </div>
+                            </button>
+                            <button onclick="setTheme('brewery')" class="theme-btn flex items-center gap-2.5 px-4 py-2.5 rounded-xl border border-[#eaf1f1] bg-white hover:shadow-md transition-all">
                                 <div class="w-5 h-5 rounded-full bg-[#2d3142] shrink-0"></div>
                                 <div class="text-left">
                                     <p class="text-xs font-bold text-[#101818] leading-none">Craft Brewery</p>
@@ -280,12 +310,12 @@
                                 </div>
 
                                 <!-- Scrollable Screen Content -->
-                                <div class="max-h-[720px] overflow-y-auto transition-colors duration-300 theme-brewery" id="phone-screen" data-theme="brewery">
+                                <div class="max-h-[720px] overflow-y-auto transition-colors duration-300 theme-menubridge" id="phone-screen" data-theme="menubridge">
 
                                     <!-- Header -->
                                     <div class="px-5 pt-4 pb-3">
                                         <h3 class="t-header text-lg font-bold leading-tight" id="restaurant-name">Athipatai Brewery</h3>
-                                        <p class="t-subtitle text-sm" id="restaurant-subtitle">Athipatai Bar</p>
+                                        <p class="t-subtitle text-sm" id="restaurant-subtitle">Athipatai Bar &middot; Powered by MenuBridge</p>
                                     </div>
 
                                     <!-- Filter Pills -->
@@ -611,6 +641,12 @@
     <script>
     // ===== Theme Switcher =====
     var themeConfigs = {
+        menubridge: {
+            name: 'Athipatai Brewery',
+            subtitle: 'Athipatai Bar \u00b7 Powered by MenuBridge',
+            frameDark: false,
+            phoneBg: '#e0eded'
+        },
         brewery: {
             name: 'Athipatai Brewery',
             subtitle: 'Athipatai Bar',
