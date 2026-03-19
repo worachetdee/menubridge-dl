@@ -1,6 +1,7 @@
 // MenuBridge Design System - Shared Layout
 document.addEventListener('DOMContentLoaded', () => {
    injectSidebar();
+   injectFullscreenButton();
 });
 
 function injectSidebar() {
@@ -162,6 +163,10 @@ function injectSidebar() {
                        class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/guest-menu.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Guest Menu
                     </a>
+                    <a href="${isInSubfolder ? '../examples/marketing-landing.html' : './examples/marketing-landing.html'}"
+                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/marketing-landing.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
+                       Marketing Landing
+                    </a>
                  </div>
             </div>
 
@@ -312,4 +317,84 @@ function initSidebarCollapse() {
          localStorage.setItem('mb-sidebar-state', JSON.stringify(stored));
       } catch (e) { /* ignore */ }
    }
+}
+
+function injectFullscreenButton() {
+   // Only run on example pages
+   if (!window.location.pathname.includes('/examples/')) return;
+
+   // Find the Preview heading by looking for the visibility icon + "Preview" text pattern
+   const headings = document.querySelectorAll('h2');
+   let previewHeading = null;
+   for (const h of headings) {
+      if (h.textContent.trim().replace(/\s+/g, ' ').includes('Preview') && h.querySelector('.material-symbols-outlined')) {
+         previewHeading = h;
+         break;
+      }
+   }
+   if (!previewHeading) return;
+
+   // Find the browser frame container (the bordered div after the heading)
+   const previewSection = previewHeading.closest('.mb-16') || previewHeading.parentElement;
+   const browserFrame = previewSection.querySelector('.border.rounded-xl.overflow-hidden');
+   if (!browserFrame) return;
+
+   // Add the fullscreen button next to the heading
+   previewHeading.classList.add('justify-between', 'flex-1');
+   const wrapper = document.createElement('div');
+   wrapper.className = 'flex items-center justify-between mb-4';
+   previewHeading.classList.remove('mb-4');
+   previewHeading.parentNode.insertBefore(wrapper, previewHeading);
+   wrapper.appendChild(previewHeading);
+
+   const btn = document.createElement('button');
+   btn.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#5c8a8a] hover:text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer bg-transparent';
+   btn.innerHTML = '<span class="material-symbols-outlined text-sm">open_in_new</span> Open Fullscreen';
+   wrapper.appendChild(btn);
+
+   btn.addEventListener('click', function () {
+      // Get the content inside the browser frame, skipping the browser chrome header
+      const browserHeader = browserFrame.querySelector('.bg-gray-50.border-b');
+      const contentArea = browserHeader ? browserHeader.nextElementSibling : browserFrame.firstElementChild;
+      if (!contentArea) return;
+
+      // Collect all stylesheets and inline styles from the current page
+      const styles = [];
+      document.querySelectorAll('link[rel="stylesheet"], style').forEach(function (el) {
+         styles.push(el.outerHTML);
+      });
+
+      // Also grab the tailwind script and config
+      const scripts = [];
+      document.querySelectorAll('script').forEach(function (el) {
+         if (el.src && (el.src.includes('tailwindcss') || el.src.includes('config.js'))) {
+            scripts.push(el.outerHTML);
+         }
+         if (!el.src && el.textContent.includes('tailwind')) {
+            scripts.push(el.outerHTML);
+         }
+      });
+
+      // Also include component scripts that are loaded on the page
+      document.querySelectorAll('script[src*="components/"]').forEach(function (el) {
+         scripts.push(el.outerHTML);
+      });
+
+      const html = '<!DOCTYPE html>' +
+         '<html class="light" lang="en">' +
+         '<head>' +
+         '<meta charset="utf-8"/>' +
+         '<meta content="width=device-width, initial-scale=1.0" name="viewport"/>' +
+         '<title>Preview — MenuBridge</title>' +
+         scripts.join('\n') +
+         styles.join('\n') +
+         '</head>' +
+         '<body class="bg-white text-[#101818] antialiased">' +
+         contentArea.outerHTML +
+         '</body></html>';
+
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
+   });
 }
