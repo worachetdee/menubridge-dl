@@ -76,7 +76,7 @@
                         </div>
 
                         <!-- Landing Page Content -->
-                        <div class="bg-white">
+                        <div id="landing-content" class="bg-white" data-lang="en">
 
                             <!-- Navigation Bar -->
                             <nav class="px-8 py-4 flex items-center justify-between border-b border-[#eaf1f1]">
@@ -85,48 +85,52 @@
                                     <span class="font-display text-lg font-bold text-[#101818]">MenuBridge</span>
                                 </div>
                                 <div class="flex items-center gap-6">
-                                    <a href="#" class="text-sm text-[#5c8a8a] hover:text-[#101818] transition-colors">How it works</a>
-                                    <a href="#" class="text-sm text-[#5c8a8a] hover:text-[#101818] transition-colors">Examples</a>
-                                    <button class="px-4 py-2 text-sm font-semibold bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors">
-                                        Try Free
-                                    </button>
+                                    <a href="#" class="text-sm text-[#5c8a8a] hover:text-[#101818] transition-colors" data-i18n="nav-how">How it works</a>
+                                    <a href="#" class="text-sm text-[#5c8a8a] hover:text-[#101818] transition-colors" data-i18n="nav-examples">Examples</a>
+                                    <!-- Language Toggle -->
+                                    <div id="lang-toggle" class="relative inline-flex items-center bg-[#f0f4f4] rounded-lg p-0.5 cursor-pointer select-none">
+                                        <div id="lang-indicator" class="absolute top-0.5 h-[calc(100%-4px)] bg-white rounded-md shadow-sm transition-all duration-250 ease-[cubic-bezier(0.4,0,0.2,1)]" style="pointer-events:none"></div>
+                                        <button onclick="setLandingLang('en')" id="lang-btn-en" class="relative z-10 px-2.5 py-1 text-xs font-bold rounded-md transition-colors duration-200 text-[#267373]">EN</button>
+                                        <button onclick="setLandingLang('jp')" id="lang-btn-jp" class="relative z-10 px-2.5 py-1 text-xs font-bold rounded-md transition-colors duration-200 text-[#5c8a8a]">JP</button>
+                                    </div>
+                                    <button class="px-4 py-2 text-sm font-semibold bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors" data-i18n="nav-cta">Try Free</button>
                                 </div>
                             </nav>
 
                             <!-- Hero Section -->
                             <div class="px-8 py-16 text-center bg-gradient-to-b from-primary/[0.06] to-white">
-                                <h1 class="font-display text-4xl font-black text-[#101818] mb-4 leading-tight">
+                                <h1 class="font-display text-4xl font-black text-[#101818] mb-4 leading-tight" data-i18n-html="hero-title">
                                     Help international guests<br>order with confidence
                                 </h1>
-                                <p class="text-[#5c8a8a] text-base max-w-md mx-auto mb-3">
+                                <p class="text-[#5c8a8a] text-base max-w-md mx-auto mb-3" data-i18n="hero-tagline">
                                     海外のお客様が安心して注文できるメニューを
                                 </p>
-                                <p class="text-[#5c8a8a] text-sm max-w-lg mx-auto mb-8">
+                                <p class="text-[#5c8a8a] text-sm max-w-lg mx-auto mb-8" data-i18n="hero-sub">
                                     Turn your Japanese menu into a clear, guest-friendly English menu in minutes — powered by AI that understands culinary context.
                                 </p>
                                 <button class="px-6 py-3 text-sm font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all inline-flex items-center gap-2">
                                     <span class="material-symbols-outlined text-base">arrow_forward</span>
-                                    Try MenuBridge Free
+                                    <span data-i18n="hero-cta">Try MenuBridge Free</span>
                                 </button>
                             </div>
 
-                            <!-- Problem Section: Why this is difficult today -->
+                            <!-- Problem Section -->
                             <div class="px-8 py-12 bg-[#f9fbfb] border-y border-[#eaf1f1]">
                                 <div class="max-w-xl mx-auto">
-                                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2">The problem</p>
-                                    <h2 class="font-display text-2xl font-bold text-[#101818] mb-6">Why this is difficult today</h2>
+                                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2" data-i18n="problem-label">The problem</p>
+                                    <h2 class="font-display text-2xl font-bold text-[#101818] mb-6" data-i18n="problem-title">Why this is difficult today</h2>
                                     <div class="space-y-4">
                                         <div class="flex items-start gap-3">
                                             <span class="material-symbols-outlined text-tertiary mt-0.5 text-lg">g_translate</span>
-                                            <p class="text-sm text-[#101818]">Guests often rely on Google Translate to read menus — but translations are frequently unclear or misleading</p>
+                                            <p class="text-sm text-[#101818]" data-i18n="problem-1">Guests often rely on Google Translate to read menus — but translations are frequently unclear or misleading</p>
                                         </div>
                                         <div class="flex items-start gap-3">
                                             <span class="material-symbols-outlined text-tertiary mt-0.5 text-lg">support_agent</span>
-                                            <p class="text-sm text-[#101818]">Staff don't have time to explain every dish in English during busy service</p>
+                                            <p class="text-sm text-[#101818]" data-i18n="problem-2">Staff don't have time to explain every dish in English during busy service</p>
                                         </div>
                                         <div class="flex items-start gap-3">
                                             <span class="material-symbols-outlined text-tertiary mt-0.5 text-lg">help</span>
-                                            <p class="text-sm text-[#101818]">Guests end up confused, order less, or skip dishes entirely — a lost opportunity for both sides</p>
+                                            <p class="text-sm text-[#101818]" data-i18n="problem-3">Guests end up confused, order less, or skip dishes entirely — a lost opportunity for both sides</p>
                                         </div>
                                     </div>
                                 </div>
@@ -135,11 +139,10 @@
                             <!-- What guests actually see -->
                             <div class="px-8 py-12">
                                 <div class="max-w-xl mx-auto">
-                                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2">The reality</p>
-                                    <h2 class="font-display text-2xl font-bold text-[#101818] mb-2">What international guests actually see</h2>
-                                    <p class="text-sm text-[#5c8a8a] mb-8">Real examples from Google Translate on Japanese menus</p>
+                                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2" data-i18n="reality-label">The reality</p>
+                                    <h2 class="font-display text-2xl font-bold text-[#101818] mb-2" data-i18n="reality-title">What international guests actually see</h2>
+                                    <p class="text-sm text-[#5c8a8a] mb-8" data-i18n="reality-sub">Real examples from Google Translate on Japanese menus</p>
 
-                                    <!-- Bad translation examples as cards -->
                                     <div class="grid grid-cols-3 gap-3">
                                         <div class="bg-[#f9fbfb] border border-[#eaf1f1] rounded-xl p-4 text-center">
                                             <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center mx-auto mb-3">
@@ -172,15 +175,15 @@
                             <!-- From translation to understanding -->
                             <div class="px-8 py-12 bg-[#f9fbfb] border-y border-[#eaf1f1]">
                                 <div class="max-w-xl mx-auto">
-                                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2">The difference</p>
-                                    <h2 class="font-display text-2xl font-bold text-[#101818] mb-8">From translation to understanding</h2>
+                                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2" data-i18n="diff-label">The difference</p>
+                                    <h2 class="font-display text-2xl font-bold text-[#101818] mb-8" data-i18n="diff-title">From translation to understanding</h2>
 
                                     <!-- Example 1 -->
                                     <div class="bg-white rounded-xl border border-[#eaf1f1] p-5 mb-4">
                                         <p class="text-xs text-[#5c8a8a] mb-3 font-medium">馬肉最中</p>
                                         <div class="flex items-center gap-4">
                                             <div class="flex-1">
-                                                <p class="text-[10px] text-[#9bb5b5] uppercase tracking-wider mb-1">Typical translation</p>
+                                                <p class="text-[10px] text-[#9bb5b5] uppercase tracking-wider mb-1" data-i18n="diff-typical">Typical translation</p>
                                                 <p class="text-sm text-[#101818]/50 line-through">Horse meat monaka</p>
                                             </div>
                                             <span class="material-symbols-outlined text-tertiary text-xl">arrow_forward</span>
@@ -196,7 +199,7 @@
                                         <p class="text-xs text-[#5c8a8a] mb-3 font-medium">アボカドのぬか漬け</p>
                                         <div class="flex items-center gap-4">
                                             <div class="flex-1">
-                                                <p class="text-[10px] text-[#9bb5b5] uppercase tracking-wider mb-1">Typical translation</p>
+                                                <p class="text-[10px] text-[#9bb5b5] uppercase tracking-wider mb-1" data-i18n="diff-typical">Typical translation</p>
                                                 <p class="text-sm text-[#101818]/50 line-through">Pickled avocado</p>
                                             </div>
                                             <span class="material-symbols-outlined text-tertiary text-xl">arrow_forward</span>
@@ -212,31 +215,28 @@
                             <!-- How It Works -->
                             <div class="px-8 py-12">
                                 <div class="max-w-xl mx-auto">
-                                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2">How it works</p>
-                                    <h2 class="font-display text-2xl font-bold text-[#101818] mb-8">Turn your menu into a clear English menu in minutes</h2>
+                                    <p class="text-primary text-xs font-bold uppercase tracking-wider mb-2" data-i18n="how-label">How it works</p>
+                                    <h2 class="font-display text-2xl font-bold text-[#101818] mb-8" data-i18n="how-title">Turn your menu into a clear English menu in minutes</h2>
                                     <div class="space-y-5">
-                                        <!-- Step 1 -->
                                         <div class="flex items-start gap-4">
                                             <div class="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center shrink-0">1</div>
                                             <div class="flex-1 bg-[#f9fbfb] rounded-xl border border-[#eaf1f1] p-4">
-                                                <h3 class="font-semibold text-sm text-[#101818] mb-1">Upload or enter your menu</h3>
-                                                <p class="text-xs text-[#5c8a8a]">Take a photo, upload a file, or type your Japanese menu directly.</p>
+                                                <h3 class="font-semibold text-sm text-[#101818] mb-1" data-i18n="step1-title">Upload or enter your menu</h3>
+                                                <p class="text-xs text-[#5c8a8a]" data-i18n="step1-desc">Take a photo, upload a file, or type your Japanese menu directly.</p>
                                             </div>
                                         </div>
-                                        <!-- Step 2 -->
                                         <div class="flex items-start gap-4">
                                             <div class="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center shrink-0">2</div>
                                             <div class="flex-1 bg-[#f9fbfb] rounded-xl border border-[#eaf1f1] p-4">
-                                                <h3 class="font-semibold text-sm text-[#101818] mb-1">AI generates clear English descriptions</h3>
-                                                <p class="text-xs text-[#5c8a8a]">Each dish gets a guest-friendly explanation and dietary tags — not a literal translation, but a description that helps guests understand what they're ordering.</p>
+                                                <h3 class="font-semibold text-sm text-[#101818] mb-1" data-i18n="step2-title">AI generates clear English descriptions</h3>
+                                                <p class="text-xs text-[#5c8a8a]" data-i18n="step2-desc">Each dish gets a guest-friendly explanation and dietary tags — not a literal translation, but a description that helps guests understand what they're ordering.</p>
                                             </div>
                                         </div>
-                                        <!-- Step 3 -->
                                         <div class="flex items-start gap-4">
                                             <div class="w-8 h-8 rounded-full bg-primary text-white text-sm font-bold flex items-center justify-center shrink-0">3</div>
                                             <div class="flex-1 bg-[#f9fbfb] rounded-xl border border-[#eaf1f1] p-4">
-                                                <h3 class="font-semibold text-sm text-[#101818] mb-1">Share with guests via QR code</h3>
-                                                <p class="text-xs text-[#5c8a8a]">Publish a mobile-friendly bilingual menu. Place the QR code at your tables — guests scan and browse instantly.</p>
+                                                <h3 class="font-semibold text-sm text-[#101818] mb-1" data-i18n="step3-title">Share with guests via QR code</h3>
+                                                <p class="text-xs text-[#5c8a8a]" data-i18n="step3-desc">Publish a mobile-friendly bilingual menu. Place the QR code at your tables — guests scan and browse instantly.</p>
                                             </div>
                                         </div>
                                     </div>
@@ -247,25 +247,25 @@
                             <div class="px-8 py-14 bg-primary text-white text-center">
                                 <div class="max-w-md mx-auto">
                                     <span class="material-symbols-outlined text-4xl mb-4 opacity-80">restaurant_menu</span>
-                                    <h2 class="font-display text-2xl font-bold mb-3">Try MenuBridge</h2>
-                                    <p class="text-sm opacity-80 mb-6">We're looking for restaurants to try MenuBridge during our pilot program.</p>
+                                    <h2 class="font-display text-2xl font-bold mb-3" data-i18n="cta-title">Try MenuBridge</h2>
+                                    <p class="text-sm opacity-80 mb-6" data-i18n="cta-sub">We're looking for restaurants to try MenuBridge during our pilot program.</p>
                                     <div class="space-y-3 text-left max-w-xs mx-auto mb-8">
                                         <div class="flex items-center gap-3">
                                             <span class="material-symbols-outlined text-base opacity-70">schedule</span>
-                                            <p class="text-sm">Menu setup takes about 10-15 minutes</p>
+                                            <p class="text-sm" data-i18n="cta-point1">Menu setup takes about 10-15 minutes</p>
                                         </div>
                                         <div class="flex items-center gap-3">
                                             <span class="material-symbols-outlined text-base opacity-70">money_off</span>
-                                            <p class="text-sm">Free to use during the pilot</p>
+                                            <p class="text-sm" data-i18n="cta-point2">Free to use during the pilot</p>
                                         </div>
                                         <div class="flex items-center gap-3">
                                             <span class="material-symbols-outlined text-base opacity-70">chat</span>
-                                            <p class="text-sm">Your feedback helps us improve</p>
+                                            <p class="text-sm" data-i18n="cta-point3">Your feedback helps us improve</p>
                                         </div>
                                     </div>
                                     <button class="px-8 py-3 text-sm font-bold bg-white text-primary rounded-lg shadow-sm hover:bg-white/90 transition-all inline-flex items-center gap-2">
                                         <span class="material-symbols-outlined text-base">arrow_forward</span>
-                                        Get Started
+                                        <span data-i18n="cta-btn">Get Started</span>
                                     </button>
                                 </div>
                             </div>
@@ -278,13 +278,153 @@
                                         <span class="font-display text-sm font-bold text-[#101818]">MenuBridge</span>
                                     </div>
                                     <div class="flex items-center gap-4">
-                                        <a href="#" class="text-xs text-[#5c8a8a] hover:text-[#101818]">Privacy</a>
-                                        <a href="#" class="text-xs text-[#5c8a8a] hover:text-[#101818]">Terms</a>
-                                        <a href="#" class="text-xs text-[#5c8a8a] hover:text-[#101818]">Contact</a>
+                                        <a href="#" class="text-xs text-[#5c8a8a] hover:text-[#101818]" data-i18n="footer-privacy">Privacy</a>
+                                        <a href="#" class="text-xs text-[#5c8a8a] hover:text-[#101818]" data-i18n="footer-terms">Terms</a>
+                                        <a href="#" class="text-xs text-[#5c8a8a] hover:text-[#101818]" data-i18n="footer-contact">Contact</a>
                                     </div>
                                 </div>
                             </div>
 
+                        <script>
+                        var landingI18n = {
+                            en: {
+                                'nav-how': 'How it works',
+                                'nav-examples': 'Examples',
+                                'nav-cta': 'Try Free',
+                                'hero-title': 'Help international guests<br>order with confidence',
+                                'hero-tagline': '海外のお客様が安心して注文できるメニューを',
+                                'hero-sub': 'Turn your Japanese menu into a clear, guest-friendly English menu in minutes — powered by AI that understands culinary context.',
+                                'hero-cta': 'Try MenuBridge Free',
+                                'problem-label': 'The problem',
+                                'problem-title': 'Why this is difficult today',
+                                'problem-1': 'Guests often rely on Google Translate to read menus — but translations are frequently unclear or misleading',
+                                'problem-2': "Staff don't have time to explain every dish in English during busy service",
+                                'problem-3': 'Guests end up confused, order less, or skip dishes entirely — a lost opportunity for both sides',
+                                'reality-label': 'The reality',
+                                'reality-title': 'What international guests actually see',
+                                'reality-sub': 'Real examples from Google Translate on Japanese menus',
+                                'diff-label': 'The difference',
+                                'diff-title': 'From translation to understanding',
+                                'diff-typical': 'Typical translation',
+                                'how-label': 'How it works',
+                                'how-title': 'Turn your menu into a clear English menu in minutes',
+                                'step1-title': 'Upload or enter your menu',
+                                'step1-desc': 'Take a photo, upload a file, or type your Japanese menu directly.',
+                                'step2-title': 'AI generates clear English descriptions',
+                                'step2-desc': "Each dish gets a guest-friendly explanation and dietary tags — not a literal translation, but a description that helps guests understand what they're ordering.",
+                                'step3-title': 'Share with guests via QR code',
+                                'step3-desc': 'Publish a mobile-friendly bilingual menu. Place the QR code at your tables — guests scan and browse instantly.',
+                                'cta-title': 'Try MenuBridge',
+                                'cta-sub': "We're looking for restaurants to try MenuBridge during our pilot program.",
+                                'cta-point1': 'Menu setup takes about 10–15 minutes',
+                                'cta-point2': 'Free to use during the pilot',
+                                'cta-point3': 'Your feedback helps us improve',
+                                'cta-btn': 'Get Started',
+                                'footer-privacy': 'Privacy',
+                                'footer-terms': 'Terms',
+                                'footer-contact': 'Contact'
+                            },
+                            jp: {
+                                'nav-how': '使い方',
+                                'nav-examples': '変換例',
+                                'nav-cta': '無料で試す',
+                                'hero-title': '海外のお客様が安心して<br>注文できるメニューを',
+                                'hero-tagline': 'Help international guests order with confidence',
+                                'hero-sub': '日本語メニューを、料理の文脈を理解するAIが数分で分かりやすい英語メニューに変換します。',
+                                'hero-cta': 'MenuBridgeを無料で試す',
+                                'problem-label': '課題',
+                                'problem-title': '実は見落とされている課題',
+                                'problem-1': '海外のお客様はメニューをGoogle翻訳で読むことが多いですが、翻訳が分かりにくかったり、誤解を招くことが多くあります',
+                                'problem-2': '飲食店側では営業中に一品ずつ英語で説明する時間や対応できるスタッフがいません',
+                                'problem-3': 'お客様は困惑し、注文を減らしたり、料理を飛ばしたりしてしまいます — 双方にとって機会損失です',
+                                'reality-label': '現実',
+                                'reality-title': '海外のお客様が見ているメニュー',
+                                'reality-sub': 'Google翻訳による実際の表示例',
+                                'diff-label': '違い',
+                                'diff-title': '独自AIによりメニューが魅力的に伝わる変換',
+                                'diff-typical': '通常の英語表記',
+                                'how-label': '使い方',
+                                'how-title': '数分で分かりやすい英語メニューを作成',
+                                'step1-title': '元のメニューを入力またはアップロード',
+                                'step1-desc': '写真を撮る、ファイルをアップロード、または日本語メニューを直接入力できます。',
+                                'step2-title': '英語の説明を自動で生成',
+                                'step2-desc': '各料理にお客様が分かりやすい説明と食事タグを付与。直訳ではなく、何を注文するか理解できる説明を生成します。',
+                                'step3-title': 'QRコードでお客様に共有',
+                                'step3-desc': 'モバイル対応のバイリンガルメニューを公開。QRコードをテーブルに置くだけで、お客様がすぐに閲覧できます。',
+                                'cta-title': 'トライアルのご案内',
+                                'cta-sub': 'MenuBridgeを試していただける飲食店様を募集しています。',
+                                'cta-point1': 'メニュー作成は約10〜15分',
+                                'cta-point2': 'トライアル期間中は無料でご利用いただけます',
+                                'cta-point3': 'ご意見をもとにサービスを改善していきます',
+                                'cta-btn': '始める',
+                                'footer-privacy': 'プライバシー',
+                                'footer-terms': '利用規約',
+                                'footer-contact': 'お問い合わせ'
+                            }
+                        };
+
+                        function initLandingToggle() {
+                            var indicator = document.getElementById('lang-indicator');
+                            var btnEn = document.getElementById('lang-btn-en');
+                            if (indicator && btnEn) {
+                                indicator.style.left = btnEn.offsetLeft + 'px';
+                                indicator.style.width = btnEn.offsetWidth + 'px';
+                            }
+                        }
+                        // Init on load
+                        if (document.readyState === 'loading') {
+                            document.addEventListener('DOMContentLoaded', initLandingToggle);
+                        } else {
+                            requestAnimationFrame(initLandingToggle);
+                        }
+
+                        function setLandingLang(lang) {
+                            var container = document.getElementById('landing-content');
+                            if (!container) return;
+                            container.setAttribute('data-lang', lang);
+
+                            // Slide indicator to selected button
+                            var btnEn = document.getElementById('lang-btn-en');
+                            var btnJp = document.getElementById('lang-btn-jp');
+                            var indicator = document.getElementById('lang-indicator');
+                            var targetBtn = lang === 'en' ? btnEn : btnJp;
+
+                            if (indicator && targetBtn) {
+                                indicator.style.left = targetBtn.offsetLeft + 'px';
+                                indicator.style.width = targetBtn.offsetWidth + 'px';
+                            }
+
+                            // Update text colors
+                            if (lang === 'en') {
+                                btnEn.classList.remove('text-[#5c8a8a]');
+                                btnEn.classList.add('text-[#267373]');
+                                btnJp.classList.remove('text-[#267373]');
+                                btnJp.classList.add('text-[#5c8a8a]');
+                            } else {
+                                btnJp.classList.remove('text-[#5c8a8a]');
+                                btnJp.classList.add('text-[#267373]');
+                                btnEn.classList.remove('text-[#267373]');
+                                btnEn.classList.add('text-[#5c8a8a]');
+                            }
+
+                            // Update all data-i18n text content
+                            var strings = landingI18n[lang];
+                            container.querySelectorAll('[data-i18n]').forEach(function(el) {
+                                var key = el.getAttribute('data-i18n');
+                                if (strings[key] !== undefined) {
+                                    el.textContent = strings[key];
+                                }
+                            });
+
+                            // Update all data-i18n-html (innerHTML for elements with <br>)
+                            container.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+                                var key = el.getAttribute('data-i18n-html');
+                                if (strings[key] !== undefined) {
+                                    el.innerHTML = strings[key];
+                                }
+                            });
+                        }
+                        </script>
                         </div>
                     </div>
                 </div>
@@ -301,7 +441,7 @@
                                 <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">1</span>
                                 <div>
                                     <p class="font-semibold text-[#101818]">Navigation Bar</p>
-                                    <p class="text-[#5c8a8a]">Minimal top nav with logo, anchor links, and primary CTA button.</p>
+                                    <p class="text-[#5c8a8a]">Minimal top nav with logo, anchor links, EN/JP language toggle, and primary CTA button. The toggle switches all page content between English and Japanese.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
