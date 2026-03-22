@@ -5,7 +5,6 @@
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Menu Home - MenuBridge</title>
-    <!-- Dependencies -->
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
         href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
@@ -14,42 +13,34 @@
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
         rel="stylesheet" />
 
-    <!-- Config & Layout -->
     <script src="../config.js"></script>
     <script src="../layout.js"></script>
-    <!-- Web Components -->
     <script src="../components/menu-button.js" defer></script>
     <script src="../components/menu-toggle.js" defer></script>
+    <script src="../components/menu-badge.js" defer></script>
+    <script src="../components/menu-tabs.js" defer></script>
+    <script src="../components/menu-modal.js" defer></script>
+    <script src="../components/menu-overflow.js" defer></script>
 
     <style>
-        body {
-            font-family: "Inter", "Noto Sans JP", sans-serif;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6 {
-            font-family: "Epilogue", serif;
-        }
+        body { font-family: "Inter", "Noto Sans JP", sans-serif; }
+        h1, h2, h3, h4, h5, h6 { font-family: "Epilogue", serif; }
     </style>
 </head>
 
 <body class="bg-background-light dark:bg-background-dark text-[#101818] antialiased">
     <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
 
-        <!-- Sidebar Injected by layout.js -->
         <aside id="app-sidebar"></aside>
 
         <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
             <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
+                <!-- Page Header -->
                 <div class="mb-12">
                     <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Examples</p>
                     <h1 class="font-display text-4xl md:text-5xl font-black text-[#101818]">Menu Home</h1>
                     <p class="text-[#5c8a8a] text-lg mt-4 max-w-2xl">
-                        The main dashboard for managing menus — view shared menus, create new ones, and access previous versions.
+                        The main dashboard for managing menus — publish up to two menus in Primary and Secondary slots, manage previous versions, and share via QR code.
                     </p>
                 </div>
 
@@ -59,6 +50,15 @@
                         <span class="material-symbols-outlined text-primary">visibility</span>
                         Preview
                     </h2>
+
+                    <!-- State Tabs -->
+                    <div class="mb-4">
+                        <menu-tabs
+                            id="state-tabs"
+                            items='[{"label":"1 · Empty","value":"empty"},{"label":"2 · Primary Published","value":"primary"},{"label":"3 · Both Published","value":"both"},{"label":"4 · After Unpublish","value":"unpublished"}]'
+                            selected="empty">
+                        </menu-tabs>
+                    </div>
 
                     <!-- App Shell Preview -->
                     <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-[#F9FAFB] shadow-sm">
@@ -77,146 +77,496 @@
                         </div>
 
                         <div class="bg-white">
-                        <!-- Top Bar -->
-                        <div
-                            class="bg-white border-b border-[#eaf1f1] px-8 py-4 flex items-center justify-between">
-                            <div class="text-lg font-bold font-display text-[#101818]">MenuBridge</div>
-                            <div class="flex items-center gap-4">
-                                <menu-toggle items="EN, JP" selected="EN"></menu-toggle>
-                                <div
-                                    class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
-                                    <span class="material-symbols-outlined text-sm">person</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Content -->
-                        <div class="px-6 py-8 max-w-2xl mx-auto space-y-6">
-
-                            <!-- Page Title -->
-                            <h2 class="font-display text-2xl font-bold text-[#101818]">Menu Home</h2>
-
-                            <!-- What this app can do -->
-                            <div class="border border-[#eaf1f1] rounded-xl p-6">
-                                <div class="flex items-center justify-between mb-5">
-                                    <h3 class="font-semibold text-[#101818]">What this app can do</h3>
-                                    <button class="text-[#5c8a8a] hover:text-[#101818] transition-colors" onclick="this.closest('.border').style.display='none'">
-                                        <span class="material-symbols-outlined text-xl">close</span>
-                                    </button>
-                                </div>
-                                <div class="space-y-4">
-                                    <div class="flex items-start gap-3">
-                                        <span class="material-symbols-outlined text-[#5c8a8a] mt-0.5">upload</span>
-                                        <p class="text-sm text-[#101818]">Upload or enter a Japanese menu</p>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <span class="material-symbols-outlined text-[#5c8a8a] mt-0.5">auto_awesome</span>
-                                        <p class="text-sm text-[#101818]">Automatically generate an English version with short descriptions and tags</p>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <span class="material-symbols-outlined text-[#5c8a8a] mt-0.5">task_alt</span>
-                                        <p class="text-sm text-[#101818]">Confirm dietary tags like 🌱 vegetarian or 🐟 fish</p>
-                                    </div>
-                                    <div class="flex items-start gap-3">
-                                        <span class="material-symbols-outlined text-[#5c8a8a] mt-0.5">qr_code_2</span>
-                                        <p class="text-sm text-[#101818]">Share the menu via QR code</p>
-                                    </div>
-                                </div>
-                                <div class="mt-6">
-                                    <button onclick="document.getElementById('sample-menu-overlay').classList.remove('hidden')" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
-                                        <span class="material-symbols-outlined text-base">visibility</span>
-                                        View Sample Menu
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Shared Menu -->
-                            <div class="border border-[#eaf1f1] rounded-xl p-6">
-                                <h3 class="font-semibold text-[#101818] mb-5">Shared Menu</h3>
-                                <div class="flex flex-col sm:flex-row gap-4">
-                                    <!-- QR area -->
-                                    <div class="shrink-0">
-                                        <!-- QR Code placeholder -->
-                                        <div class="w-28 h-28 bg-gray-100 rounded-lg border border-[#eaf1f1] flex items-center justify-center">
-                                            <span class="material-symbols-outlined text-4xl text-gray-300">qr_code_2</span>
-                                        </div>
-                                    </div>
-                                    <!-- Menu Details -->
-                                    <div class="flex-1">
-                                        <p class="text-xs text-[#5c8a8a] mb-1">Menu Name:</p>
-                                        <p class="font-semibold text-[#101818] mb-3">Athipatai Bar</p>
-                                        <p class="text-xs text-[#5c8a8a] mb-1">Last updated:</p>
-                                        <p class="text-sm text-[#101818] mb-5">Feb 12, 2026</p>
-                                        <div class="flex flex-wrap gap-2">
-                                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
-                                                <span class="material-symbols-outlined text-sm">visibility</span>
-                                                Open Shared Menu (guest view)
-                                            </button>
-                                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
-                                                <span class="material-symbols-outlined text-sm">edit</span>
-                                                Edit
-                                            </button>
-                                        </div>
-                                        <div class="flex flex-wrap gap-2 mt-2">
-                                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
-                                                <span class="material-symbols-outlined text-sm">content_copy</span>
-                                                Copy Link
-                                            </button>
-                                            <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
-                                                <span class="material-symbols-outlined text-sm">download</span>
-                                                Download QR
-                                            </button>
-                                        </div>
+                            <!-- Top Bar -->
+                            <div class="bg-white border-b border-[#eaf1f1] px-8 py-4 flex items-center justify-between">
+                                <div class="text-lg font-bold font-display text-[#101818]">MenuBridge</div>
+                                <div class="flex items-center gap-4">
+                                    <menu-toggle items="EN, JP" selected="EN"></menu-toggle>
+                                    <div class="w-8 h-8 rounded-full bg-gray-200 border border-gray-300 flex items-center justify-center text-gray-500">
+                                        <span class="material-symbols-outlined text-sm">person</span>
                                     </div>
                                 </div>
                             </div>
 
-                            <!-- Replace Menu -->
-                            <div class="border border-[#eaf1f1] rounded-xl p-8 text-center">
-                                <div class="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center mx-auto mb-4">
-                                    <span class="material-symbols-outlined text-2xl text-[#5c8a8a]">add</span>
-                                </div>
-                                <h3 class="font-semibold text-[#101818] mb-1">Replace Menu</h3>
-                                <p class="text-sm text-[#5c8a8a] mb-5">Replace the current published menu with a new menu</p>
-                                <button class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all">
-                                    <span class="material-symbols-outlined text-base">add</span>
-                                    Create Menu
-                                </button>
-                            </div>
+                            <!-- Content Area -->
+                            <div class="px-6 py-8 max-w-2xl mx-auto space-y-6">
+                                <h2 class="font-display text-2xl font-bold text-[#101818]">Menu Home</h2>
 
-                            <!-- Previous Menus -->
-                            <div class="border border-[#eaf1f1] rounded-xl p-6">
-                                <h3 class="font-semibold text-[#101818] mb-4">Previous Menus</h3>
-                                <div class="divide-y divide-[#eaf1f1]">
-                                    <!-- Item 1 -->
-                                    <div class="flex items-center justify-between py-3">
-                                        <div>
-                                            <p class="font-medium text-sm text-[#101818]">Athipatai Brewery Bar</p>
-                                            <p class="text-xs text-[#5c8a8a]">Last updated: Feb 12, 2026</p>
+                                <!-- ============================================ -->
+                                <!-- STATE 1: Empty (first visit) -->
+                                <!-- ============================================ -->
+                                <div id="state-empty" class="space-y-6">
+                                    <!-- Onboarding Card -->
+                                    <div id="onboarding-card" class="bg-white border border-[#eaf1f1] rounded-xl p-6 shadow-soft">
+                                        <div class="flex items-start justify-between mb-4">
+                                            <h3 class="font-medium text-[15px] text-[#101818]">What this app can do</h3>
+                                            <button onclick="document.getElementById('onboarding-card').style.display='none'" class="text-[#5c8a8a] hover:text-[#101818] transition-colors cursor-pointer">
+                                                <span class="material-symbols-outlined text-lg">close</span>
+                                            </button>
                                         </div>
-                                        <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
+                                        <div class="space-y-3 mb-5">
+                                            <div class="flex items-center gap-3 text-sm">
+                                                <span class="material-symbols-outlined text-primary text-lg shrink-0">upload</span>
+                                                Upload or enter a Japanese menu
+                                            </div>
+                                            <div class="flex items-center gap-3 text-sm">
+                                                <span class="material-symbols-outlined text-primary text-lg shrink-0">auto_fix_high</span>
+                                                Automatically generate an English version with short descriptions and tags
+                                            </div>
+                                            <div class="flex items-center gap-3 text-sm">
+                                                <span class="material-symbols-outlined text-primary text-lg shrink-0">task_alt</span>
+                                                Confirm dietary tags like 🌿 vegetarian or 🐟 fish
+                                            </div>
+                                            <div class="flex items-center gap-3 text-sm">
+                                                <span class="material-symbols-outlined text-primary text-lg shrink-0">qr_code_2</span>
+                                                Share the menu via QR code
+                                            </div>
+                                        </div>
+                                        <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
                                             <span class="material-symbols-outlined text-sm">visibility</span>
-                                            View
+                                            View Sample Menu
                                         </button>
                                     </div>
-                                    <!-- Item 2 -->
-                                    <div class="flex items-center justify-between py-3">
-                                        <div>
-                                            <p class="font-medium text-sm text-[#101818]">Athipatai Brewery Bar</p>
-                                            <p class="text-xs text-[#5c8a8a]">Last updated: Jan 14, 2026</p>
+
+                                    <!-- Published Menus - Empty -->
+                                    <div>
+                                        <div class="flex items-center justify-between mb-3">
+                                            <span class="text-[11px] font-semibold text-[#5c8a8a] tracking-wide uppercase">Published Menus</span>
+                                            <span class="text-xs text-[#5c8a8a]">0 of 2 slots used</span>
                                         </div>
-                                        <button class="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors">
-                                            <span class="material-symbols-outlined text-sm">visibility</span>
-                                            View
-                                        </button>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <!-- Empty Primary Slot -->
+                                            <div class="border-[1.5px] border-dashed border-[#eaf1f1] rounded-xl flex flex-col">
+                                                <div class="px-3.5 py-2.5 border-b border-dashed border-[#eaf1f1]">
+                                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-primary/10 text-primary">Primary</span>
+                                                </div>
+                                                <div class="flex-1 flex flex-col items-center justify-center text-center p-7 gap-2.5 hover:bg-primary/[.03] transition-colors cursor-pointer">
+                                                    <div class="w-10 h-10 rounded-full border-[1.5px] border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                        <span class="material-symbols-outlined text-xl">add</span>
+                                                    </div>
+                                                    <span class="text-[13px] font-medium text-[#5c8a8a]">Create a primary menu</span>
+                                                    <span class="text-xs text-[#9ca3af]">Your main menu, e.g. lunch, dinner, or full</span>
+                                                    <button class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">add</span>
+                                                        Create Menu
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- Empty Secondary Slot -->
+                                            <div class="border-[1.5px] border-dashed border-[#eaf1f1] rounded-xl flex flex-col">
+                                                <div class="px-3.5 py-2.5 border-b border-dashed border-[#eaf1f1]">
+                                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-secondary/15 text-[#4a7a4a]">Secondary</span>
+                                                </div>
+                                                <div class="flex-1 flex flex-col items-center justify-center text-center p-7 gap-2.5 hover:bg-primary/[.03] transition-colors cursor-pointer">
+                                                    <div class="w-10 h-10 rounded-full border-[1.5px] border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                        <span class="material-symbols-outlined text-xl">add</span>
+                                                    </div>
+                                                    <span class="text-[13px] font-medium text-[#5c8a8a]">Create a secondary menu</span>
+                                                    <span class="text-xs text-[#9ca3af]">A second menu, e.g. lunch, event, seasonal</span>
+                                                    <button class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">add</span>
+                                                        Create Menu
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
 
-                        </div>
+                                <!-- ============================================ -->
+                                <!-- STATE 2: Primary Published -->
+                                <!-- ============================================ -->
+                                <div id="state-primary" class="space-y-6 hidden">
+                                    <div>
+                                        <div class="flex items-center justify-between mb-3">
+                                            <span class="text-[11px] font-semibold text-[#5c8a8a] tracking-wide uppercase">Published Menus</span>
+                                            <span class="text-xs text-[#5c8a8a]">1 of 2 slots used</span>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <!-- Published Primary Card -->
+                                            <div class="bg-white border border-[#eaf1f1] rounded-xl shadow-soft flex flex-col overflow-hidden">
+                                                <div class="px-3.5 py-2.5 border-b border-[#eaf1f1] flex items-center justify-between">
+                                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-primary/10 text-primary">Primary</span>
+                                                    <menu-overflow items='[{"icon":"edit","label":"Edit"},{"icon":"swap_horiz","label":"Replace"},{"divider":true},{"icon":"unpublished","label":"Unpublish","danger":true}]'></menu-overflow>
+                                                </div>
+                                                <div class="p-4 flex flex-col gap-3 flex-1">
+                                                    <div>
+                                                        <div class="font-display font-bold text-base leading-snug">Summer Dinner Menu</div>
+                                                        <div class="text-xs text-[#5c8a8a] mt-0.5">Updated Mar 16, 2026</div>
+                                                    </div>
+                                                    <div class="w-[148px] h-[148px] bg-[#111] rounded-md p-3 flex items-center justify-center">
+                                                        <svg width="120" height="120" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="14" height="14" rx="1.5" fill="white"/><rect x="4" y="4" width="10" height="10" rx="1" fill="#111"/><rect x="6" y="6" width="6" height="6" rx=".5" fill="white"/><rect x="34" y="2" width="14" height="14" rx="1.5" fill="white"/><rect x="36" y="4" width="10" height="10" rx="1" fill="#111"/><rect x="38" y="6" width="6" height="6" rx=".5" fill="white"/><rect x="2" y="34" width="14" height="14" rx="1.5" fill="white"/><rect x="4" y="36" width="10" height="10" rx="1" fill="#111"/><rect x="6" y="38" width="6" height="6" rx=".5" fill="white"/><rect x="20" y="2" width="4" height="4" fill="white"/><rect x="26" y="2" width="4" height="4" fill="white"/><rect x="20" y="8" width="4" height="4" fill="white"/><rect x="20" y="20" width="4" height="4" fill="white"/><rect x="26" y="20" width="4" height="4" fill="white"/><rect x="32" y="20" width="4" height="4" fill="white"/><rect x="20" y="26" width="4" height="4" fill="white"/><rect x="32" y="26" width="4" height="4" fill="white"/><rect x="44" y="20" width="4" height="4" fill="white"/><rect x="20" y="32" width="4" height="4" fill="white"/><rect x="26" y="32" width="4" height="4" fill="white"/><rect x="38" y="32" width="4" height="4" fill="white"/><rect x="44" y="32" width="4" height="4" fill="white"/><rect x="20" y="38" width="4" height="4" fill="white"/><rect x="32" y="38" width="4" height="4" fill="white"/><rect x="44" y="38" width="4" height="4" fill="white"/><rect x="20" y="44" width="4" height="4" fill="white"/><rect x="26" y="44" width="4" height="4" fill="white"/><rect x="38" y="44" width="4" height="4" fill="white"/></svg>
+                                                    </div>
+                                                </div>
+                                                <div class="px-3.5 pb-3.5 flex flex-wrap gap-1.5">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> Guest view
+                                                    </button>
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">content_copy</span> Copy link
+                                                    </button>
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">download</span> Download QR
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- Empty Secondary Slot -->
+                                            <div class="border-[1.5px] border-dashed border-[#eaf1f1] rounded-xl flex flex-col">
+                                                <div class="px-3.5 py-2.5 border-b border-dashed border-[#eaf1f1]">
+                                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-secondary/15 text-[#4a7a4a]">Secondary</span>
+                                                </div>
+                                                <div class="flex-1 flex flex-col items-center justify-center text-center p-7 gap-2.5 hover:bg-primary/[.03] transition-colors cursor-pointer">
+                                                    <div class="w-10 h-10 rounded-full border-[1.5px] border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                        <span class="material-symbols-outlined text-xl">add</span>
+                                                    </div>
+                                                    <span class="text-[13px] font-medium text-[#5c8a8a]">Create a secondary menu</span>
+                                                    <span class="text-xs text-[#9ca3af]">A second menu, e.g. lunch, event, seasonal</span>
+                                                    <button class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">add</span>
+                                                        Create Menu
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ============================================ -->
+                                <!-- STATE 3: Both Published -->
+                                <!-- ============================================ -->
+                                <div id="state-both" class="space-y-6 hidden">
+                                    <div>
+                                        <div class="flex items-center justify-between mb-3">
+                                            <span class="text-[11px] font-semibold text-[#5c8a8a] tracking-wide uppercase">Published Menus</span>
+                                            <span class="text-xs text-[#5c8a8a]">2 of 2 slots used</span>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <!-- Published Primary Card -->
+                                            <div class="bg-white border border-[#eaf1f1] rounded-xl shadow-soft flex flex-col overflow-hidden">
+                                                <div class="px-3.5 py-2.5 border-b border-[#eaf1f1] flex items-center justify-between">
+                                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-primary/10 text-primary">Primary</span>
+                                                    <menu-overflow items='[{"icon":"edit","label":"Edit"},{"icon":"swap_horiz","label":"Replace"},{"divider":true},{"icon":"unpublished","label":"Unpublish","danger":true}]'></menu-overflow>
+                                                </div>
+                                                <div class="p-4 flex flex-col gap-3 flex-1">
+                                                    <div>
+                                                        <div class="font-display font-bold text-base leading-snug">Summer Dinner Menu</div>
+                                                        <div class="text-xs text-[#5c8a8a] mt-0.5">Updated Mar 16, 2026</div>
+                                                    </div>
+                                                    <div class="w-[148px] h-[148px] bg-[#111] rounded-md p-3 flex items-center justify-center">
+                                                        <svg width="120" height="120" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="14" height="14" rx="1.5" fill="white"/><rect x="4" y="4" width="10" height="10" rx="1" fill="#111"/><rect x="6" y="6" width="6" height="6" rx=".5" fill="white"/><rect x="34" y="2" width="14" height="14" rx="1.5" fill="white"/><rect x="36" y="4" width="10" height="10" rx="1" fill="#111"/><rect x="38" y="6" width="6" height="6" rx=".5" fill="white"/><rect x="2" y="34" width="14" height="14" rx="1.5" fill="white"/><rect x="4" y="36" width="10" height="10" rx="1" fill="#111"/><rect x="6" y="38" width="6" height="6" rx=".5" fill="white"/><rect x="20" y="2" width="4" height="4" fill="white"/><rect x="26" y="2" width="4" height="4" fill="white"/><rect x="20" y="8" width="4" height="4" fill="white"/><rect x="20" y="20" width="4" height="4" fill="white"/><rect x="26" y="20" width="4" height="4" fill="white"/><rect x="32" y="20" width="4" height="4" fill="white"/><rect x="20" y="26" width="4" height="4" fill="white"/><rect x="32" y="26" width="4" height="4" fill="white"/><rect x="44" y="20" width="4" height="4" fill="white"/><rect x="20" y="32" width="4" height="4" fill="white"/><rect x="26" y="32" width="4" height="4" fill="white"/><rect x="38" y="32" width="4" height="4" fill="white"/><rect x="44" y="32" width="4" height="4" fill="white"/><rect x="20" y="38" width="4" height="4" fill="white"/><rect x="32" y="38" width="4" height="4" fill="white"/><rect x="44" y="38" width="4" height="4" fill="white"/><rect x="20" y="44" width="4" height="4" fill="white"/><rect x="26" y="44" width="4" height="4" fill="white"/><rect x="38" y="44" width="4" height="4" fill="white"/></svg>
+                                                    </div>
+                                                </div>
+                                                <div class="px-3.5 pb-3.5 flex flex-wrap gap-1.5">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> Guest view
+                                                    </button>
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">content_copy</span> Copy link
+                                                    </button>
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">download</span> Download QR
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- Published Secondary Card -->
+                                            <div class="bg-white border border-[#eaf1f1] rounded-xl shadow-soft flex flex-col overflow-hidden">
+                                                <div class="px-3.5 py-2.5 border-b border-[#eaf1f1] flex items-center justify-between">
+                                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-secondary/15 text-[#4a7a4a]">Secondary</span>
+                                                    <menu-overflow items='[{"icon":"edit","label":"Edit"},{"icon":"swap_horiz","label":"Replace"},{"divider":true},{"icon":"unpublished","label":"Unpublish","danger":true}]'></menu-overflow>
+                                                </div>
+                                                <div class="p-4 flex flex-col gap-3 flex-1">
+                                                    <div>
+                                                        <div class="font-display font-bold text-base leading-snug">Lunch Menu</div>
+                                                        <div class="text-xs text-[#5c8a8a] mt-0.5">Updated Mar 14, 2026</div>
+                                                    </div>
+                                                    <div class="w-[148px] h-[148px] bg-[#111] rounded-md p-3 flex items-center justify-center">
+                                                        <svg width="120" height="120" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="14" height="14" rx="1.5" fill="white"/><rect x="4" y="4" width="10" height="10" rx="1" fill="#111"/><rect x="6" y="6" width="6" height="6" rx=".5" fill="white"/><rect x="34" y="2" width="14" height="14" rx="1.5" fill="white"/><rect x="36" y="4" width="10" height="10" rx="1" fill="#111"/><rect x="38" y="6" width="6" height="6" rx=".5" fill="white"/><rect x="2" y="34" width="14" height="14" rx="1.5" fill="white"/><rect x="4" y="36" width="10" height="10" rx="1" fill="#111"/><rect x="6" y="38" width="6" height="6" rx=".5" fill="white"/><rect x="20" y="2" width="4" height="4" fill="white"/><rect x="26" y="2" width="4" height="4" fill="white"/><rect x="20" y="8" width="4" height="4" fill="white"/><rect x="20" y="20" width="4" height="4" fill="white"/><rect x="26" y="20" width="4" height="4" fill="white"/><rect x="32" y="20" width="4" height="4" fill="white"/><rect x="20" y="26" width="4" height="4" fill="white"/><rect x="32" y="26" width="4" height="4" fill="white"/><rect x="44" y="20" width="4" height="4" fill="white"/><rect x="20" y="32" width="4" height="4" fill="white"/><rect x="26" y="32" width="4" height="4" fill="white"/><rect x="38" y="32" width="4" height="4" fill="white"/><rect x="44" y="32" width="4" height="4" fill="white"/><rect x="20" y="38" width="4" height="4" fill="white"/><rect x="32" y="38" width="4" height="4" fill="white"/><rect x="44" y="38" width="4" height="4" fill="white"/><rect x="20" y="44" width="4" height="4" fill="white"/><rect x="26" y="44" width="4" height="4" fill="white"/><rect x="38" y="44" width="4" height="4" fill="white"/></svg>
+                                                    </div>
+                                                </div>
+                                                <div class="px-3.5 pb-3.5 flex flex-wrap gap-1.5">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> Guest view
+                                                    </button>
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">content_copy</span> Copy link
+                                                    </button>
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">download</span> Download QR
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Previous Menus -->
+                                    <div class="bg-white border border-[#eaf1f1] rounded-xl p-6 shadow-soft">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <span class="text-[11px] font-semibold text-[#5c8a8a] tracking-wide uppercase">Previous Menus</span>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center justify-between py-3 border-b border-[#eaf1f1] gap-3">
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="font-medium text-sm">Arbre 0316</div>
+                                                    <div class="text-xs text-[#5c8a8a] mt-0.5">Last updated: Mar 16, 2026</div>
+                                                </div>
+                                                <div class="flex items-center gap-1.5 shrink-0">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> View
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button onclick="openPublishModal('Arbre 0316', true, 'Summer Dinner Menu', true, 'Lunch Menu')" class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-primary hover:bg-primary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">publish</span> Publish
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button class="inline-flex items-center gap-1 px-1.5 py-1 text-xs text-tertiary hover:bg-tertiary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">delete_outline</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-3 border-b border-[#eaf1f1] gap-3">
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="font-medium text-sm">Arbre 0315</div>
+                                                    <div class="text-xs text-[#5c8a8a] mt-0.5">Last updated: Mar 15, 2026</div>
+                                                </div>
+                                                <div class="flex items-center gap-1.5 shrink-0">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> View
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button onclick="openPublishModal('Arbre 0315', true, 'Summer Dinner Menu', true, 'Lunch Menu')" class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-primary hover:bg-primary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">publish</span> Publish
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button class="inline-flex items-center gap-1 px-1.5 py-1 text-xs text-tertiary hover:bg-tertiary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">delete_outline</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-3 border-b border-[#eaf1f1] gap-3">
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="font-medium text-sm">arbre</div>
+                                                    <div class="text-xs text-[#5c8a8a] mt-0.5">Last updated: Mar 14, 2026</div>
+                                                </div>
+                                                <div class="flex items-center gap-1.5 shrink-0">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> View
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button onclick="openPublishModal('arbre', true, 'Summer Dinner Menu', true, 'Lunch Menu')" class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-primary hover:bg-primary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">publish</span> Publish
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button class="inline-flex items-center gap-1 px-1.5 py-1 text-xs text-tertiary hover:bg-tertiary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">delete_outline</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-3 gap-3">
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="font-medium text-sm">arbre</div>
+                                                    <div class="text-xs text-[#5c8a8a] mt-0.5">Last updated: Mar 12, 2026</div>
+                                                </div>
+                                                <div class="flex items-center gap-1.5 shrink-0">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> View
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button onclick="openPublishModal('arbre', true, 'Summer Dinner Menu', true, 'Lunch Menu')" class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-primary hover:bg-primary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">publish</span> Publish
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button class="inline-flex items-center gap-1 px-1.5 py-1 text-xs text-tertiary hover:bg-tertiary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">delete_outline</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ============================================ -->
+                                <!-- STATE 4: After Unpublish -->
+                                <!-- ============================================ -->
+                                <div id="state-unpublished" class="space-y-6 hidden">
+                                    <div>
+                                        <div class="flex items-center justify-between mb-3">
+                                            <span class="text-[11px] font-semibold text-[#5c8a8a] tracking-wide uppercase">Published Menus</span>
+                                            <span class="text-xs text-[#5c8a8a]">0 of 2 slots used</span>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-4">
+                                            <!-- Empty Primary Slot -->
+                                            <div class="border-[1.5px] border-dashed border-[#eaf1f1] rounded-xl flex flex-col">
+                                                <div class="px-3.5 py-2.5 border-b border-dashed border-[#eaf1f1]">
+                                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-primary/10 text-primary">Primary</span>
+                                                </div>
+                                                <div class="flex-1 flex flex-col items-center justify-center text-center p-7 gap-2.5 hover:bg-primary/[.03] transition-colors cursor-pointer">
+                                                    <div class="w-10 h-10 rounded-full border-[1.5px] border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                        <span class="material-symbols-outlined text-xl">add</span>
+                                                    </div>
+                                                    <span class="text-[13px] font-medium text-[#5c8a8a]">Create a primary menu</span>
+                                                    <span class="text-xs text-[#9ca3af]">Your main menu, e.g. lunch, dinner, or full</span>
+                                                    <button class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">add</span>
+                                                        Create Menu
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <!-- Empty Secondary Slot -->
+                                            <div class="border-[1.5px] border-dashed border-[#eaf1f1] rounded-xl flex flex-col">
+                                                <div class="px-3.5 py-2.5 border-b border-dashed border-[#eaf1f1]">
+                                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-secondary/15 text-[#4a7a4a]">Secondary</span>
+                                                </div>
+                                                <div class="flex-1 flex flex-col items-center justify-center text-center p-7 gap-2.5 hover:bg-primary/[.03] transition-colors cursor-pointer">
+                                                    <div class="w-10 h-10 rounded-full border-[1.5px] border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
+                                                        <span class="material-symbols-outlined text-xl">add</span>
+                                                    </div>
+                                                    <span class="text-[13px] font-medium text-[#5c8a8a]">Create a secondary menu</span>
+                                                    <span class="text-xs text-[#9ca3af]">A second menu, e.g. lunch, event, seasonal</span>
+                                                    <button class="mt-1 inline-flex items-center gap-1.5 px-3.5 py-1.5 text-xs font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">add</span>
+                                                        Create Menu
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Previous Menus -->
+                                    <div class="bg-white border border-[#eaf1f1] rounded-xl p-6 shadow-soft">
+                                        <div class="flex items-center justify-between mb-3">
+                                            <span class="text-[11px] font-semibold text-[#5c8a8a] tracking-wide uppercase">Previous Menus</span>
+                                        </div>
+                                        <div>
+                                            <div class="flex items-center justify-between py-3 border-b border-[#eaf1f1] gap-3">
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="font-medium text-sm">Summer Dinner Menu</div>
+                                                    <div class="text-xs text-[#5c8a8a] mt-0.5">Last updated: Mar 16, 2026</div>
+                                                </div>
+                                                <div class="flex items-center gap-1.5 shrink-0">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> View
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button onclick="openPublishModal('Summer Dinner Menu', false, '', false, '')" class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-primary hover:bg-primary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">publish</span> Publish
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button class="inline-flex items-center gap-1 px-1.5 py-1 text-xs text-tertiary hover:bg-tertiary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">delete_outline</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-3 border-b border-[#eaf1f1] gap-3">
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="font-medium text-sm">Arbre 0316</div>
+                                                    <div class="text-xs text-[#5c8a8a] mt-0.5">Last updated: Mar 16, 2026</div>
+                                                </div>
+                                                <div class="flex items-center gap-1.5 shrink-0">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> View
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button onclick="openPublishModal('Arbre 0316', false, '', false, '')" class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-primary hover:bg-primary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">publish</span> Publish
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button class="inline-flex items-center gap-1 px-1.5 py-1 text-xs text-tertiary hover:bg-tertiary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">delete_outline</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-3 border-b border-[#eaf1f1] gap-3">
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="font-medium text-sm">Arbre 0315</div>
+                                                    <div class="text-xs text-[#5c8a8a] mt-0.5">Last updated: Mar 15, 2026</div>
+                                                </div>
+                                                <div class="flex items-center gap-1.5 shrink-0">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> View
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button onclick="openPublishModal('Arbre 0315', false, '', false, '')" class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-primary hover:bg-primary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">publish</span> Publish
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button class="inline-flex items-center gap-1 px-1.5 py-1 text-xs text-tertiary hover:bg-tertiary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">delete_outline</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between py-3 gap-3">
+                                                <div class="flex-1 min-w-0">
+                                                    <div class="font-medium text-sm">arbre</div>
+                                                    <div class="text-xs text-[#5c8a8a] mt-0.5">Last updated: Mar 14, 2026</div>
+                                                </div>
+                                                <div class="flex items-center gap-1.5 shrink-0">
+                                                    <button class="inline-flex items-center gap-1 px-2.5 py-1 text-xs font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">visibility</span> View
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button onclick="openPublishModal('arbre', false, '', false, '')" class="inline-flex items-center gap-1 px-2 py-1 text-xs font-medium text-primary hover:bg-primary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">publish</span> Publish
+                                                    </button>
+                                                    <div class="w-px h-4 bg-[#eaf1f1]"></div>
+                                                    <button class="inline-flex items-center gap-1 px-1.5 py-1 text-xs text-tertiary hover:bg-tertiary/5 rounded-lg transition-colors cursor-pointer">
+                                                        <span class="material-symbols-outlined text-sm">delete_outline</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Publish Modal -->
+                <menu-modal id="publish-modal" title="Publish Menu" size="sm">
+                    <div class="space-y-3">
+                        <p class="text-sm text-[#5c8a8a]">Choose a slot to publish <strong id="modal-menu-name" class="text-[#101818]"></strong> in.</p>
+
+                        <!-- Primary Slot Option -->
+                        <div id="slot-opt-primary" onclick="selectSlot('primary')"
+                            class="border-[1.5px] border-[#eaf1f1] rounded-lg p-3.5 cursor-pointer transition-all hover:border-primary hover:bg-primary/[.02] flex items-start gap-3">
+                            <div id="slot-radio-primary" class="w-[18px] h-[18px] rounded-full border-2 border-[#eaf1f1] shrink-0 mt-0.5 flex items-center justify-center"></div>
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold flex items-center gap-2 mb-1">
+                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-primary/10 text-primary">Primary</span>
+                                </div>
+                                <div id="slot-sub-primary" class="text-xs text-[#5c8a8a]">Currently: Empty</div>
+                                <div id="slot-warn-primary" class="hidden mt-2 flex items-start gap-1.5 p-2 bg-amber-50 rounded text-xs text-amber-700 leading-relaxed">
+                                    <span class="material-symbols-outlined text-sm text-amber-500 shrink-0 mt-px">warning_amber</span>
+                                    <span id="slot-warn-text-primary"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Secondary Slot Option -->
+                        <div id="slot-opt-secondary" onclick="selectSlot('secondary')"
+                            class="border-[1.5px] border-[#eaf1f1] rounded-lg p-3.5 cursor-pointer transition-all hover:border-primary hover:bg-primary/[.02] flex items-start gap-3">
+                            <div id="slot-radio-secondary" class="w-[18px] h-[18px] rounded-full border-2 border-[#eaf1f1] shrink-0 mt-0.5 flex items-center justify-center"></div>
+                            <div class="flex-1">
+                                <div class="text-sm font-semibold flex items-center gap-2 mb-1">
+                                    <span class="inline-block text-[11px] font-semibold tracking-wide uppercase px-2 py-0.5 rounded-full bg-secondary/15 text-[#4a7a4a]">Secondary</span>
+                                </div>
+                                <div id="slot-sub-secondary" class="text-xs text-[#5c8a8a]">Currently: Empty</div>
+                                <div id="slot-warn-secondary" class="hidden mt-2 flex items-start gap-1.5 p-2 bg-amber-50 rounded text-xs text-amber-700 leading-relaxed">
+                                    <span class="material-symbols-outlined text-sm text-amber-500 shrink-0 mt-px">warning_amber</span>
+                                    <span id="slot-warn-text-secondary"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2 mt-5 pt-4 border-t border-[#eaf1f1]">
+                        <button onclick="document.getElementById('publish-modal').removeAttribute('open')" class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-gray-50 transition-colors cursor-pointer">Cancel</button>
+                        <button class="inline-flex items-center gap-2 px-4 py-2 text-sm font-bold bg-primary text-white rounded-lg shadow-sm hover:bg-primary/90 transition-all cursor-pointer">
+                            <span class="material-symbols-outlined text-base">publish</span>
+                            Publish
+                        </button>
+                    </div>
+                </menu-modal>
 
                 <!-- Anatomy Section -->
                 <div class="mb-16">
@@ -237,29 +587,57 @@
                                 <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">2</span>
                                 <div>
                                     <p class="font-semibold text-[#101818]">Onboarding Card</p>
-                                    <p class="text-[#5c8a8a]">Dismissible info card explaining core features — shown to new users, hidden via close button.</p>
+                                    <p class="text-[#5c8a8a]">Dismissible info card explaining core features — shown only on first visit (State 1), hidden via close button.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
                                 <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">3</span>
                                 <div>
-                                    <p class="font-semibold text-[#101818]">Shared Menu</p>
-                                    <p class="text-[#5c8a8a]">Displays the currently published menu with image preview, QR code, metadata, and action buttons (view, edit, copy link, download QR).</p>
+                                    <p class="font-semibold text-[#101818]">Published Menus (Dual-Slot Grid)</p>
+                                    <p class="text-[#5c8a8a]">Two-column grid with Primary and Secondary slots. Each slot shows either an empty card with "Create Menu" CTA or a published card with QR code, actions, and overflow menu (Edit, Replace, Unpublish).</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
                                 <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">4</span>
                                 <div>
-                                    <p class="font-semibold text-[#101818]">Replace Menu</p>
-                                    <p class="text-[#5c8a8a]">CTA area to replace the current published menu — routes to the Create Menu flow.</p>
+                                    <p class="font-semibold text-[#101818]">Previous Menus</p>
+                                    <p class="text-[#5c8a8a]">Version history list with View, Publish (opens slot picker modal), and Delete actions per item. Appears when menus have been unpublished or replaced.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">
                                 <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">5</span>
                                 <div>
-                                    <p class="font-semibold text-[#101818]">Previous Menus</p>
-                                    <p class="text-[#5c8a8a]">Version history list showing past menu iterations with timestamps and view links.</p>
+                                    <p class="font-semibold text-[#101818]">Publish Modal</p>
+                                    <p class="text-[#5c8a8a]">Slot picker dialog for publishing from Previous Menus. Shows occupied slot warnings when a slot already has a published menu.</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- States Reference -->
+                <div class="mb-16">
+                    <h2 class="text-lg font-bold text-[#101818] mb-4 flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">layers</span>
+                        Page States
+                    </h2>
+                    <div class="bg-white rounded-xl border border-[#eaf1f1] p-8">
+                        <div class="space-y-6 text-sm">
+                            <div>
+                                <p class="font-semibold text-[#101818] mb-1">State 1 — Empty</p>
+                                <p class="text-[#5c8a8a]">First visit. No menus published, no previous menus. Onboarding card visible. Both slots show empty cards with "Create Menu" CTA.</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-[#101818] mb-1">State 2 — Primary Published</p>
+                                <p class="text-[#5c8a8a]">Primary slot occupied with published card (QR code, guest view, copy link, download QR). Secondary slot empty. No previous menus yet.</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-[#101818] mb-1">State 3 — Both Published</p>
+                                <p class="text-[#5c8a8a]">Both slots occupied. Previous menus list appears with View, Publish (slot picker modal with warnings), and Delete actions.</p>
+                            </div>
+                            <div>
+                                <p class="font-semibold text-[#101818] mb-1">State 4 — After Unpublish</p>
+                                <p class="text-[#5c8a8a]">Primary unpublished and moved to top of Previous Menus. Both slots empty again. No onboarding card (returning user).</p>
                             </div>
                         </div>
                     </div>
@@ -270,51 +648,80 @@
 
     </div>
 
-    <!-- Sample Menu Overlay -->
-    <div id="sample-menu-overlay" class="hidden fixed inset-0 z-[100] bg-white flex flex-col">
-        <!-- Overlay Header -->
-        <div class="flex items-center justify-between px-6 py-4 border-b border-[#eaf1f1] shrink-0">
-            <h2 class="font-display text-xl font-bold text-[#101818]">Sample Menu</h2>
-            <button onclick="document.getElementById('sample-menu-overlay').classList.add('hidden')" class="w-8 h-8 rounded-full flex items-center justify-center text-[#5c8a8a] hover:bg-gray-100 hover:text-[#101818] transition-colors">
-                <span class="material-symbols-outlined text-xl">close</span>
-            </button>
-        </div>
+    <script>
+        // State tab switching
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.getElementById('state-tabs');
+            const states = {
+                'empty': document.getElementById('state-empty'),
+                'primary': document.getElementById('state-primary'),
+                'both': document.getElementById('state-both'),
+                'unpublished': document.getElementById('state-unpublished')
+            };
 
-        <!-- Phone Mockup -->
-        <div class="flex-1 flex items-center justify-center bg-[#f0f2f5] overflow-y-auto py-10">
-            <div class="relative w-[375px]">
-                <!-- Phone Frame -->
-                <div class="relative rounded-[3rem] border-[10px] border-[#2d3142] bg-white shadow-2xl overflow-hidden" style="box-shadow: 0 0 0 3px #b0b3bf, 0 20px 60px rgba(0,0,0,0.15);">
+            function showState(stateId) {
+                Object.values(states).forEach(el => el.classList.add('hidden'));
+                if (states[stateId]) states[stateId].classList.remove('hidden');
+            }
 
-                    <!-- Status Bar -->
-                    <div class="bg-[#e8eaed] px-6 pt-3 pb-2 flex items-center justify-between">
-                        <span class="text-xs font-semibold text-[#2d3142]">9:41</span>
-                        <!-- Dynamic Island -->
-                        <div class="w-28 h-6 bg-[#2d3142] rounded-full absolute left-1/2 -translate-x-1/2 top-3"></div>
-                        <!-- Battery -->
-                        <div class="flex items-center gap-1">
-                            <div class="w-6 h-3 border border-[#2d3142] rounded-sm relative">
-                                <div class="absolute inset-0.5 bg-[#2d3142] rounded-[1px]"></div>
-                            </div>
-                        </div>
-                    </div>
+            tabs.addEventListener('change', (e) => showState(e.detail.value));
+        });
 
-                    <!-- Screen Content -->
-                    <div class="px-5 pt-5 pb-4">
-                        <h3 class="font-display text-lg font-bold text-[#2d3142] mb-4">Nagi | Winter 2026</h3>
-                    </div>
+        // Publish modal logic
+        function openPublishModal(name, primaryOccupied, primaryName, secondaryOccupied, secondaryName) {
+            const modal = document.getElementById('publish-modal');
+            document.getElementById('modal-menu-name').textContent = name;
 
-                    <!-- Empty State -->
-                    <div class="bg-[#f8f8f7] min-h-[480px] flex items-start justify-center pt-12">
-                        <p class="text-[#8b8fa3] text-sm">No menu items match your search.</p>
-                    </div>
+            setupSlotOption('primary', primaryOccupied, primaryName);
+            setupSlotOption('secondary', secondaryOccupied, secondaryName);
 
-                    <!-- Bottom safe area -->
-                    <div class="h-6 bg-[#f8f8f7]"></div>
-                </div>
-            </div>
-        </div>
-    </div>
+            if (!primaryOccupied) selectSlot('primary');
+            else if (!secondaryOccupied) selectSlot('secondary');
+            else selectSlot('primary');
+
+            modal.setAttribute('open', '');
+        }
+
+        function setupSlotOption(slot, occupied, menuName) {
+            const sub = document.getElementById('slot-sub-' + slot);
+            const warn = document.getElementById('slot-warn-' + slot);
+            const warnText = document.getElementById('slot-warn-text-' + slot);
+            const opt = document.getElementById('slot-opt-' + slot);
+
+            if (occupied) {
+                sub.textContent = 'Currently: ' + menuName;
+                warn.classList.remove('hidden');
+                warnText.textContent = menuName + ' will be moved to Previous Menus.';
+                opt.classList.add('border-amber-300');
+            } else {
+                sub.textContent = 'Currently: Empty';
+                warn.classList.add('hidden');
+                opt.classList.remove('border-amber-300');
+            }
+        }
+
+        function selectSlot(slot) {
+            ['primary', 'secondary'].forEach(s => {
+                const opt = document.getElementById('slot-opt-' + s);
+                const radio = document.getElementById('slot-radio-' + s);
+                const isSelected = s === slot;
+
+                if (isSelected) {
+                    opt.classList.add('border-primary', 'bg-primary/[.03]');
+                    opt.classList.remove('border-[#eaf1f1]');
+                    radio.classList.add('border-primary', 'bg-primary');
+                    radio.classList.remove('border-[#eaf1f1]');
+                    radio.innerHTML = '<div class="w-1.5 h-1.5 rounded-full bg-white"></div>';
+                } else {
+                    opt.classList.remove('border-primary', 'bg-primary/[.03]');
+                    opt.classList.add('border-[#eaf1f1]');
+                    radio.classList.remove('border-primary', 'bg-primary');
+                    radio.classList.add('border-[#eaf1f1]');
+                    radio.innerHTML = '';
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>

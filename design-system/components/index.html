@@ -36,6 +36,7 @@
     <script src="./menu-toast.js" defer></script>
     <script src="./menu-switch.js" defer></script>
     <script src="./menu-avatar.js" defer></script>
+    <script src="./menu-overflow.js" defer></script>
 
     <style>
         body {
@@ -506,6 +507,32 @@
                             &lt;menu-toast id="my-toast" duration="3000"&gt;&lt;/menu-toast&gt;<br><br>
                             &lt;!-- Trigger via JS --&gt;<br>
                             document.getElementById('my-toast').show('Saved!', 'success');
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Overflow Menu -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Overflow Menu</h2>
+                    <div class="flex flex-wrap gap-8 bg-white p-8 rounded-xl border border-[#eaf1f1] items-start">
+                        <div class="text-center">
+                            <p class="text-xs text-[#5c8a8a] mb-3">Default</p>
+                            <menu-overflow items='[{"icon":"edit","label":"Edit"},{"icon":"swap_horiz","label":"Replace"},{"divider":true},{"icon":"unpublished","label":"Unpublish","danger":true}]'></menu-overflow>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xs text-[#5c8a8a] mb-3">Simple</p>
+                            <menu-overflow items='[{"icon":"content_copy","label":"Copy"},{"icon":"share","label":"Share"},{"icon":"delete","label":"Delete","danger":true}]'></menu-overflow>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-overflow items='[<br>
+                            &nbsp;&nbsp;{"icon":"edit","label":"Edit"},<br>
+                            &nbsp;&nbsp;{"icon":"swap_horiz","label":"Replace"},<br>
+                            &nbsp;&nbsp;{"divider":true},<br>
+                            &nbsp;&nbsp;{"icon":"delete","label":"Delete","danger":true}<br>
+                            ]'&gt;&lt;/menu-overflow&gt;
                         </code>
                     </div>
                 </div>
