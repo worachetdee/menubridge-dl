@@ -8,37 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#267373",
-                        "secondary": "#86B386",
-                        "tertiary": "#CC5C2E",
-                        "background-light": "#f8f8f7",
-                        "background-dark": "#18181b",
-                        "surface": "#ffffff",
-                    },
-                    fontFamily: {
-                        "display": ["Epilogue", "serif"],
-                        "body": ["Inter", "sans-serif"],
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.25rem", 
-                        "lg": "0.5rem", 
-                        "xl": "0.75rem", 
-                        "2xl": "1rem",
-                        "full": "9999px"
-                    },
-                    boxShadow: {
-                        "soft": "0 4px 20px -2px rgba(38, 115, 115, 0.08)",
-                    }
-                },
-            },
-        }
-    </script>
+<script src="design-system/config.js"></script>
 <style>
         body {
             font-family: "Inter", sans-serif;
@@ -54,7 +24,7 @@
 <header class="sticky top-0 z-50 w-full border-b border-[#eaf1f1] bg-[#f9fbfb]/90 backdrop-blur-md px-6 py-4 lg:px-40">
 <div class="mx-auto flex max-w-[1200px] items-center justify-between">
 <div class="flex items-center gap-3 text-primary">
-<span class="material-symbols-outlined text-3xl">restaurant_menu</span>
+<img src="design-system/assets/mnb-logo.svg" alt="MenuBridge" class="w-8 h-8">
 <h2 class="font-display text-xl font-bold tracking-tight text-[#101818]">MenuAI <span class="text-primary font-normal opacity-70">Foundations</span></h2>
 </div>
 <div class="hidden md:flex items-center gap-8">
@@ -318,7 +288,7 @@
 <footer class="w-full border-t border-[#eaf1f1] bg-white px-6 py-10 lg:px-40">
 <div class="mx-auto flex max-w-[1200px] flex-col md:flex-row justify-between items-center gap-6">
 <div class="flex items-center gap-2 text-primary opacity-50">
-<span class="material-symbols-outlined">restaurant_menu</span>
+<img src="design-system/assets/mnb-logo.svg" alt="MenuBridge" class="w-5 h-5">
 <span class="font-display font-bold">MenuAI</span>
 </div>
 <p class="text-sm text-[#5c8a8a]">© 2024 MenuAI Design System. All rights reserved.</p>

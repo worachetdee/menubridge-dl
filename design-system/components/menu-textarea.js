@@ -42,7 +42,7 @@ class MenuTextarea extends HTMLElement {
 
         const hasError = !!error;
         const borderClass = hasError
-            ? 'border-red-300 focus:ring-red-200 focus:border-red-400'
+            ? 'border-tertiary/30 focus:ring-tertiary/20 focus:border-tertiary'
             : 'border-[#eaf1f1] focus:ring-2 focus:ring-primary/30 focus:border-primary';
         const disabledClass = disabled ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'bg-white';
 
@@ -52,7 +52,7 @@ class MenuTextarea extends HTMLElement {
             <div class="flex flex-col gap-1.5 w-full">
                 ${label ? `
                     <label class="text-sm font-medium text-[#101818]">
-                        ${label}${required ? '<span class="text-red-500 ml-0.5">*</span>' : ''}
+                        ${label}${required ? '<span class="text-tertiary ml-0.5">*</span>' : ''}
                     </label>
                 ` : ''}
                 <textarea
@@ -65,7 +65,7 @@ class MenuTextarea extends HTMLElement {
                 >${value}</textarea>
                 <div class="flex justify-between items-center">
                     <div>
-                        ${error ? `<p class="text-xs text-red-600 flex items-center gap-1"><span class="material-symbols-outlined text-sm">error</span>${error}</p>` : ''}
+                        ${error ? `<p class="text-xs text-tertiary flex items-center gap-1"><span class="material-symbols-outlined text-sm">error</span>${error}</p>` : ''}
                         ${!error && helper ? `<p class="text-xs text-[#5c8a8a]">${helper}</p>` : ''}
                     </div>
                     ${maxlength ? `<span data-counter class="text-xs text-[#5c8a8a]">${value.length}/${maxlength}</span>` : ''}

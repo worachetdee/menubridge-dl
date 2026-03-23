@@ -47,7 +47,7 @@ class MenuSelect extends HTMLElement {
 
         const hasError = !!error;
         const borderClass = hasError
-            ? 'border-red-300 focus:ring-red-200 focus:border-red-400'
+            ? 'border-tertiary/30 focus:ring-tertiary/20 focus:border-tertiary'
             : 'border-[#eaf1f1] focus:ring-2 focus:ring-primary/30 focus:border-primary';
         const disabledClass = disabled ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'bg-white';
 
@@ -73,7 +73,7 @@ class MenuSelect extends HTMLElement {
                     </select>
                     <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-lg text-[#5c8a8a] pointer-events-none">expand_more</span>
                 </div>
-                ${error ? `<p class="text-xs text-red-600 flex items-center gap-1"><span class="material-symbols-outlined text-sm">error</span>${error}</p>` : ''}
+                ${error ? `<p class="text-xs text-tertiary flex items-center gap-1"><span class="material-symbols-outlined text-sm">error</span>${error}</p>` : ''}
             </div>
         `;
     }

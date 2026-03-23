@@ -53,11 +53,11 @@ class MenuToast extends HTMLElement {
         }
 
         const config = {
-            success: { bg: 'bg-emerald-50 border-emerald-200 text-emerald-800', icon: 'check_circle' },
-            error: { bg: 'bg-red-50 border-red-200 text-red-800', icon: 'error' },
+            success: { bg: 'bg-secondary/10 border-secondary/20 text-secondary', icon: 'check_circle' },
+            error: { bg: 'bg-tertiary/10 border-tertiary/20 text-tertiary', icon: 'error' },
             warning: { bg: 'bg-amber-50 border-amber-200 text-amber-800', icon: 'warning' },
-            info: { bg: 'bg-blue-50 border-blue-200 text-blue-800', icon: 'info' }
-        }[variant] || { bg: 'bg-blue-50 border-blue-200 text-blue-800', icon: 'info' };
+            info: { bg: 'bg-primary/10 border-primary/20 text-primary', icon: 'info' }
+        }[variant] || { bg: 'bg-primary/10 border-primary/20 text-primary', icon: 'info' };
 
         this.innerHTML = `
             <div class="fixed top-6 right-6 z-[110] animate-[slideIn_0.3s_ease-out]">

@@ -7,7 +7,7 @@
     <title>Logo - MenuBridge Design System</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
-        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;display=swap"
+        href="https://fonts.googleapis.com/css2?family=Epilogue:ital,wght@0,100..900;1,100..900&amp;family=Inter:wght@300;400;500;600&amp;family=Noto+Sans:wght@400;500;700&amp;family=Noto+Sans+JP:wght@400;500;700;900&amp;display=swap"
         rel="stylesheet" />
     <link
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
@@ -15,7 +15,7 @@
     <script src="../config.js"></script>
     <script src="../layout.js"></script>
     <style>
-        body { font-family: "Inter", sans-serif; }
+        body { font-family: "Inter", "Noto Sans JP", sans-serif; }
         h1, h2, h3, h4, h5, h6 { font-family: "Epilogue", serif; }
     </style>
 </head>
@@ -24,7 +24,7 @@
     <div class="relative flex min-h-screen w-full flex-col lg:flex-row overflow-x-hidden">
         <aside id="app-sidebar"></aside>
 
-        <main class="flex flex-1 flex-col items-center pb-20">
+        <main class="flex flex-1 flex-col items-center pb-20 mt-16 lg:mt-0">
             <section class="w-full max-w-[1200px] px-6 py-12 lg:px-40">
                 <div class="mb-12">
                     <p class="text-primary font-bold tracking-wider uppercase text-xs mb-2">Foundations</p>
@@ -34,24 +34,13 @@
                     </p>
                 </div>
 
-                <!-- WIP Banner -->
-                <div class="mb-12 bg-amber-50 border border-amber-200 rounded-xl p-5 flex items-start gap-4">
-                    <span class="material-symbols-outlined text-2xl text-amber-600 mt-0.5">construction</span>
-                    <div>
-                        <p class="text-sm font-bold text-amber-800">Work in Progress</p>
-                        <p class="text-sm text-amber-700 mt-1">
-                            This page is a placeholder. Final logo assets, downloadable files, and detailed usage specifications are being prepared and will be added in a future update.
-                        </p>
-                    </div>
-                </div>
-
                 <!-- Primary Logo -->
                 <div class="mb-16">
                     <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Primary Logo</h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <div class="bg-white rounded-xl border border-[#eaf1f1] p-10 flex flex-col items-center justify-center gap-4">
                             <div class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-5xl text-primary">restaurant_menu</span>
+                                <img src="../assets/mnb-logo.svg" alt="MenuBridge" class="w-12 h-12">
                                 <div>
                                     <p class="font-display text-2xl font-bold tracking-tight text-[#101818] leading-none">MenuBridge</p>
                                     <span class="text-primary text-xs uppercase tracking-wider font-bold opacity-70">Design System</span>
@@ -61,7 +50,7 @@
                         </div>
                         <div class="bg-gray-900 rounded-xl border border-gray-800 p-10 flex flex-col items-center justify-center gap-4">
                             <div class="flex items-center gap-3">
-                                <span class="material-symbols-outlined text-5xl text-emerald-400">restaurant_menu</span>
+                                <img src="../assets/mnb-logo-white.svg" alt="MenuBridge" class="w-12 h-12">
                                 <div>
                                     <p class="font-display text-2xl font-bold tracking-tight text-white leading-none">MenuBridge</p>
                                     <span class="text-emerald-400 text-xs uppercase tracking-wider font-bold opacity-70">Design System</span>
@@ -78,19 +67,19 @@
                     <p class="text-sm text-[#5c8a8a] mb-6">Use the standalone icon when space is limited or the brand name is already visible in context.</p>
                     <div class="grid grid-cols-2 sm:grid-cols-4 gap-6">
                         <div class="bg-white rounded-xl border border-[#eaf1f1] p-8 flex flex-col items-center justify-center gap-3">
-                            <span class="material-symbols-outlined text-5xl text-primary">restaurant_menu</span>
+                            <img src="../assets/mnb-logo.svg" alt="MenuBridge" class="w-12 h-12">
                             <span class="text-xs text-[#5c8a8a]">Default</span>
                         </div>
                         <div class="bg-primary rounded-xl p-8 flex flex-col items-center justify-center gap-3">
-                            <span class="material-symbols-outlined text-5xl text-white">restaurant_menu</span>
+                            <img src="../assets/mnb-logo-white.svg" alt="MenuBridge" class="w-12 h-12">
                             <span class="text-xs text-white/70">Reversed</span>
                         </div>
                         <div class="bg-gray-900 rounded-xl border border-gray-800 p-8 flex flex-col items-center justify-center gap-3">
-                            <span class="material-symbols-outlined text-5xl text-emerald-400">restaurant_menu</span>
+                            <img src="../assets/mnb-logo-white.svg" alt="MenuBridge" class="w-12 h-12">
                             <span class="text-xs text-gray-500">Dark</span>
                         </div>
                         <div class="bg-gray-100 rounded-xl border border-[#eaf1f1] p-8 flex flex-col items-center justify-center gap-3">
-                            <span class="material-symbols-outlined text-5xl text-[#101818]">restaurant_menu</span>
+                            <img src="../assets/mnb-logo.svg" alt="MenuBridge" class="w-12 h-12">
                             <span class="text-xs text-[#5c8a8a]">Monochrome</span>
                         </div>
                     </div>
@@ -105,7 +94,7 @@
                             <div class="flex items-center justify-center p-6">
                                 <div class="border-2 border-dashed border-primary/30 p-6 rounded-lg">
                                     <div class="flex items-center gap-2">
-                                        <span class="material-symbols-outlined text-3xl text-primary">restaurant_menu</span>
+                                        <img src="../assets/mnb-logo.svg" alt="MenuBridge" class="w-8 h-8">
                                         <span class="font-display text-lg font-bold text-[#101818]">MenuBridge</span>
                                     </div>
                                 </div>
@@ -163,13 +152,25 @@
                     </div>
                 </div>
 
-                <!-- Downloads Placeholder -->
+                <!-- Downloads -->
                 <div class="mb-16">
                     <h2 class="text-2xl font-display font-medium text-[#101818] mb-8 border-b border-[#eaf1f1] pb-2">Downloads</h2>
-                    <div class="bg-white rounded-xl border border-dashed border-[#ccdcdc] p-10 flex flex-col items-center justify-center gap-3 text-center">
-                        <span class="material-symbols-outlined text-4xl text-[#5c8a8a]/40">download</span>
-                        <p class="text-sm text-[#5c8a8a]">Logo asset files (SVG, PNG, PDF) will be available for download here.</p>
-                        <span class="text-xs text-[#5c8a8a]/60">Coming soon</span>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <a href="../assets/mnb-logo.svg" download class="bg-white rounded-xl border border-[#eaf1f1] p-6 flex flex-col items-center gap-3 text-center hover:border-primary/40 transition-colors no-underline">
+                            <img src="../assets/mnb-logo.svg" alt="Default logo" class="w-10 h-10">
+                            <span class="text-sm font-medium text-[#101818]">Default (SVG)</span>
+                            <span class="text-xs text-[#5c8a8a]">Dark mark</span>
+                        </a>
+                        <a href="../assets/mnb-logo-white.svg" download class="bg-gray-900 rounded-xl border border-gray-800 p-6 flex flex-col items-center gap-3 text-center hover:border-gray-600 transition-colors no-underline">
+                            <img src="../assets/mnb-logo-white.svg" alt="White logo" class="w-10 h-10">
+                            <span class="text-sm font-medium text-white">White (SVG)</span>
+                            <span class="text-xs text-gray-500">For dark backgrounds</span>
+                        </a>
+                        <a href="../assets/mnb-logo-primary.svg" download class="bg-white rounded-xl border border-[#eaf1f1] p-6 flex flex-col items-center gap-3 text-center hover:border-primary/40 transition-colors no-underline">
+                            <img src="../assets/mnb-logo-primary.svg" alt="Primary logo" class="w-10 h-10">
+                            <span class="text-sm font-medium text-[#101818]">Primary (SVG)</span>
+                            <span class="text-xs text-[#5c8a8a]">Brand teal</span>
+                        </a>
                     </div>
                 </div>
 

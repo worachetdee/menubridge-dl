@@ -44,7 +44,7 @@ class MenuInput extends HTMLElement {
 
         const hasError = !!error;
         const borderClass = hasError
-            ? 'border-red-300 focus:ring-red-200 focus:border-red-400'
+            ? 'border-tertiary/30 focus:ring-tertiary/20 focus:border-tertiary'
             : 'border-[#eaf1f1] focus:ring-2 focus:ring-primary/30 focus:border-primary';
         const disabledClass = disabled ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'bg-white';
 
@@ -54,7 +54,7 @@ class MenuInput extends HTMLElement {
             <div class="flex flex-col gap-1.5 w-full">
                 ${label ? `
                     <label class="text-sm font-medium text-[#101818]">
-                        ${label}${required ? '<span class="text-red-500 ml-0.5">*</span>' : ''}
+                        ${label}${required ? '<span class="text-tertiary ml-0.5">*</span>' : ''}
                     </label>
                 ` : ''}
                 <div class="relative">
@@ -68,7 +68,7 @@ class MenuInput extends HTMLElement {
                         class="w-full rounded-lg border ${borderClass} ${disabledClass} px-3 py-2.5 text-sm text-[#101818] placeholder-[#5c8a8a]/50 outline-none transition-all shadow-none ${icon ? 'pl-10' : ''}"
                     />
                 </div>
-                ${error ? `<p class="text-xs text-red-600 flex items-center gap-1"><span class="material-symbols-outlined text-sm">error</span>${error}</p>` : ''}
+                ${error ? `<p class="text-xs text-tertiary flex items-center gap-1"><span class="material-symbols-outlined text-sm">error</span>${error}</p>` : ''}
                 ${!error && helper ? `<p class="text-xs text-[#5c8a8a]">${helper}</p>` : ''}
             </div>
         `;

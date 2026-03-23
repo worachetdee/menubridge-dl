@@ -37,9 +37,9 @@ class MenuAlert extends HTMLElement {
         let iconName = "";
 
         // Design System Colors:
-        // Primary: Deep Slate/Black
-        // Secondary: Emerald/Green
-        // Tertiary: Terracotta/Red-Orange
+        // Primary: #267373 (Teal)
+        // Secondary: #86B386 (Green)
+        // Tertiary: #CC5C2E (Terracotta)
 
         switch (variant) {
             case 'warning':
@@ -47,12 +47,12 @@ class MenuAlert extends HTMLElement {
                 iconName = "warning";
                 break;
             case 'error':
-                variantClasses = "bg-red-50 border-red-200 text-red-800"; // Utilizing standard Red for clear errors, or could use Tertiary
+                variantClasses = "bg-tertiary/10 border-tertiary/20 text-tertiary";
                 iconName = "error";
                 break;
             case 'info':
             default:
-                variantClasses = "bg-blue-50 border-blue-100 text-blue-800";
+                variantClasses = "bg-primary/10 border-primary/20 text-primary";
                 iconName = "info";
                 break;
         }
