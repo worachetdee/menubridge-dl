@@ -34,7 +34,7 @@ function injectSidebar() {
    sidebar.innerHTML = `
         <div class="flex items-center justify-between lg:block">
             <a href="${prefix}/index.html" class="flex items-center gap-3 text-primary no-underline hover:opacity-80 transition-opacity mb-0 lg:mb-8">
-                <span class="material-symbols-outlined text-3xl">restaurant_menu</span>
+                <img src="${prefix}/assets/mnb-logo.svg" alt="MenuBridge" class="w-8 h-8">
                 <div>
                      <h2 class="font-display text-xl font-bold tracking-tight text-[#101818] leading-none">MenuBridge</h2>
                      <span class="text-primary text-xs uppercase tracking-wider font-bold opacity-70">Design System</span>
@@ -358,26 +358,46 @@ function injectFullscreenButton() {
       const contentArea = browserHeader ? browserHeader.nextElementSibling : browserFrame.firstElementChild;
       if (!contentArea) return;
 
+      // Resolve the base URL for converting relative paths to absolute
+      const baseUrl = new URL('.', window.location.href).href;
+
       // Collect all stylesheets and inline styles from the current page
       const styles = [];
       document.querySelectorAll('link[rel="stylesheet"], style').forEach(function (el) {
-         styles.push(el.outerHTML);
+         if (el.tagName === 'LINK' && el.href) {
+            // Convert relative stylesheet hrefs to absolute
+            var clone = el.cloneNode(true);
+            clone.href = new URL(el.getAttribute('href'), baseUrl).href;
+            styles.push(clone.outerHTML);
+         } else {
+            styles.push(el.outerHTML);
+         }
       });
 
-      // Also grab the tailwind script and config
+      // Grab the tailwind CDN script (use absolute URL) and inline the config
       const scripts = [];
       document.querySelectorAll('script').forEach(function (el) {
-         if (el.src && (el.src.includes('tailwindcss') || el.src.includes('config.js'))) {
-            scripts.push(el.outerHTML);
+         if (el.src && el.src.includes('tailwindcss')) {
+            scripts.push('<script src="' + el.src + '"><\/script>');
+         }
+         if (el.src && el.src.includes('config.js')) {
+            // Inline the tailwind config so it works in blob context
+            scripts.push('<script>' + 'tailwind.config = ' + JSON.stringify(tailwind.config) + ';<\/script>');
          }
          if (!el.src && el.textContent.includes('tailwind')) {
             scripts.push(el.outerHTML);
          }
       });
 
-      // Also include component scripts that are loaded on the page
+      // Also include component scripts with absolute URLs
       document.querySelectorAll('script[src*="components/"]').forEach(function (el) {
-         scripts.push(el.outerHTML);
+         scripts.push('<script src="' + el.src + '" defer><\/script>');
+      });
+
+      // Convert relative image/asset paths to absolute in the content
+      var contentHtml = contentArea.outerHTML;
+      contentHtml = contentHtml.replace(/src="(\.\.\/)([^"]+)"/g, function (match, prefix, rest) {
+         return 'src="' + new URL(prefix + rest, baseUrl).href + '"';
       });
 
       const html = '<!DOCTYPE html>' +
@@ -390,7 +410,7 @@ function injectFullscreenButton() {
          styles.join('\n') +
          '</head>' +
          '<body class="bg-white text-[#101818] antialiased">' +
-         contentArea.outerHTML +
+         contentHtml +
          '</body></html>';
 
       const blob = new Blob([html], { type: 'text/html' });

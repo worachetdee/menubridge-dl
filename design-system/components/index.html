@@ -37,6 +37,7 @@
     <script src="./menu-switch.js" defer></script>
     <script src="./menu-avatar.js" defer></script>
     <script src="./menu-overflow.js" defer></script>
+    <script src="./menu-dietary.js" defer></script>
 
     <style>
         body {
@@ -447,6 +448,7 @@
                         <menu-button onclick="document.getElementById('demo-modal-sm').setAttribute('open','')" icon="open_in_new">Small Modal</menu-button>
                         <menu-button onclick="document.getElementById('demo-modal-md').setAttribute('open','')" variant="outline" icon="open_in_new">Medium Modal</menu-button>
                         <menu-button onclick="document.getElementById('demo-modal-lg').setAttribute('open','')" variant="ghost" icon="open_in_new">Large Modal</menu-button>
+                        <menu-button onclick="document.getElementById('demo-modal-publish').setAttribute('open','')" icon="publish">Publish Menu</menu-button>
                     </div>
 
                     <menu-modal id="demo-modal-sm" title="Confirm Action" size="sm">
@@ -480,6 +482,72 @@
                         </div>
                     </menu-modal>
 
+                    <!-- Publish Menu Modal -->
+                    <menu-modal id="demo-modal-publish" title="Publish Menu" size="md">
+                        <div>
+                            <p class="text-[#5c8a8a] mb-5">Choose a slot to publish <strong class="text-[#101818]">Arbre 0316</strong> in.</p>
+
+                            <div class="space-y-4 mb-6">
+                                <!-- Primary Slot -->
+                                <label class="publish-slot-card block cursor-pointer rounded-xl border-2 border-[#c9a84c] bg-white p-4 transition-colors" onclick="selectPublishSlot(this)">
+                                    <div class="flex items-start gap-3">
+                                        <div class="mt-0.5 w-5 h-5 rounded-full border-2 border-[#c9a84c] flex items-center justify-center shrink-0">
+                                            <div class="publish-slot-dot w-2.5 h-2.5 rounded-full bg-[#c9a84c]"></div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <span class="inline-block text-xs font-bold uppercase tracking-wider text-[#c9a84c] bg-[#c9a84c]/10 px-2 py-0.5 rounded mb-1.5">Primary</span>
+                                            <p class="text-sm text-[#5c8a8a]">Currently: <span class="text-[#101818]">Summer Dinner Menu</span></p>
+                                            <div class="mt-3 bg-[#c9a84c]/8 border border-[#c9a84c]/20 rounded-lg px-3 py-2.5 flex items-start gap-2">
+                                                <span class="text-[#c9a84c] text-sm mt-px">&#9888;</span>
+                                                <p class="text-sm text-[#c9a84c]">Summer Dinner Menu will be moved to Previous Menus.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+
+                                <!-- Secondary Slot -->
+                                <label class="publish-slot-card block cursor-pointer rounded-xl border-2 border-[#c9a84c]/40 bg-white p-4 transition-colors" onclick="selectPublishSlot(this)">
+                                    <div class="flex items-start gap-3">
+                                        <div class="mt-0.5 w-5 h-5 rounded-full border-2 border-[#d0d0d0] flex items-center justify-center shrink-0">
+                                            <div class="publish-slot-dot w-2.5 h-2.5 rounded-full bg-transparent"></div>
+                                        </div>
+                                        <div class="flex-1">
+                                            <span class="inline-block text-xs font-bold uppercase tracking-wider text-[#c9a84c] bg-[#c9a84c]/10 px-2 py-0.5 rounded mb-1.5">Secondary</span>
+                                            <p class="text-sm text-[#5c8a8a]">Currently: <span class="text-[#101818]">Lunch Menu</span></p>
+                                            <div class="mt-3 bg-[#c9a84c]/8 border border-[#c9a84c]/20 rounded-lg px-3 py-2.5 flex items-start gap-2">
+                                                <span class="text-[#c9a84c] text-sm mt-px">&#9888;</span>
+                                                <p class="text-sm text-[#c9a84c]">Lunch Menu will be moved to Previous Menus.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+
+                            <div class="flex gap-3 justify-end border-t border-[#eaf1f1] pt-4">
+                                <menu-button variant="ghost" onclick="document.getElementById('demo-modal-publish').close()">Cancel</menu-button>
+                                <menu-button icon="publish" onclick="document.getElementById('demo-modal-publish').close()">Publish</menu-button>
+                            </div>
+                        </div>
+                    </menu-modal>
+
+                    <script>
+                    function selectPublishSlot(selected) {
+                        document.querySelectorAll('.publish-slot-card').forEach(function(card) {
+                            var dot = card.querySelector('.publish-slot-dot');
+                            var radio = dot.parentElement;
+                            if (card === selected) {
+                                card.style.borderColor = '#c9a84c';
+                                radio.style.borderColor = '#c9a84c';
+                                dot.style.backgroundColor = '#c9a84c';
+                            } else {
+                                card.style.borderColor = 'rgba(201,168,76,0.4)';
+                                radio.style.borderColor = '#d0d0d0';
+                                dot.style.backgroundColor = 'transparent';
+                            }
+                        });
+                    }
+                    </script>
+
                     <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
                         <code class="text-gray-300 text-sm font-mono">
                             &lt;menu-modal id="my-modal" title="Confirm" size="sm"&gt;<br>
@@ -507,6 +575,97 @@
                             &lt;menu-toast id="my-toast" duration="3000"&gt;&lt;/menu-toast&gt;<br><br>
                             &lt;!-- Trigger via JS --&gt;<br>
                             document.getElementById('my-toast').show('Saved!', 'success');
+                        </code>
+                    </div>
+                </div>
+
+                <!-- Dietary Information -->
+                <div class="mb-16">
+                    <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
+                        Dietary Information</h2>
+                    <div class="space-y-10 bg-white p-8 rounded-xl border border-[#eaf1f1]">
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">With Suggested Tags (AI-recommended)</span>
+                            <menu-dietary
+                                label="Dietary Information（食事情報）"
+                                items='[
+                                    {"icon":"eco","label":"Vegetarian","state":"suggested"},
+                                    {"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},
+                                    {"icon":"kebab_dining","label":"Meat","state":"default"},
+                                    {"icon":"egg_alt","label":"Dairy/Egg","state":"default"},
+                                    {"icon":"local_bar","label":"Alcohol","state":"default"}
+                                ]'>
+                            </menu-dietary>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">With Selected Tags (user-confirmed)</span>
+                            <menu-dietary
+                                label="Dietary Information（食事情報）"
+                                items='[
+                                    {"icon":"eco","label":"Vegetarian","state":"selected"},
+                                    {"icon":"set_meal","label":"Fish/Shellfish","state":"default"},
+                                    {"icon":"kebab_dining","label":"Meat","state":"selected"},
+                                    {"icon":"egg_alt","label":"Dairy/Egg","state":"default"},
+                                    {"icon":"local_bar","label":"Alcohol","state":"default"}
+                                ]'>
+                            </menu-dietary>
+                        </div>
+                        <div class="flex flex-col gap-2">
+                            <span class="text-xs font-bold text-gray-400 uppercase tracking-wider">Mixed States (suggested + selected)</span>
+                            <menu-dietary
+                                label="Dietary Information（食事情報）"
+                                items='[
+                                    {"icon":"eco","label":"Vegetarian","state":"selected"},
+                                    {"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},
+                                    {"icon":"kebab_dining","label":"Meat","state":"default"},
+                                    {"icon":"egg_alt","label":"Dairy/Egg","state":"suggested"},
+                                    {"icon":"local_bar","label":"Alcohol","state":"default"}
+                                ]'>
+                            </menu-dietary>
+                        </div>
+                    </div>
+                    <div class="mt-3 p-4 bg-[#f9fbfb] border border-[#eaf1f1] rounded-xl">
+                        <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">State Reference</p>
+                        <div class="flex flex-wrap gap-6 text-sm text-[#5c8a8a]">
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 rounded-full border-2 border-[#d5dede] bg-white flex items-center justify-center">
+                                    <span class="material-symbols-outlined text-[#9bb5b5]" style="font-size:16px">eco</span>
+                                </div>
+                                <span>Default</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="relative">
+                                    <div class="w-8 h-8 rounded-full border-2 border-dashed border-secondary/60 bg-secondary/8 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-secondary" style="font-size:16px">eco</span>
+                                    </div>
+                                    <span class="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-secondary rounded-full flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-white" style="font-size:10px;font-variation-settings:'FILL' 1">auto_awesome</span>
+                                    </span>
+                                </div>
+                                <span>Suggested <span class="text-[#9bb5b5]">(AI-recommended)</span></span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <div class="relative">
+                                    <div class="w-8 h-8 rounded-full border-2 border-primary bg-primary/10 flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-primary" style="font-size:16px">eco</span>
+                                    </div>
+                                    <span class="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 bg-primary rounded-full flex items-center justify-center">
+                                        <span class="material-symbols-outlined text-white" style="font-size:10px;font-variation-settings:'FILL' 1">check</span>
+                                    </span>
+                                </div>
+                                <span>Selected <span class="text-[#9bb5b5]">(user-confirmed)</span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+                        <code class="text-gray-300 text-sm font-mono">
+                            &lt;menu-dietary label="Dietary Information（食事情報）"<br>
+                            &nbsp;&nbsp;items='[<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;{"icon":"eco","label":"Vegetarian","state":"suggested"},<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;{"icon":"set_meal","label":"Fish/Shellfish","state":"selected"},<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;{"icon":"kebab_dining","label":"Meat","state":"default"}<br>
+                            &nbsp;&nbsp;]'&gt;<br>
+                            &lt;/menu-dietary&gt;
                         </code>
                     </div>
                 </div>

@@ -19,6 +19,7 @@
     <script src="../layout.js"></script>
     <!-- Web Components -->
     <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-dietary.js" defer></script>
     <script src="../components/menu-toggle.js" defer></script>
 
     <style>
@@ -199,30 +200,14 @@
                                             </div>
 
                                             <!-- Dietary Information -->
-                                            <div>
-                                                <p class="text-sm text-primary mb-3">Dietary Information</p>
-                                                <div class="flex items-center gap-6">
-                                                    <div class="flex flex-col items-center gap-1.5">
-                                                        <div class="w-12 h-12 rounded-full border-2 border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
-                                                            <span class="material-symbols-outlined text-xl">eco</span>
-                                                        </div>
-                                                        <span class="text-[11px] text-[#5c8a8a]">Vegetarian</span>
-                                                    </div>
-                                                    <div class="flex flex-col items-center gap-1.5">
-                                                        <div class="w-12 h-12 rounded-full border-2 border-[#101818] flex items-center justify-center text-[#101818]">
-                                                            <span class="material-symbols-outlined text-xl">set_meal</span>
-                                                        </div>
-                                                        <span class="text-[11px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        <span class="text-[10px] font-bold text-[#101818]">Suggested</span>
-                                                    </div>
-                                                    <div class="flex flex-col items-center gap-1.5">
-                                                        <div class="w-12 h-12 rounded-full border-2 border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a]">
-                                                            <span class="material-symbols-outlined text-xl">kebab_dining</span>
-                                                        </div>
-                                                        <span class="text-[11px] text-[#5c8a8a]">Meat</span>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            <menu-dietary
+                                                label="Dietary Information（食事情報）"
+                                                items='[
+                                                    {"icon":"eco","label":"Vegetarian","state":"default"},
+                                                    {"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},
+                                                    {"icon":"kebab_dining","label":"Meat","state":"default"}
+                                                ]'>
+                                            </menu-dietary>
 
                                         </div>
                                     </details>

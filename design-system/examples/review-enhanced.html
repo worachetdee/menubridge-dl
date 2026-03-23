@@ -19,6 +19,7 @@
     <script src="../layout.js"></script>
     <!-- Web Components -->
     <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-dietary.js" defer></script>
     <script src="../components/menu-toggle.js" defer></script>
 
     <style>
@@ -141,31 +142,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">モルト, ホップ, ビール</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"suggested"},{"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},{"icon":"kebab_dining","label":"Meat","state":"default"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -180,31 +157,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">マンゴー, パイナップル, IPA</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"suggested"},{"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},{"icon":"kebab_dining","label":"Meat","state":"default"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -219,31 +172,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">コーヒー, ダークチョコレート, オーツ麦, スタウト</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"suggested"},{"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},{"icon":"kebab_dining","label":"Meat","state":"default"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -258,31 +187,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">ハーブ, ホップ, ピルスナー</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"suggested"},{"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},{"icon":"kebab_dining","label":"Meat","state":"default"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -297,31 +202,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">柚子, 酵母, セゾン</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"suggested"},{"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},{"icon":"kebab_dining","label":"Meat","state":"default"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -350,31 +231,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">ナッツ, 燻製</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"suggested"},{"icon":"set_meal","label":"Fish/Shellfish","state":"default"},{"icon":"kebab_dining","label":"Meat","state":"default"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -389,31 +246,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">ガーリック, チリ, 枝豆, 炒め</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"suggested"},{"icon":"set_meal","label":"Fish/Shellfish","state":"default"},{"icon":"kebab_dining","label":"Meat","state":"default"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -428,31 +261,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">いぶりがっこ, ポテトサラダ</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"suggested"},{"icon":"set_meal","label":"Fish/Shellfish","state":"default"},{"icon":"kebab_dining","label":"Meat","state":"default"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -481,31 +290,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">トリュフ塩, フライドポテト</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"suggested"},{"icon":"set_meal","label":"Fish/Shellfish","state":"default"},{"icon":"kebab_dining","label":"Meat","state":"default"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -520,31 +305,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">ペールエール, 唐揚げ</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center text-red-500">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"default"},{"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},{"icon":"kebab_dining","label":"Meat","state":"suggested"}]'></menu-dietary>
                                             </div>
                                         </details>
 
@@ -559,31 +320,7 @@
                                             </summary>
                                             <div class="px-4 pb-4 pt-0 ml-7">
                                                 <p class="text-xs text-[#5c8a8a] mb-3">Components selected for guest explanations <span class="text-[#101818]">チョリソー, ハーブ, マスタード</span></p>
-                                                <div>
-                                                    <p class="text-xs font-bold text-[#101818] mb-1">Dietary Information</p>
-                                                    <p class="text-[10px] text-[#5c8a8a] mb-2">Tap to confirm or adjust if needed</p>
-                                                    <div class="flex gap-4">
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">eco</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Vegetarian</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center text-gray-400">
-                                                                <span class="material-symbols-outlined text-lg">set_meal</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Fish/Shellfish</span>
-                                                        </div>
-                                                        <div class="flex flex-col items-center gap-1">
-                                                            <div class="w-9 h-9 rounded-full bg-red-50 flex items-center justify-center text-red-500">
-                                                                <span class="material-symbols-outlined text-lg">restaurant</span>
-                                                            </div>
-                                                            <span class="text-[10px] text-[#5c8a8a]">Meat</span>
-                                                        </div>
-                                                    </div>
-                                                    <p class="text-[10px] text-blue-500 mt-1.5">Suggested</p>
-                                                </div>
+                                                <menu-dietary items='[{"icon":"eco","label":"Vegetarian","state":"default"},{"icon":"set_meal","label":"Fish/Shellfish","state":"default"},{"icon":"kebab_dining","label":"Meat","state":"suggested"}]'></menu-dietary>
                                             </div>
                                         </details>
 
