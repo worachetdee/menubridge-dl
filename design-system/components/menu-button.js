@@ -38,6 +38,12 @@ class MenuButton extends HTMLElement {
             case 'ghost':
                 variantClasses = "text-[#5c8a8a] hover:text-primary shadow-none px-4";
                 break;
+            case 'dark':
+                variantClasses = "bg-[#101818] text-white hover:bg-[#101818]/90 hover:shadow";
+                break;
+            case 'destructive':
+                variantClasses = "bg-red-600 text-white hover:bg-red-700 hover:shadow";
+                break;
             case 'primary':
             default:
                 variantClasses = "bg-primary text-white hover:bg-primary/90 hover:shadow";

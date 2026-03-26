@@ -78,20 +78,62 @@
                 <div class="mb-16">
                     <h2 class="text-2xl font-display font-medium text-[#101818] mb-6 border-b border-[#eaf1f1] pb-2">
                         Buttons</h2>
-                    <div class="flex flex-wrap gap-4 items-center bg-white p-8 rounded-xl border border-[#eaf1f1]">
-                        <!-- Regular Buttons -->
-                        <menu-button>Default Button</menu-button>
-                        <menu-button variant="outline">Outline Button</menu-button>
-                        <menu-button variant="ghost" icon="share">Ghost Button</menu-button>
 
-                        <!-- With Icons -->
-                        <menu-button icon="translate">Translate</menu-button>
+                    <!-- Progressive Actions -->
+                    <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">Progressive Actions</p>
+                    <p class="text-xs text-[#5c8a8a] mb-3">Move the user forward through a flow — create, translate, submit.</p>
+                    <div class="flex flex-wrap gap-4 items-center bg-white p-8 rounded-xl border border-[#eaf1f1] mb-6">
+                        <menu-button icon="translate">Translate Menu</menu-button>
+                        <menu-button icon="add">Create Menu</menu-button>
+                        <menu-button full-width>Continue</menu-button>
                     </div>
-                    <div class="mt-4 bg-gray-900 rounded-lg p-4 overflow-x-auto">
+
+                    <!-- Confirm / Save -->
+                    <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">Confirm / Save</p>
+                    <p class="text-xs text-[#5c8a8a] mb-3">Commit a task the user has already started — save, done, apply.</p>
+                    <div class="flex flex-wrap gap-4 items-center bg-white p-8 rounded-xl border border-[#eaf1f1] mb-6">
+                        <menu-button variant="dark" icon="check">Done</menu-button>
+                        <menu-button variant="dark" icon="save">Save Changes</menu-button>
+                        <menu-button variant="dark" full-width>Confirm</menu-button>
+                    </div>
+
+                    <!-- Secondary Actions -->
+                    <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">Secondary Actions</p>
+                    <p class="text-xs text-[#5c8a8a] mb-3">Supporting actions that don't compete with the primary flow — cancel, back, alternative options.</p>
+                    <div class="flex flex-wrap gap-4 items-center bg-white p-8 rounded-xl border border-[#eaf1f1] mb-6">
+                        <menu-button variant="outline">Cancel</menu-button>
+                        <menu-button variant="outline" icon="visibility">Preview</menu-button>
+                        <menu-button variant="ghost" icon="share">Share</menu-button>
+                        <menu-button variant="ghost" icon="content_copy">Copy Link</menu-button>
+                    </div>
+
+                    <!-- Destructive Actions -->
+                    <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">Destructive Actions</p>
+                    <p class="text-xs text-[#5c8a8a] mb-3">Irreversible or high-consequence actions — delete, remove, reset.</p>
+                    <div class="flex flex-wrap gap-4 items-center bg-white p-8 rounded-xl border border-[#eaf1f1] mb-6">
+                        <menu-button variant="destructive" icon="delete">Delete Menu</menu-button>
+                        <menu-button variant="destructive">Remove Item</menu-button>
+                    </div>
+
+                    <!-- Code -->
+                    <div class="bg-gray-900 rounded-lg p-4 overflow-x-auto">
                         <code class="text-gray-300 text-sm font-mono">
-                            &lt;menu-button&gt;Default Button&lt;/menu-button&gt;<br>
-                            &lt;menu-button variant="outline"&gt;Outline Button&lt;/menu-button&gt;<br>
-                            &lt;menu-button variant="ghost" icon="share"&gt;Ghost Button&lt;/menu-button&gt;
+                            <span class="text-gray-500">&lt;!-- Progressive --&gt;</span><br>
+                            &lt;menu-button icon="translate"&gt;Translate Menu&lt;/menu-button&gt;<br>
+                            <br>
+                            <span class="text-gray-500">&lt;!-- Confirm / Save --&gt;</span><br>
+                            &lt;menu-button variant="dark" icon="check"&gt;Done&lt;/menu-button&gt;<br>
+                            &lt;menu-button variant="dark" icon="save"&gt;Save Changes&lt;/menu-button&gt;<br>
+                            <br>
+                            <span class="text-gray-500">&lt;!-- Secondary --&gt;</span><br>
+                            &lt;menu-button variant="outline"&gt;Cancel&lt;/menu-button&gt;<br>
+                            &lt;menu-button variant="ghost" icon="share"&gt;Share&lt;/menu-button&gt;<br>
+                            <br>
+                            <span class="text-gray-500">&lt;!-- Destructive --&gt;</span><br>
+                            &lt;menu-button variant="destructive" icon="delete"&gt;Delete Menu&lt;/menu-button&gt;<br>
+                            <br>
+                            <span class="text-gray-500">&lt;!-- Full width (any variant) --&gt;</span><br>
+                            &lt;menu-button variant="dark" full-width&gt;Confirm&lt;/menu-button&gt;
                         </code>
                     </div>
                 </div>
