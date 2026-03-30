@@ -32,7 +32,7 @@ class MenuButton extends HTMLElement {
 
         let baseClasses = isIconOnly
             ? "inline-flex items-center justify-center rounded-lg w-10 h-10 font-bold transition-all text-sm cursor-pointer"
-            : "inline-flex items-center justify-center rounded-lg px-6 py-2.5 font-bold transition-all text-sm cursor-pointer";
+            : "inline-flex items-center justify-center rounded-lg px-6 py-2.5 min-h-[40px] font-bold transition-all text-sm cursor-pointer";
         if (isFullWidth) {
             baseClasses = baseClasses.replace('inline-flex', 'flex w-full');
         }
