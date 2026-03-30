@@ -30,9 +30,8 @@ class MenuButton extends HTMLElement {
         const label = this.getAttribute('label') || this._originalLabel;
         const isIconOnly = icon && !label;
 
-        let baseClasses = isIconOnly
-            ? "inline-flex items-center justify-center rounded-lg w-10 h-10 font-bold transition-all text-sm cursor-pointer"
-            : "inline-flex items-center justify-center rounded-lg px-6 py-2.5 min-h-[40px] font-bold transition-all text-sm cursor-pointer";
+        let baseClasses = "inline-flex items-center justify-center rounded-lg h-10 font-bold transition-all text-sm cursor-pointer"
+            + (isIconOnly ? " w-10" : " px-6");
         if (isFullWidth) {
             baseClasses = baseClasses.replace('inline-flex', 'flex w-full');
         }
@@ -40,9 +39,7 @@ class MenuButton extends HTMLElement {
 
         switch (variant) {
             case 'outline':
-                variantClasses = isIconOnly
-                    ? "border-2 border-primary text-primary hover:bg-primary/5 shadow-sm"
-                    : "border-2 border-primary text-primary hover:bg-primary/5 shadow-sm py-2";
+                variantClasses = "border-2 border-primary text-primary hover:bg-primary/5 shadow-sm";
                 break;
             case 'ghost':
                 variantClasses = "text-[#5c8a8a] hover:text-primary" + (isIconOnly ? "" : " px-4");
@@ -54,9 +51,7 @@ class MenuButton extends HTMLElement {
                 variantClasses = "bg-red-600 text-white hover:bg-red-700 shadow-sm hover:shadow";
                 break;
             case 'destructive-outline':
-                variantClasses = isIconOnly
-                    ? "border-2 border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 shadow-sm"
-                    : "border-2 border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 shadow-sm py-2";
+                variantClasses = "border-2 border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 shadow-sm";
                 break;
             case 'destructive-ghost':
                 variantClasses = "text-red-500 hover:text-red-700 hover:bg-red-50" + (isIconOnly ? "" : " px-4");
