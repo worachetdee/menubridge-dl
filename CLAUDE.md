@@ -96,6 +96,10 @@ View the full component library at: `design-system/components/index.html`
 | `destructive` | Immediate delete (no modal) |
 | `destructive-outline` | Delete with modal confirmation |
 | `destructive-ghost` | Lighter delete with modal confirmation |
+| `link` | Text link style (underlined, renders as `<a>` with `href`) |
+
+**Icon-only**: Omit label text for a compact 40x40 icon button — works with any variant:
+`<menu-button variant="ghost" icon="edit"></menu-button>`
 
 ---
 
