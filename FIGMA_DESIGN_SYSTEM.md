@@ -116,7 +116,7 @@ customElements.define('menu-component', MenuComponent);
 - **Destructive**: `bg-red-600 text-white hover:bg-red-700` — immediate destructive actions
 - **Destructive-outline**: `border-2 border-red-300 text-red-600 hover:bg-red-50` — modal-confirmed deletes
 - **Destructive-ghost**: `text-red-500 hover:text-red-700 hover:bg-red-50` — lighter modal-confirmed deletes
-- **Link**: `text-primary underline hover:text-primary/80` — text links, renders as `<a>` when `href` is set
+- **Link**: `text-primary hover:text-primary/80` — text links, renders as `<a>` when `href` is set
 
 **Icon-only mode**: Omit the label text to get a compact 40x40 icon button: `<menu-button variant="ghost" icon="edit"></menu-button>`
 

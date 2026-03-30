@@ -62,7 +62,7 @@ class MenuButton extends HTMLElement {
                 variantClasses = "text-red-500 hover:text-red-700 hover:bg-red-50 shadow-none" + (isIconOnly ? "" : " px-4");
                 break;
             case 'link':
-                variantClasses = "text-primary hover:text-primary/80 underline underline-offset-2 shadow-none bg-transparent" + (isIconOnly ? " no-underline" : "");
+                variantClasses = "text-primary hover:text-primary/80 shadow-none bg-transparent";
                 break;
             case 'primary':
             default:
