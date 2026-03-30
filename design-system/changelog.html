@@ -52,6 +52,29 @@
 
                 <div class="relative border-l border-[#eaf1f1] ml-3 space-y-12">
 
+                    <!-- Version 2.1 -->
+                    <div class="relative pl-8">
+                        <span
+                            class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-primary ring-4 ring-white"></span>
+                        <div class="mb-2 flex flex-col sm:flex-row sm:items-center sm:gap-3">
+                            <h2 class="text-xl font-bold text-[#101818]">v2.1 - Consistency Pass & Greg Feedback</h2>
+                            <span class="text-xs font-medium text-[#5c8a8a] bg-[#eaf1f1] px-2 py-1 rounded">March 30,
+                                2026</span>
+                        </div>
+                        <div class="prose prose-sm text-[#5c8a8a] max-w-none">
+                            <p>Standardized all example pages and addressed implementation feedback.</p>
+                            <ul class="list-disc pl-5 space-y-1 mt-2">
+                                <li><strong>Buttons</strong>: Added <strong>destructive-outline</strong> and <strong>destructive-ghost</strong> variants for modal-confirmed delete actions.</li>
+                                <li><strong>Consistency</strong>: Standardized browser chrome URL bars, content area backgrounds (<code>bg-white</code>), and outer shell backgrounds (<code>bg-[#F9FAFB]</code>) across all 12 example pages.</li>
+                                <li><strong>Components</strong>: Replaced all hand-built toggles with <code>&lt;menu-toggle&gt;</code> (Include/Hide on Edit Menu Item, EN/JP on Marketing Landing).</li>
+                                <li><strong>Bug fix</strong>: Fixed <code>menu-button</code> label duplication on re-render by caching original text content.</li>
+                                <li><strong>Icons</strong>: Replaced outdated <code>restaurant</code> icon with <code>kebab_dining</code> for meat on Preview Menu.</li>
+                                <li><strong>Edit Menu Item</strong>: Added hidden state pattern (dashed border, muted bg, <code>opacity-45</code>) for Include/Hide component cards. Improved Dietary Information section with separator and consistent header.</li>
+                                <li><strong>Navigation</strong>: Removed Prototype from sidebar.</li>
+                            </ul>
+                        </div>
+                    </div>
+
                     <!-- Version 2.0 -->
                     <div class="relative pl-8">
                         <span
