@@ -109,10 +109,12 @@
 
                     <!-- Destructive Actions -->
                     <p class="text-xs font-bold text-[#5c8a8a] uppercase tracking-wider mb-3">Destructive Actions</p>
-                    <p class="text-xs text-[#5c8a8a] mb-3">Irreversible or high-consequence actions — delete, remove, reset.</p>
+                    <p class="text-xs text-[#5c8a8a] mb-3">Irreversible or high-consequence actions — delete, remove, reset. Use solid for immediate actions, outline/ghost for modal-confirmed actions.</p>
                     <div class="flex flex-wrap gap-4 items-center bg-white p-8 rounded-xl border border-[#eaf1f1] mb-6">
                         <menu-button variant="destructive" icon="delete">Delete Menu</menu-button>
                         <menu-button variant="destructive">Remove Item</menu-button>
+                        <menu-button variant="destructive-outline" icon="delete">Delete Course</menu-button>
+                        <menu-button variant="destructive-ghost" icon="delete">Delete Section</menu-button>
                     </div>
 
                     <!-- Code -->
@@ -129,8 +131,10 @@
                             &lt;menu-button variant="outline"&gt;Cancel&lt;/menu-button&gt;<br>
                             &lt;menu-button variant="ghost" icon="share"&gt;Share&lt;/menu-button&gt;<br>
                             <br>
-                            <span class="text-gray-500">&lt;!-- Destructive --&gt;</span><br>
+                            <span class="text-gray-500">&lt;!-- Destructive (solid = immediate, outline/ghost = modal-confirmed) --&gt;</span><br>
                             &lt;menu-button variant="destructive" icon="delete"&gt;Delete Menu&lt;/menu-button&gt;<br>
+                            &lt;menu-button variant="destructive-outline" icon="delete"&gt;Delete Course&lt;/menu-button&gt;<br>
+                            &lt;menu-button variant="destructive-ghost" icon="delete"&gt;Delete Section&lt;/menu-button&gt;<br>
                             <br>
                             <span class="text-gray-500">&lt;!-- Full width (any variant) --&gt;</span><br>
                             &lt;menu-button variant="dark" full-width&gt;Confirm&lt;/menu-button&gt;

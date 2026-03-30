@@ -19,6 +19,7 @@
     <script src="../layout.js"></script>
     <!-- Web Components -->
     <script src="../components/menu-button.js" defer></script>
+    <script src="../components/menu-toggle.js" defer></script>
 
     <style>
         body {
@@ -60,7 +61,7 @@
                     </h2>
 
                     <!-- Browser Frame Preview -->
-                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-white shadow-sm">
+                    <div class="border border-[#eaf1f1] rounded-xl overflow-hidden bg-[#F9FAFB] shadow-sm">
                         <!-- Browser Header -->
                         <div class="bg-gray-50 border-b border-[#eaf1f1] px-4 py-2 flex items-center gap-2">
                             <div class="flex gap-1.5">
@@ -88,11 +89,7 @@
                                     <a href="#" class="text-sm text-[#5c8a8a] hover:text-[#101818] transition-colors" data-i18n="nav-how">How it works</a>
                                     <a href="#" class="text-sm text-[#5c8a8a] hover:text-[#101818] transition-colors" data-i18n="nav-examples">Examples</a>
                                     <!-- Language Toggle -->
-                                    <div id="lang-toggle" class="relative inline-flex items-center bg-[#f0f4f4] rounded-lg p-0.5 cursor-pointer select-none">
-                                        <div id="lang-indicator" class="absolute top-0.5 h-[calc(100%-4px)] bg-white rounded-md shadow-sm transition-all duration-250 ease-[cubic-bezier(0.4,0,0.2,1)]" style="pointer-events:none"></div>
-                                        <button onclick="setLandingLang('en')" id="lang-btn-en" class="relative z-10 px-2.5 py-1 text-xs font-bold rounded-md transition-colors duration-200 text-[#267373]">EN</button>
-                                        <button onclick="setLandingLang('jp')" id="lang-btn-jp" class="relative z-10 px-2.5 py-1 text-xs font-bold rounded-md transition-colors duration-200 text-[#5c8a8a]">JP</button>
-                                    </div>
+                                    <menu-toggle id="lang-toggle" items="EN, JP" selected="EN"></menu-toggle>
                                     <button class="px-4 py-2 text-sm font-semibold bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors" data-i18n="nav-cta">Try Free</button>
                                 </div>
                             </nav>
@@ -363,49 +360,16 @@
                             }
                         };
 
-                        function initLandingToggle() {
-                            var indicator = document.getElementById('lang-indicator');
-                            var btnEn = document.getElementById('lang-btn-en');
-                            if (indicator && btnEn) {
-                                indicator.style.left = btnEn.offsetLeft + 'px';
-                                indicator.style.width = btnEn.offsetWidth + 'px';
-                            }
-                        }
-                        // Init on load
-                        if (document.readyState === 'loading') {
-                            document.addEventListener('DOMContentLoaded', initLandingToggle);
-                        } else {
-                            requestAnimationFrame(initLandingToggle);
-                        }
+                        // Wire up language toggle via menu-toggle change event
+                        document.getElementById('lang-toggle').addEventListener('change', function(e) {
+                            var lang = e.detail.value === 'EN' ? 'en' : 'jp';
+                            setLandingLang(lang);
+                        });
 
                         function setLandingLang(lang) {
                             var container = document.getElementById('landing-content');
                             if (!container) return;
                             container.setAttribute('data-lang', lang);
-
-                            // Slide indicator to selected button
-                            var btnEn = document.getElementById('lang-btn-en');
-                            var btnJp = document.getElementById('lang-btn-jp');
-                            var indicator = document.getElementById('lang-indicator');
-                            var targetBtn = lang === 'en' ? btnEn : btnJp;
-
-                            if (indicator && targetBtn) {
-                                indicator.style.left = targetBtn.offsetLeft + 'px';
-                                indicator.style.width = targetBtn.offsetWidth + 'px';
-                            }
-
-                            // Update text colors
-                            if (lang === 'en') {
-                                btnEn.classList.remove('text-[#5c8a8a]');
-                                btnEn.classList.add('text-[#267373]');
-                                btnJp.classList.remove('text-[#267373]');
-                                btnJp.classList.add('text-[#5c8a8a]');
-                            } else {
-                                btnJp.classList.remove('text-[#5c8a8a]');
-                                btnJp.classList.add('text-[#267373]');
-                                btnEn.classList.remove('text-[#267373]');
-                                btnEn.classList.add('text-[#5c8a8a]');
-                            }
 
                             // Update all data-i18n text content
                             var strings = landingI18n[lang];

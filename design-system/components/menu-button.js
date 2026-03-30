@@ -21,9 +21,12 @@ class MenuButton extends HTMLElement {
         const variant = this.getAttribute('variant') || 'primary';
         const icon = this.getAttribute('icon');
         const isFullWidth = this.hasAttribute('full-width');
-        // If content is clean/empty (initial load), we might want to preserve childNodes if we weren't doing innerHTML replacement.
-        // But for simplicity, we treat textContent as the label source unless a label attr exists.
-        const label = this.getAttribute('label') || this.textContent.trim();
+        // Cache original text content before first render to prevent picking up
+        // rendered icon text (e.g. "delete") on subsequent re-renders.
+        if (this._originalLabel === undefined) {
+            this._originalLabel = this.getAttribute('label') || this.textContent.trim();
+        }
+        const label = this.getAttribute('label') || this._originalLabel;
 
         let baseClasses = "inline-flex items-center justify-center rounded-lg px-6 py-2.5 font-bold shadow-sm transition-all text-sm cursor-pointer";
         if (isFullWidth) {
@@ -43,6 +46,12 @@ class MenuButton extends HTMLElement {
                 break;
             case 'destructive':
                 variantClasses = "bg-red-600 text-white hover:bg-red-700 hover:shadow";
+                break;
+            case 'destructive-outline':
+                variantClasses = "border-2 border-red-300 text-red-600 hover:bg-red-50 hover:border-red-400 py-2";
+                break;
+            case 'destructive-ghost':
+                variantClasses = "text-red-500 hover:text-red-700 hover:bg-red-50 shadow-none px-4";
                 break;
             case 'primary':
             default:

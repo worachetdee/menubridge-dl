@@ -130,12 +130,9 @@
                                     </div>
                                     <p class="text-xs text-tertiary mb-6">Note: Editing item name will regenerate menu item components</p>
 
-                                    <!-- Delete Item -->
+                                    <!-- Delete Item (modal-confirmed, uses destructive-ghost) -->
                                     <div class="flex justify-center mb-8">
-                                        <button class="inline-flex items-center gap-2 px-5 py-2 text-sm font-medium border border-[#eaf1f1] rounded-lg text-[#101818] hover:bg-red-50 hover:border-red-200 hover:text-red-600 transition-colors">
-                                            <span class="material-symbols-outlined text-base">delete</span>
-                                            Delete Item
-                                        </button>
+                                        <menu-button variant="destructive-ghost" icon="delete">Delete Item</menu-button>
                                     </div>
 
                                     <!-- Guest Explanations Accordion -->
@@ -168,18 +165,15 @@
                                                         </p>
                                                     </div>
                                                     <div class="shrink-0">
-                                                        <div class="inline-flex rounded-lg border border-[#eaf1f1] overflow-hidden">
-                                                            <button class="px-4 py-1.5 text-xs font-medium bg-[#101818] text-white">Include</button>
-                                                            <button class="px-4 py-1.5 text-xs font-medium text-[#5c8a8a] hover:bg-gray-50 transition-colors">Hide</button>
-                                                        </div>
+                                                        <menu-toggle items="Include, Hide" selected="Include"></menu-toggle>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <!-- Component Card 2 -->
-                                            <div class="border border-[#eaf1f1] rounded-xl p-5">
+                                            <!-- Component Card 2 (Hidden State) -->
+                                            <div class="border border-dashed border-[#d5dede] rounded-xl p-5 bg-[#f9fafb]">
                                                 <div class="flex items-start justify-between gap-4">
-                                                    <div class="flex-1">
+                                                    <div class="flex-1 opacity-45">
                                                         <p class="text-sm text-[#101818] mb-2">
                                                             <span class="font-bold">素麺:</span>
                                                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.
@@ -189,23 +183,22 @@
                                                         </p>
                                                     </div>
                                                     <div class="shrink-0">
-                                                        <div class="inline-flex rounded-lg border border-[#eaf1f1] overflow-hidden">
-                                                            <button class="px-4 py-1.5 text-xs font-medium bg-[#101818] text-white">Include</button>
-                                                            <button class="px-4 py-1.5 text-xs font-medium text-[#5c8a8a] hover:bg-gray-50 transition-colors">Hide</button>
-                                                        </div>
+                                                        <menu-toggle items="Include, Hide" selected="Hide"></menu-toggle>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <!-- Dietary Information -->
-                                            <menu-dietary
-                                                label="Dietary Information（食事情報）"
-                                                items='[
-                                                    {"icon":"eco","label":"Vegetarian","state":"default"},
-                                                    {"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},
-                                                    {"icon":"kebab_dining","label":"Meat","state":"default"}
-                                                ]'>
-                                            </menu-dietary>
+                                            <div class="border-t border-[#eaf1f1] pt-6">
+                                                <p class="text-sm font-medium text-primary mb-4">Dietary Information（食事情報）</p>
+                                                <menu-dietary
+                                                    items='[
+                                                        {"icon":"eco","label":"Vegetarian","state":"default"},
+                                                        {"icon":"set_meal","label":"Fish/Shellfish","state":"suggested"},
+                                                        {"icon":"kebab_dining","label":"Meat","state":"default"}
+                                                    ]'>
+                                                </menu-dietary>
+                                            </div>
 
                                         </div>
                                     </details>
@@ -260,7 +253,7 @@
                                 <span class="w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center shrink-0">4</span>
                                 <div>
                                     <p class="font-semibold text-[#101818]">Guest Explanation Components</p>
-                                    <p class="text-[#5c8a8a]">AI-generated explanation cards for each ingredient component. Each card has an Include/Hide toggle to control visibility in the guest-facing menu.</p>
+                                    <p class="text-[#5c8a8a]">AI-generated explanation cards for each ingredient component. Each card has an Include/Hide toggle to control visibility in the guest-facing menu. Hidden cards use a dashed border, muted background (<code class="text-xs bg-gray-100 px-1 rounded">#f9fafb</code>), and <code class="text-xs bg-gray-100 px-1 rounded">opacity-45</code> on content to clearly distinguish them from included cards.</p>
                                 </div>
                             </div>
                             <div class="flex items-start gap-3">

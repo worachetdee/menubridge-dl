@@ -167,10 +167,7 @@ function injectSidebar() {
                        class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/marketing-landing.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
                        Marketing Landing
                     </a>
-                    <a href="${isInSubfolder ? '../examples/prototype.html' : './examples/prototype.html'}"
-                       class="block px-2 py-1.5 rounded-md text-sm font-medium transition-colors ${path.endsWith('/prototype.html') ? 'bg-primary/10 text-primary' : 'text-[#101818]/70 hover:text-[#101818] hover:bg-black/5'}">
-                       <span class="inline-flex items-center gap-1.5"><span class="material-symbols-outlined text-base align-middle">widgets</span> Prototype</span>
-                    </a>
+
                  </div>
             </div>
 
