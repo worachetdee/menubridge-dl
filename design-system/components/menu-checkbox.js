@@ -46,6 +46,8 @@ class MenuCheckbox extends HTMLElement {
         const disabledClass = disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer';
 
         this.style.display = 'block';
+        this.style.border = 'none';
+        this.style.padding = '0';
 
         this.innerHTML = `
             <label class="inline-flex items-center gap-2.5 ${disabledClass} select-none">

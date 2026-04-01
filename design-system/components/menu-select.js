@@ -58,6 +58,9 @@ class MenuSelect extends HTMLElement {
         }).join('');
 
         this.style.display = 'block';
+        this.style.border = 'none';
+        this.style.padding = '0';
+        this.style.width = '100%';
 
         this.innerHTML = `
             <div class="flex flex-col gap-1.5 w-full">
@@ -67,6 +70,7 @@ class MenuSelect extends HTMLElement {
                     <select
                         ${disabled ? 'disabled' : ''}
                         class="w-full rounded-lg border ${borderClass} ${disabledClass} px-3 py-2.5 text-sm text-[#101818] outline-none transition-all appearance-none cursor-pointer ${icon ? 'pl-10' : ''} pr-10"
+                        style="border-color: ${hasError ? 'rgb(204,92,46,0.3)' : '#eaf1f1'}"
                     >
                         <option value="" disabled ${!value ? 'selected' : ''}>${placeholder}</option>
                         ${optionsHtml}
