@@ -39,18 +39,18 @@
 
         /* ===== Theme System ===== */
 
-        /* Theme: MenuBridge (branded) */
+        /* Theme: MenuBridge (branded) — mirrors DS tokens from config.js */
         .theme-menubridge {
-            --t-bg: #f8f8f7;
+            --t-bg: #f8f8f7;            /* background-light */
             --t-bg-alt: #eef5f5;
             --t-text: #101818;
             --t-text-secondary: #5c8a8a;
             --t-text-muted: #9bb5b5;
             --t-border: #eaf1f1;
-            --t-border-input: #c8dede;
-            --t-pill-active-bg: #267373;
+            --t-border-input: #eaf1f1;  /* match DS input border */
+            --t-pill-active-bg: #267373; /* primary */
             --t-pill-active-text: #ffffff;
-            --t-accent: #267373;
+            --t-accent: #267373;         /* primary */
             --t-heading-font: "Epilogue", "Noto Sans JP", serif;
             --t-body-font: "Inter", "Noto Sans JP", sans-serif;
             --t-section-transform: none;
@@ -58,8 +58,8 @@
             --t-section-weight: 800;
             --t-section-size: 1rem;
             --t-item-weight: 400;
-            --t-radius: 0.75rem;
-            --t-notes-border: 1px solid #d4e6e6;
+            --t-radius: 0.75rem;        /* border-radius xl */
+            --t-notes-border: 1px solid #eaf1f1; /* DS border color */
         }
 
         /* Theme: Brewery */
@@ -185,6 +185,7 @@
         #phone-screen[data-theme] .t-search {
             border-color: var(--t-border-input);
             border-radius: var(--t-radius);
+            background-color: var(--t-bg, #fff);
         }
         #phone-screen[data-theme] .t-search input { color: var(--t-text); }
         #phone-screen[data-theme] .t-search input::placeholder { color: var(--t-text-muted); }
