@@ -20,6 +20,8 @@
     <!-- Web Components -->
     <script src="../components/menu-button.js" defer></script>
     <script src="../components/menu-toggle.js" defer></script>
+    <script src="../components/menu-input.js" defer></script>
+    <script src="../components/menu-textarea.js" defer></script>
 
     <style>
         body {
@@ -121,24 +123,9 @@
                                         </h2>
 
                                         <div class="space-y-6">
-                                            <div>
-                                                <label class="block text-sm font-bold text-[#101818] mb-2">
-                                                    Menu Name <span class="text-red-500">*</span>
-                                                </label>
-                                                <input type="text" placeholder="Enter menu name"
-                                                    class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm" />
-                                            </div>
+                                            <menu-input label="Menu Name" placeholder="Enter menu name" required></menu-input>
 
-                                            <div>
-                                                <label class="block text-sm font-bold text-[#101818] mb-2">
-                                                    Staff Notes <span
-                                                        class="text-gray-400 font-normal">(optional)</span>
-                                                </label>
-                                                <p class="text-xs text-[#5c8a8a] mb-2">Notes for staff reference, not
-                                                    shown to guests.</p>
-                                                <textarea placeholder="Add context for translators or staff" rows="3"
-                                                    class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm resize-none"></textarea>
-                                            </div>
+                                            <menu-textarea label="Staff Notes" placeholder="Add context for translators or staff" rows="3" helper="Notes for staff reference, not shown to guests."></menu-textarea>
                                         </div>
                                     </div>
 
@@ -179,9 +166,7 @@
                                                                 class="mx-1">•</span> Pending</p>
                                                     </div>
                                                 </div>
-                                                <button class="text-gray-400 hover:text-red-500 transition-colors">
-                                                    <span class="material-symbols-outlined text-lg">close</span>
-                                                </button>
+                                                <menu-button variant="ghost" icon="close"></menu-button>
                                             </div>
                                         </div>
                                     </div>
@@ -193,13 +178,7 @@
                                                 file above)</span>
                                         </h2>
 
-                                        <div>
-                                            <label class="block text-sm font-bold text-[#101818] mb-2">Menu Text</label>
-                                            <textarea
-                                                placeholder="Enter your Japanese menu items with prices (one per line)"
-                                                rows="6"
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm resize-none"></textarea>
-                                        </div>
+                                        <menu-textarea label="Menu Text" placeholder="Enter your Japanese menu items with prices (one per line)" rows="6"></menu-textarea>
                                         <p class="text-xs text-[#5c8a8a] mt-4">Enter your Japanese menu items with
                                             prices</p>
                                     </div>

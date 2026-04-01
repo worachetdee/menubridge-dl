@@ -49,6 +49,9 @@ class MenuInput extends HTMLElement {
         const disabledClass = disabled ? 'opacity-50 cursor-not-allowed bg-gray-50' : 'bg-white';
 
         this.style.display = 'block';
+        this.style.border = 'none';
+        this.style.padding = '0';
+        this.style.width = '100%';
 
         this.innerHTML = `
             <div class="flex flex-col gap-1.5 w-full">
@@ -66,6 +69,7 @@ class MenuInput extends HTMLElement {
                         ${disabled ? 'disabled' : ''}
                         ${required ? 'required' : ''}
                         class="w-full rounded-lg border ${borderClass} ${disabledClass} px-3 py-2.5 text-sm text-[#101818] placeholder-[#5c8a8a]/50 outline-none transition-all shadow-none ${icon ? 'pl-10' : ''}"
+                        style="border-color: ${hasError ? 'rgb(204,92,46,0.3)' : '#eaf1f1'}"
                     />
                 </div>
                 ${error ? `<p class="text-xs text-tertiary flex items-center gap-1"><span class="material-symbols-outlined text-sm">error</span>${error}</p>` : ''}

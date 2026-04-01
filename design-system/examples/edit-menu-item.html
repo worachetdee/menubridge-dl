@@ -21,6 +21,7 @@
     <script src="../components/menu-button.js" defer></script>
     <script src="../components/menu-dietary.js" defer></script>
     <script src="../components/menu-toggle.js" defer></script>
+    <script src="../components/menu-input.js" defer></script>
 
     <style>
         body {
@@ -109,22 +110,14 @@
                                     <!-- Name & Price Row -->
                                     <div class="flex flex-col md:flex-row md:items-end gap-4 mb-2">
                                         <div class="flex-1">
-                                            <label class="block text-sm text-[#5c8a8a] mb-1.5">Item Name（品名）</label>
-                                            <input type="text" value="一口大葉素麺"
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm" />
+                                            <menu-input label="Item Name（品名）" value="一口大葉素麺"></menu-input>
                                         </div>
                                         <div class="w-28">
-                                            <label class="block text-sm text-[#5c8a8a] mb-1.5">Price（価格）</label>
-                                            <input type="text" value="800円"
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm" />
+                                            <menu-input label="Price（価格）" value="800円"></menu-input>
                                         </div>
                                         <div class="flex items-center gap-2">
-                                            <button class="w-10 h-10 rounded-lg border border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a] hover:bg-gray-50 hover:text-[#101818] transition-colors">
-                                                <span class="material-symbols-outlined text-lg">arrow_upward</span>
-                                            </button>
-                                            <button class="w-10 h-10 rounded-lg border border-[#eaf1f1] flex items-center justify-center text-[#5c8a8a] hover:bg-gray-50 hover:text-[#101818] transition-colors">
-                                                <span class="material-symbols-outlined text-lg">arrow_downward</span>
-                                            </button>
+                                            <menu-button variant="ghost" icon="arrow_upward"></menu-button>
+                                            <menu-button variant="ghost" icon="arrow_downward"></menu-button>
                                             <menu-button variant="dark" icon="check">Done</menu-button>
                                         </div>
                                     </div>
@@ -147,9 +140,7 @@
                                             <!-- Components Header -->
                                             <div class="flex items-center justify-between">
                                                 <p class="text-sm font-medium text-primary">Components selected for guest explanation</p>
-                                                <button class="inline-flex items-center gap-1.5 text-xs text-[#5c8a8a] hover:text-[#101818] transition-colors">
-                                                    <span class="material-symbols-outlined text-sm">edit_note</span> Edit
-                                                </button>
+                                                <menu-button variant="ghost" icon="edit_note">Edit</menu-button>
                                             </div>
 
                                             <!-- Component Card 1 -->

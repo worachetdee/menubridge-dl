@@ -20,6 +20,7 @@
     <!-- Web Components -->
     <script src="../components/menu-button.js" defer></script>
     <script src="../components/menu-toggle.js" defer></script>
+    <script src="../components/menu-input.js" defer></script>
 
     <style>
         body {
@@ -102,24 +103,10 @@
 
                                 <form onsubmit="event.preventDefault();" class="space-y-6">
                                     <!-- Email -->
-                                    <div class="space-y-2">
-                                        <label class="block text-sm font-bold text-[#101818]">Email</label>
-                                        <input type="email" placeholder="your@email.com"
-                                            class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm placeholder:text-gray-400" />
-                                    </div>
+                                    <menu-input type="email" label="Email" placeholder="your@email.com"></menu-input>
 
                                     <!-- Password -->
-                                    <div class="space-y-2">
-                                        <label class="block text-sm font-bold text-[#101818]">Password</label>
-                                        <div class="relative">
-                                            <input type="password" value="password123"
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm text-[#101818]" />
-                                            <button type="button"
-                                                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600">
-                                                <span class="material-symbols-outlined text-lg">visibility</span>
-                                            </button>
-                                        </div>
-                                    </div>
+                                    <menu-input type="password" label="Password" value="password123"></menu-input>
 
                                     <!-- Forgot Password -->
                                     <div>

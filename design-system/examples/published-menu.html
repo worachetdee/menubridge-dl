@@ -20,6 +20,7 @@
     <!-- Web Components -->
     <script src="../components/menu-button.js" defer></script>
     <script src="../components/menu-toggle.js" defer></script>
+    <script src="../components/menu-input.js" defer></script>
 
     <style>
         body {
@@ -179,10 +180,7 @@
 
                                         <p class="text-xs text-[#5c8a8a] text-center mb-4">Scan or download to share with guests.</p>
 
-                                        <button class="w-full flex items-center justify-center gap-2 rounded-lg border border-[#eaf1f1] bg-white px-4 py-2.5 text-sm font-medium text-[#101818] hover:bg-gray-50 transition-colors">
-                                            <span class="material-symbols-outlined text-base">add</span>
-                                            Download QR Code
-                                        </button>
+                                        <menu-button variant="outline" icon="add" full-width>Download QR Code</menu-button>
                                     </div>
 
                                     <!-- Shared Menu Link Card -->
@@ -192,20 +190,16 @@
 
                                         <!-- Link Input -->
                                         <div class="flex gap-2 mb-4">
-                                            <input type="text" value="https://menubridge.co/menu/8efbbdd9-c"
-                                                class="flex-1 rounded-lg border border-[#eaf1f1] bg-white px-3 py-2 text-xs text-[#101818] outline-none focus:border-primary focus:ring-1 focus:ring-primary/30" readonly />
-                                            <button class="shrink-0 flex items-center justify-center w-10 h-10 rounded-lg border border-[#eaf1f1] hover:bg-gray-50 transition-colors text-[#5c8a8a]">
-                                                <span class="material-symbols-outlined text-base">content_copy</span>
-                                            </button>
+                                            <div class="flex-1">
+                                                <menu-input value="https://menubridge.co/menu/8efbbdd9-c" disabled></menu-input>
+                                            </div>
+                                            <menu-button variant="ghost" icon="content_copy"></menu-button>
                                         </div>
 
                                         <!-- Actions -->
                                         <div class="space-y-3">
                                             <menu-button variant="dark" icon="open_in_new" full-width>Open Shared Menu (guest view)</menu-button>
-                                            <button class="w-full flex items-center justify-center gap-2 rounded-lg border border-[#eaf1f1] bg-white px-4 py-2.5 text-sm font-medium text-[#101818] hover:bg-gray-50 transition-colors">
-                                                <span class="material-symbols-outlined text-base">edit</span>
-                                                Edit Shared Menu
-                                            </button>
+                                            <menu-button variant="outline" icon="edit" full-width>Edit Shared Menu</menu-button>
                                         </div>
 
                                         <p class="text-[10px] text-[#5c8a8a] mt-3">Opens the English-only guest view in a separate window</p>

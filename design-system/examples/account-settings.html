@@ -20,6 +20,8 @@
     <!-- Web Components -->
     <script src="../components/menu-button.js" defer></script>
     <script src="../components/menu-toggle.js" defer></script>
+    <script src="../components/menu-input.js" defer></script>
+    <script src="../components/menu-select.js" defer></script>
 
     <style>
         body {
@@ -110,66 +112,32 @@
                                     <div class="border border-[#eaf1f1] rounded-xl p-6 space-y-5">
                                         <h2 class="text-base font-bold font-display text-[#101818]">Restaurant Information</h2>
 
-                                        <div class="space-y-1.5">
-                                            <label class="block text-sm font-bold text-[#101818]">Restaurant Name</label>
-                                            <input type="text" value="Athipatai Brewery"
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm text-[#101818]" />
-                                        </div>
-
-                                        <div class="space-y-1.5">
-                                            <label class="block text-sm font-bold text-[#101818]">Location</label>
-                                            <input type="text" value="Tokyo, Japan"
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm text-[#101818]" />
-                                        </div>
-
-                                        <div class="space-y-1.5">
-                                            <label class="block text-sm font-bold text-[#101818]">Staff Name</label>
-                                            <input type="text" value="Ched"
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm text-[#101818]" />
-                                        </div>
-
-                                        <div class="space-y-1.5">
-                                            <label class="block text-sm font-bold text-[#101818]">Website / Instagram</label>
-                                            <input type="url" value="https://www.instagram.com/athipataibrew"
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm text-[#101818]" />
-                                        </div>
+                                        <menu-input label="Restaurant Name" value="Athipatai Brewery"></menu-input>
+                                        <menu-input label="Location" value="Tokyo, Japan"></menu-input>
+                                        <menu-input label="Staff Name" value="Ched"></menu-input>
+                                        <menu-input type="url" label="Website / Instagram" value="https://www.instagram.com/athipataibrew"></menu-input>
                                     </div>
 
                                     <!-- Language Preference -->
                                     <div class="border border-[#eaf1f1] rounded-xl p-6 space-y-5">
                                         <h2 class="text-base font-bold font-display text-[#101818]">Language Preference</h2>
 
-                                        <div class="space-y-1.5">
-                                            <label class="block text-sm font-bold text-[#101818]">Interface Language</label>
-                                            <select
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm text-[#101818] appearance-none">
-                                                <option selected>English</option>
-                                                <option>Japanese</option>
-                                                <option>Thai</option>
-                                            </select>
-                                        </div>
+                                        <menu-select label="Interface Language" value="en" options='[{"label":"English","value":"en"},{"label":"Japanese","value":"jp"},{"label":"Thai","value":"th"}]'></menu-select>
                                     </div>
 
                                     <!-- Login & Security -->
                                     <div class="border border-[#eaf1f1] rounded-xl p-6 space-y-5">
                                         <h2 class="text-base font-bold font-display text-[#101818]">Login & Security</h2>
 
-                                        <div class="space-y-1.5">
-                                            <label class="block text-sm font-bold text-[#101818]">Email</label>
-                                            <input type="email" value="place.capital-41@icloud.com"
-                                                class="w-full rounded-lg border-[#eaf1f1] bg-white px-4 py-2.5 text-sm focus:border-primary focus:ring-primary shadow-sm text-[#101818]" />
-                                            <p class="text-xs text-[#5c8a8a]">Changing your email requires verification.</p>
-                                        </div>
+                                        <menu-input type="email" label="Email" value="place.capital-41@icloud.com" helper="Changing your email requires verification."></menu-input>
 
                                         <div class="space-y-1.5">
-                                            <label class="block text-sm font-bold text-[#101818]">Password</label>
+                                            <label class="block text-sm font-medium text-[#101818]">Password</label>
                                             <div class="flex items-center gap-3">
-                                                <input type="password" value="password123" disabled
-                                                    class="flex-1 rounded-lg border-[#eaf1f1] bg-gray-50 px-4 py-2.5 text-sm shadow-sm text-[#101818]" />
-                                                <button type="button"
-                                                    class="shrink-0 rounded-lg border border-[#eaf1f1] bg-white px-4 py-2.5 text-sm font-medium text-[#101818] hover:bg-gray-50 transition-colors shadow-sm">
-                                                    Change Password
-                                                </button>
+                                                <div class="flex-1">
+                                                    <menu-input type="password" value="password123" disabled></menu-input>
+                                                </div>
+                                                <menu-button variant="outline">Change Password</menu-button>
                                             </div>
                                         </div>
                                     </div>
@@ -178,18 +146,12 @@
                                     <div class="border border-red-200 bg-red-50 rounded-xl p-6 space-y-3">
                                         <h2 class="text-base font-bold font-display text-red-700">Delete Account</h2>
                                         <p class="text-sm text-red-600/80">Deleting your account will remove all menus and data. This feature is not available yet.</p>
-                                        <button type="button" disabled
-                                            class="rounded-lg border border-red-300 bg-white px-4 py-2 text-sm font-medium text-red-600 opacity-60 cursor-not-allowed">
-                                            Delete Account
-                                        </button>
+                                        <menu-button variant="destructive-outline" disabled>Delete Account</menu-button>
                                     </div>
 
                                     <!-- Actions -->
                                     <div class="flex items-center justify-end gap-4 pt-4 border-t border-[#eaf1f1]">
-                                        <button type="button"
-                                            class="text-sm font-medium text-[#101818]/70 hover:text-[#101818] transition-colors">
-                                            Cancel
-                                        </button>
+                                        <menu-button variant="ghost">Cancel</menu-button>
                                         <menu-button>Save changes</menu-button>
                                     </div>
                                 </form>
